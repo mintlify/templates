@@ -1,3 +1,13 @@
+/* Homepage Ask AI clone: only show when the Mintlify header exposes a real assistant entry (#assistant-entry). */
+#custom-homepage-assistant-entry {
+  display: none;
+}
+
+html:has(#assistant-entry) #custom-homepage-assistant-entry,
+html:has(#assistant-entry-mobile) #custom-homepage-assistant-entry {
+  display: flex;
+}
+
 /* html[data-page-mode="wide"] {}
 
 #sidebar {
