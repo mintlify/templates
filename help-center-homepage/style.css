@@ -1,38 +1,13 @@
-/* Homepage Ask AI clone: only show when the Mintlify header exposes a real assistant entry (#assistant-entry). */
-#custom-homepage-assistant-entry {
-  display: none;
-}
-
-html:has(#assistant-entry) #custom-homepage-assistant-entry,
-html:has(#assistant-entry-mobile) #custom-homepage-assistant-entry {
-  display: flex;
-}
-
-.card {
-  text-wrap: pretty;
-  [data-component-part="card-content-container"] {
-    height: 100%;
+/* hide top search and assistant entry when the homepage assistant entry is visible */
+#search-bar-entry, #assistant-entry {
+  transition: opacity 0.15s ease-out;
+  body:has(#custom-homepage-assistant-entry) & {
+    opacity: 0;
+    pointer-events: none;
   }
 }
 
-/* html[data-page-mode="wide"] {}
-
-#sidebar {
-  display: none !important;
-}
-
-#content-area {
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 100%;
-  width: 100%;
-  padding: 0;
-  margin: 0;
-  border: none;
-  border-radius: 0;
-  background-color: transparent;
-} */
-
+/* custom styling for suggested articles section on homepage */
 .columns.suggested-articles {
   gap: 1.5rem 2rem;
   .card {
