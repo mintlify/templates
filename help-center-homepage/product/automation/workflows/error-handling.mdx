@@ -1,0 +1,17 @@
+---
+title: "Error handling"
+sidebarTitle: "Error handling"
+description: "Retries, compensating steps, and alerting when workflows fail."
+---
+
+## Failures
+
+Classify transient versus permanent failures. Transient steps should retry with jitter.
+
+## Compensation
+
+Undo partial effects when a downstream step fails—especially for payments or external posts.
+
+## Alerts
+
+Route failures to on-call channels with runbook links.

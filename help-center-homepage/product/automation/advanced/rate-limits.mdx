@@ -1,0 +1,19 @@
+---
+title: "Rate limits"
+sidebarTitle: "Rate limits"
+description: "Understand Banyan automation rate limits and how to design around them."
+---
+
+## Defaults
+
+Limits protect shared infrastructure. Burst allowances exist for short spikes.
+
+## Strategies
+
+- Batch work where possible
+- Queue externally when needed
+- Shed load with sampling under stress
+
+## Monitoring
+
+Graph throttle events to spot hot workflows early.

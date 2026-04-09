@@ -1,6 +1,6 @@
 ---
-title: How can we help?
-description: Learn how to scale workflows, connect your tools and become a Mintlify expert, all in one place.
+title: Banyan Help Center
+description: Find answers about Banyan—your workspace, integrations, product guides, and policies—in one place.
 mode: custom
 ---
 
@@ -11,7 +11,7 @@ mode: custom
         How can we help?
       </h1>
       <p className="text-center text-balance text-base text-gray-600 dark:text-zinc-400">
-        Learn how to scale workflows, connect your tools and become a Mintlify expert, all in one
+        Search the Banyan Help Center for setup guides, product how-tos, automation tips, and policies—all in one
         place.
       </p>
     </div>
@@ -42,7 +42,7 @@ mode: custom
       <div className="flex flex-wrap items-center justify-center gap-3 text-sm text-gray-500 dark:text-zinc-400">
         <span>Popular searches</span>
         <div className="flex flex-wrap justify-center gap-1">
-          {['references', 'settings', 'domains'].map((term) => (
+          {['integrations', 'workspace', 'billing'].map((term) => (
             <button
               key={term}
               type="button"
@@ -63,16 +63,16 @@ mode: custom
       horizontal
       icon="book-open"
       iconType="light"
-      title="Help Center"
-      href="#"
+      title="Getting started"
+      href="/getting-started"
     >
-      Reference docs
+      Account, workspace, and billing basics
     </Card>
-    <Card horizontal icon="flag" iconType="light" title="Guides" href="#">
-      Step by step tutorials
+    <Card horizontal icon="map" iconType="light" title="Using Banyan" href="/product">
+      Interface, projects, and editor guides
     </Card>
-    <Card horizontal icon="swatchbook" iconType="light" title="Templates" href="#">
-      Start faster than most
+    <Card horizontal icon="life-buoy" iconType="light" title="Support & policies" href="/support">
+      Help, troubleshooting, and legal
     </Card>
   </Columns>
 
@@ -80,58 +80,58 @@ mode: custom
 
   <Columns cols={3}>
     <Card
-      title="Help Desk Overview"
-      icon="bell-concierge"
+      title="Workspace"
+      icon="users"
       iconType="light"
-      href="#"
-      cta="24 articles"
+      href="/getting-started/workspace"
+      cta="View guides"
     >
-      Onboarding, tickets, and team roles
+      Invites, roles, and organization settings
     </Card>
     <Card
-      title="Getting Started"
+      title="Quickstart"
       icon="rocket"
       iconType="light"
-      href="#"
-      cta="17 articles"
+      href="/getting-started/quickstart"
+      cta="Start here"
     >
-      Set up your workspace in minutes
+      Go from signup to first project
     </Card>
     <Card
-      title="Channels"
-      icon="file-certificate"
+      title="Integrations"
+      icon="plug"
       iconType="light"
-      href="#"
-      cta="9 articles"
+      href="/getting-started/integrations"
+      cta="Browse articles"
     >
-      Connect docs to every surface
+      Slack, CRM, APIs, and partners
     </Card>
     <Card
       title="Automation"
-      icon="diagram-project"
+      icon="zap"
       iconType="light"
-      href="#"
-      cta="11 articles"
+      href="/product/automation"
+      cta="View guides"
     >
-      Snippets, reuse, and workflows
+      Rules, workflows, and schedules
     </Card>
     <Card
-      title="Knowledge"
-      icon="brain-circuit"
+      title="Editor & content"
+      icon="pen-line"
       iconType="light"
-      href="#"
-      cta="4 articles"
+      href="/product/editor"
+      cta="View guides"
     >
-      Media, diagrams, and structure
+      Drafts, comments, and version history
     </Card>
     <Card
-      title="Reports"
-      icon="chart-bar"
+      title="Legal & compliance"
+      icon="scale"
       iconType="light"
-      href="#"
-      cta="18 articles"
+      href="/support/legal"
+      cta="View articles"
     >
-      APIs, examples, and references
+      Terms, privacy, and regions
     </Card>
   </Columns>
 
@@ -140,46 +140,46 @@ mode: custom
   <div className="flex flex-col gap-2">
     <h3 className="text-xl font-semibold text-gray-900 dark:text-zinc-50">Suggested articles</h3>
     <p className="text-base text-gray-600 dark:text-zinc-400">
-      Some suggestions based on what our users read the most
+      Popular starting points from the Banyan Help Center
     </p>
   </div>
 
   <Columns cols={2} className="suggested-articles">
     <Card
-      title="Tell your team when docs change"
-      icon="paper-plane"
+      title="Set up Banyan in under 15 minutes"
+      icon="timer"
       iconType="light"
-      href="#"
+      href="/getting-started/quickstart"
       cta="Read article"
     >
-      A light heads-up when docs change, so your team notices updates without digging around.
+      A short path from signup to your first integration—perfect for pilot teams.
     </Card>
     <Card
-      title="Ship site updates right after you save"
-      icon="arrows-rotate"
+      title="Connect Slack to Banyan"
+      icon="message-circle"
       iconType="light"
-      href="#"
+      href="/getting-started/integrations/connect-slack"
       cta="Read article"
     >
-      Your site can refresh on its own after you save, so what visitors see stays up to date.
+      Install the app, pick channels, and keep notifications under control.
     </Card>
     <Card
-      title="Quick tips beside the deeper details"
-      icon="lightbulb"
+      title="Build your first workflow"
+      icon="workflow"
       iconType="light"
-      href="#"
+      href="/product/automation/workflows/build-first-workflow"
       cta="Read article"
     >
-      Friendly starters for newcomers, with deeper detail still within reach on the same page.
+      Chain steps with approvals and Slack notifications in a sandbox project.
     </Card>
     <Card
-      title="Point search to your best answers"
+      title="Search and navigation tips"
       icon="compass"
       iconType="light"
-      href="#"
+      href="/product/search-navigation"
       cta="Read article"
     >
-      Guide common questions to your best answer so readers land in the right place sooner.
+      Find projects and pages faster with filters and quoted phrases.
     </Card>
   </Columns>
 </div>

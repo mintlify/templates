@@ -1,0 +1,17 @@
+---
+title: "Idempotency"
+sidebarTitle: "Idempotency"
+description: "Use idempotency keys to make automation safe under retries."
+---
+
+## Why it matters
+
+Retries can duplicate side effects without idempotent design.
+
+## Keys
+
+Supply a stable idempotency key derived from natural identifiers.
+
+## Storage
+
+Record processed keys long enough to cover your retry window.

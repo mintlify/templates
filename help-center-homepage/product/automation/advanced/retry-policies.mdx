@@ -1,0 +1,17 @@
+---
+title: "Retry policies"
+sidebarTitle: "Retry policies"
+description: "Configure exponential backoff, max attempts, and dead-letter handling."
+---
+
+## Backoff
+
+Exponential backoff reduces thundering herds. Add jitter to desynchronize clients.
+
+## Max attempts
+
+Stop after N tries and surface to operators with context.
+
+## Dead letters
+
+Send poison messages to a dead-letter queue for manual inspection.
