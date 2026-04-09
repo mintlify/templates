@@ -1,8 +1,8 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
-  "name": "Banyan Help Center",
-  "description": "Documentation and guides for Banyan—workspace setup, product how-tos, and support.",
+  "name": "Help Center",
+  "description": "Documentation and guides for this template—workspace setup, product how-tos, and support.",
   "colors": {
     "primary": "#15803D",
     "light": "#22C55E",
@@ -75,7 +75,7 @@
         ]
       },
       {
-        "group": "Using Banyan",
+        "group": "Product guides",
         "icon": "book-open",
         "root": "product/index",
         "pages": [
