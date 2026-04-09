@@ -8,6 +8,13 @@ html:has(#assistant-entry-mobile) #custom-homepage-assistant-entry {
   display: flex;
 }
 
+.card {
+  text-wrap: pretty;
+  [data-component-part="card-content-container"] {
+    height: 100%;
+  }
+}
+
 /* html[data-page-mode="wide"] {}
 
 #sidebar {
