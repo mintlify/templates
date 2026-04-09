@@ -52,7 +52,7 @@
               "getting-started/integrations/connect-crm",
               {
                 "group": "Developer integrations",
-                "icon": "code-2",
+                "icon": "code-xml",
                 "root": "getting-started/integrations/developer/index",
                 "pages": [
                   "getting-started/integrations/developer/oauth-apps",
