@@ -10,7 +10,7 @@ mode: custom
       <h1 className="text-center text-4xl font-semibold tracking-tight text-gray-900 dark:text-zinc-50">
         How can we help?
       </h1>
-      <p className="text-center text-balance text-base text-gray-600 dark:text-zinc-400">
+      <p className="text-center text-balance text-base text-gray-600 dark:text-zinc-400 mt-2">
         Search the Help Center for setup guides, product how-tos, automation tips, and policies—all in one
         place.
       </p>
@@ -78,18 +78,18 @@ mode: custom
   <Columns cols={3}>
     <Card
       horizontal
-      icon="book-open"
+      icon="rocket"
       iconType="light"
-      title="Getting started"
+      title="Getting started & account"
       href="/getting-started"
     >
-      Account, workspace, and billing basics
+      Quickstart, account security, workspace, billing, and integrations
     </Card>
-    <Card horizontal icon="map" iconType="light" title="Product guides" href="/product">
-      Interface, projects, and editor guides
+    <Card horizontal icon="book-open" iconType="light" title="Product guides" href="/product">
+      Interface, projects, editor, automation, and workflows
     </Card>
     <Card horizontal icon="life-buoy" iconType="light" title="Support & policies" href="/support">
-      Help, troubleshooting, and legal
+      Contact, status, troubleshooting, account data, and legal
     </Card>
   </Columns>
 
@@ -106,49 +106,49 @@ mode: custom
       Invites, roles, and organization settings
     </Card>
     <Card
-      title="Quickstart"
-      icon="rocket"
+      title="Billing & plans"
+      icon="credit-card"
       iconType="light"
-      href="/getting-started/quickstart"
-      cta="Start here"
-    >
-      Go from signup to first project
-    </Card>
-    <Card
-      title="Integrations"
-      icon="plug"
-      iconType="light"
-      href="/getting-started/integrations"
-      cta="Browse articles"
-    >
-      Slack, CRM, APIs, and partners
-    </Card>
-    <Card
-      title="Automation"
-      icon="zap"
-      iconType="light"
-      href="/product/automation"
+      href="/getting-started/billing"
       cta="View guides"
     >
-      Rules, workflows, and schedules
+      Compare plans, upgrades, and invoices
     </Card>
     <Card
-      title="Editor & content"
-      icon="pen-line"
+      title="Developer integrations"
+      icon="code-xml"
       iconType="light"
-      href="/product/editor"
+      href="/getting-started/integrations/developer"
       cta="View guides"
     >
-      Drafts, comments, and version history
+      OAuth apps, webhooks, and API keys
     </Card>
     <Card
-      title="Legal & compliance"
-      icon="scale"
+      title="Projects"
+      icon="folder-kanban"
       iconType="light"
-      href="/support/legal"
+      href="/product/projects"
+      cta="View guides"
+    >
+      Create projects and archive or restore them
+    </Card>
+    <Card
+      title="Troubleshooting"
+      icon="wrench"
+      iconType="light"
+      href="/support/troubleshooting"
+      cta="View guides"
+    >
+      Login issues and performance troubleshooting
+    </Card>
+    <Card
+      title="Privacy & GDPR"
+      icon="shield-check"
+      iconType="light"
+      href="/support/legal/privacy"
       cta="View articles"
     >
-      Terms, privacy, and regions
+      Privacy policy, DPA, and subprocessors
     </Card>
   </Columns>
 
@@ -163,40 +163,40 @@ mode: custom
 
   <Columns cols={2} className="suggested-articles">
     <Card
-      title="Get set up in under 15 minutes"
+      title="Quickstart: get set up in under 15 minutes"
       icon="timer"
       iconType="light"
       href="/getting-started/quickstart"
       cta="Read article"
     >
-      A short path from signup to your first integration—perfect for pilot teams.
+      A fast path from signup to first project: invites, roles, and your first integration.
     </Card>
     <Card
-      title="Connect Slack"
-      icon="message-circle"
+      title="Conditions and branches"
+      icon="git-branch"
       iconType="light"
-      href="/getting-started/integrations/connect-slack"
+      href="/product/automation/workflows/conditions-branches"
       cta="Read article"
     >
-      Install the app, pick channels, and keep notifications under control.
+      Model conditional paths and merge strategies in workflows.
     </Card>
     <Card
-      title="Build your first workflow"
-      icon="workflow"
+      title="Privacy policy"
+      icon="scroll-text"
       iconType="light"
-      href="/product/automation/workflows/build-first-workflow"
+      href="/support/legal/privacy/privacy-policy"
       cta="Read article"
     >
-      Chain steps with approvals and Slack notifications in a sandbox project.
+      Demo privacy policy for this help center.
     </Card>
     <Card
-      title="Search and navigation tips"
-      icon="compass"
+      title="Connect your CRM"
+      icon="building-2"
       iconType="light"
-      href="/product/search-navigation"
+      href="/getting-started/integrations/connect-crm"
       cta="Read article"
     >
-      Find projects and pages faster with filters and quoted phrases.
+      Link Salesforce or HubSpot through partner connectors or a custom sync strategy.
     </Card>
   </Columns>
 </div>
