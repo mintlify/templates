@@ -12,6 +12,9 @@
   "icons": {
     "library": "lucide"
   },
+  "styling": {
+    "eyebrows": "breadcrumbs"
+  },
   "navigation": {
     "directory": "card",
     "groups": [
