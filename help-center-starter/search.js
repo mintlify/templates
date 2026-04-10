@@ -11,8 +11,28 @@
     return desktop instanceof HTMLElement ? desktop : null;
   }
 
+  function getAssistantEntryButton() {
+    var desktop = document.getElementById('assistant-entry');
+    if (desktop instanceof HTMLElement && desktop.offsetParent !== null) {
+      return desktop;
+    }
+    var mobile = document.getElementById('assistant-entry-mobile');
+    if (mobile instanceof HTMLElement && mobile.offsetParent !== null) {
+      return mobile;
+    }
+    if (desktop instanceof HTMLElement) {
+      return desktop;
+    }
+    var m = document.getElementById('assistant-entry-mobile');
+    return m instanceof HTMLElement ? m : null;
+  }
+
   function openSearch() {
     getSearchEntryButton()?.click();
+  }
+
+  function openAssistant() {
+    getAssistantEntryButton()?.click();
   }
 
   function setNativeInputValue(input, value) {
@@ -57,6 +77,13 @@
     if (trigger) {
       e.preventDefault();
       openSearch();
+      return;
+    }
+
+    var assistantTrigger = target.closest('[data-assistant-trigger]');
+    if (assistantTrigger) {
+      e.preventDefault();
+      openAssistant();
       return;
     }
 

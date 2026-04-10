@@ -1,0 +1,199 @@
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "theme": "mint",
+  "name": "Help Center",
+  "description": "Documentation and guides for this template—workspace setup, product how-tos, and support.",
+  "colors": {
+    "primary": "#15803D",
+    "light": "#22C55E",
+    "dark": "#14532D"
+  },
+  "favicon": "/favicon.ico",
+  "icons": {
+    "library": "lucide"
+  },
+  "styling": {
+    "eyebrows": "breadcrumbs"
+  },
+  "navigation": {
+    "directory": "card",
+    "groups": [
+      {
+        "group": "Getting started & account",
+        "icon": "rocket",
+        "root": "getting-started/index",
+        "pages": [
+          "getting-started/quickstart",
+          "getting-started/create-account",
+          "getting-started/sign-in-security",
+          {
+            "group": "Workspace",
+            "icon": "users",
+            "root": "getting-started/workspace/index",
+            "pages": [
+              "getting-started/workspace/invite-teammates",
+              "getting-started/workspace/roles-permissions",
+              "getting-started/workspace/organization-settings"
+            ]
+          },
+          {
+            "group": "Billing & plans",
+            "icon": "credit-card",
+            "root": "getting-started/billing/index",
+            "pages": [
+              "getting-started/billing/compare-plans",
+              "getting-started/billing/upgrade-downgrade",
+              "getting-started/billing/invoices-receipts"
+            ]
+          },
+          {
+            "group": "Integrations",
+            "icon": "plug",
+            "root": "getting-started/integrations/index",
+            "pages": [
+              "getting-started/integrations/connect-slack",
+              "getting-started/integrations/connect-crm",
+              {
+                "group": "Developer integrations",
+                "icon": "code-xml",
+                "root": "getting-started/integrations/developer/index",
+                "pages": [
+                  "getting-started/integrations/developer/oauth-apps",
+                  "getting-started/integrations/developer/webhooks",
+                  "getting-started/integrations/developer/api-keys"
+                ]
+              },
+              {
+                "group": "Partner connectors",
+                "icon": "link-2",
+                "root": "getting-started/integrations/partners/index",
+                "pages": [
+                  "getting-started/integrations/partners/salesforce",
+                  "getting-started/integrations/partners/hubspot",
+                  "getting-started/integrations/partners/custom-connector-template"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "group": "Product guides",
+        "icon": "book-open",
+        "root": "product/index",
+        "pages": [
+          "product/interface-overview",
+          "product/keyboard-shortcuts",
+          "product/search-navigation",
+          {
+            "group": "Projects",
+            "icon": "folder-kanban",
+            "root": "product/projects/index",
+            "pages": [
+              "product/projects/create-project",
+              "product/projects/archive-restore"
+            ]
+          },
+          {
+            "group": "Editor & content",
+            "icon": "pen-line",
+            "root": "product/editor/index",
+            "pages": [
+              "product/editor/drafts-publishing",
+              "product/editor/comments-mentions",
+              "product/editor/version-history"
+            ]
+          },
+          {
+            "group": "Automation",
+            "icon": "zap",
+            "root": "product/automation/index",
+            "pages": [
+              "product/automation/rules-triggers",
+              {
+                "group": "Workflow builder",
+                "icon": "workflow",
+                "root": "product/automation/workflows/index",
+                "pages": [
+                  "product/automation/workflows/build-first-workflow",
+                  "product/automation/workflows/conditions-branches",
+                  "product/automation/workflows/error-handling"
+                ]
+              },
+              {
+                "group": "Advanced patterns",
+                "icon": "layers",
+                "root": "product/automation/advanced/index",
+                "pages": [
+                  "product/automation/advanced/rate-limits",
+                  "product/automation/advanced/idempotency",
+                  "product/automation/advanced/retry-policies"
+                ]
+              },
+              "product/automation/scheduled-tasks"
+            ]
+          }
+        ]
+      },
+      {
+        "group": "Support & policies",
+        "icon": "life-buoy",
+        "root": "support/index",
+        "pages": [
+          "support/contact-support",
+          "support/status-incidents",
+          {
+            "group": "Troubleshooting",
+            "icon": "wrench",
+            "root": "support/troubleshooting/index",
+            "pages": [
+              "support/troubleshooting/login-issues",
+              "support/troubleshooting/performance-issues"
+            ]
+          },
+          {
+            "group": "Account & data",
+            "icon": "database",
+            "root": "support/account-data/index",
+            "pages": [
+              "support/account-data/export-data",
+              "support/account-data/delete-account"
+            ]
+          },
+          {
+            "group": "Legal & compliance",
+            "icon": "scale",
+            "root": "support/legal/index",
+            "pages": [
+              "support/legal/terms-of-service",
+              {
+                "group": "Privacy & GDPR",
+                "icon": "shield-check",
+                "root": "support/legal/privacy/index",
+                "pages": [
+                  "support/legal/privacy/privacy-policy",
+                  "support/legal/privacy/dpa",
+                  "support/legal/privacy/subprocessors"
+                ]
+              },
+              {
+                "group": "Regional specifics",
+                "icon": "globe",
+                "root": "support/legal/regions/index",
+                "pages": [
+                  "support/legal/regions/eu-residency",
+                  "support/legal/regions/us-residency",
+                  "support/legal/regions/apac"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "logo": {
+    "light": "/logo/light.svg",
+    "dark": "/logo/dark.svg"
+  }
+}

@@ -1,3 +1,13 @@
+/* hide top search and assistant entry when the homepage assistant entry is visible */
+#search-bar-entry, #assistant-entry {
+  transition: opacity 0.15s ease-out;
+  body:has(#custom-homepage-assistant-entry) & {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+
+/* custom styling for suggested articles section on homepage */
 .columns.suggested-articles {
   gap: 1.5rem 2rem;
   .card {
