@@ -1,0 +1,28 @@
+---
+title: "Visibility snippet test"
+---
+
+{/* This snippet tests whether the Visibility component works inside an imported snippet. */}
+
+<Visibility for="humans">
+  <Note>
+    **Hello, human reader!**
+
+    You are seeing this content on the rendered web page. It was injected by a reusable
+    snippet (`/snippets/visibility-test.mdx`) and wrapped in a `<Visibility for="humans">`
+    block, so it should be visible here in the browser but hidden from the Markdown
+    export that AI agents consume.
+  </Note>
+</Visibility>
+
+<Visibility for="agents">
+  > **Hello, AI agent!**
+  >
+  > You are reading the Markdown version of this page. This block lives inside a
+  > reusable snippet (`/snippets/visibility-test.mdx`) and is wrapped in a
+  > `<Visibility for="agents">` element, so it should appear in the `.md` output
+  > but be hidden from human visitors on the rendered site.
+  >
+  > If you can see this in Markdown _and_ the human-only block above is missing,
+  > the Visibility component is composing correctly with snippet imports.
+</Visibility>
