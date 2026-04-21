@@ -1,3 +1,24 @@
+/* table of contents: chevron next to the active section */
+#table-of-contents a[aria-current],
+#table-of-contents a[aria-current="true"],
+#table-of-contents a[aria-current="page"] {
+  position: relative;
+}
+#table-of-contents a[aria-current]::before,
+#table-of-contents a[aria-current="true"]::before,
+#table-of-contents a[aria-current="page"]::before {
+  content: "";
+  position: absolute;
+  left: -0.85rem;
+  top: 50%;
+  width: 0.65rem;
+  height: 0.65rem;
+  transform: translateY(-50%);
+  background-color: currentColor;
+  -webkit-mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><polyline points='9 18 15 12 9 6'/></svg>") no-repeat center / contain;
+          mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><polyline points='9 18 15 12 9 6'/></svg>") no-repeat center / contain;
+}
+
 /* hide top search and assistant entry when the homepage assistant entry is visible */
 #search-bar-entry, #assistant-entry {
   transition: opacity 0.15s ease-out;
@@ -27,21 +48,20 @@
         aspect-ratio: 2;
         border-radius: 1rem;
         transition: background-color 0.15s ease-out;
-        background-color: rgb(var(--gray-900));
+        background-color: rgb(var(--primary));
         .group:hover & {
-          background-color: rgb(var(--gray-800));
+          filter: brightness(0.95);
         }
         svg {
           scale: 1.5;
-          background-color: rgb(var(--gray-100));
+          color: white !important;
+          stroke: white !important;
+          fill: none !important;
         }
         .dark & {
-          background-color: rgb(var(--gray-200));
+          background-color: rgb(var(--primary-dark));
           .group:hover & {
-            background-color: rgb(var(--gray-50));
-          }
-          svg {
-            background-color: rgb(var(--gray-900));
+            filter: brightness(1.1);
           }
         }
       }
