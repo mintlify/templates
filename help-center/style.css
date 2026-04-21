@@ -63,11 +63,18 @@ li.navbar-link > button:hover {
   border-radius: 0 !important;
 }
 
-#topbar-cta-button a,
-#topbar-cta-button button {
+#topbar-cta-button,
+#topbar-cta-button *,
+#topbar-cta-button > * {
+  border-radius: 9999px !important;
+}
+
+#topbar-cta-button > a,
+#topbar-cta-button > button,
+#topbar-cta-button > div,
+#topbar-cta-button > span {
   background-color: rgb(var(--primary)) !important;
   color: #ffffff !important;
-  border-radius: 9999px !important;
   height: 2.25rem !important;
   padding: 0 1rem !important;
   display: inline-flex !important;
@@ -75,15 +82,19 @@ li.navbar-link > button:hover {
   gap: 0.375rem !important;
   box-shadow: none !important;
   border: none !important;
+  overflow: hidden !important;
 }
 
-#topbar-cta-button a *,
-#topbar-cta-button button * {
+#topbar-cta-button *,
+#topbar-cta-button > * * {
   color: #ffffff !important;
+  background-color: transparent !important;
 }
 
-.dark #topbar-cta-button a,
-.dark #topbar-cta-button button {
+.dark #topbar-cta-button > a,
+.dark #topbar-cta-button > button,
+.dark #topbar-cta-button > div,
+.dark #topbar-cta-button > span {
   background-color: rgb(var(--primary-dark)) !important;
 }
 
