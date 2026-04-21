@@ -1,22 +1,30 @@
-/* table of contents: chevron next to the active section */
-#table-of-contents a[aria-current],
-#table-of-contents a[aria-current="true"],
-#table-of-contents a[aria-current="page"] {
+/* table of contents: chevron next to the active (deepest) section */
+toc-item[data-active-deepest] > a,
+toc-item[data-active-deepest] {
   position: relative;
 }
-#table-of-contents a[aria-current]::before,
-#table-of-contents a[aria-current="true"]::before,
-#table-of-contents a[aria-current="page"]::before {
+toc-item[data-active-deepest]::before {
   content: "";
   position: absolute;
-  left: -0.85rem;
-  top: 50%;
-  width: 0.65rem;
-  height: 0.65rem;
-  transform: translateY(-50%);
+  left: -0.95rem;
+  top: 0.55rem;
+  width: 0.75rem;
+  height: 0.75rem;
   background-color: currentColor;
   -webkit-mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><polyline points='9 18 15 12 9 6'/></svg>") no-repeat center / contain;
           mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><polyline points='9 18 15 12 9 6'/></svg>") no-repeat center / contain;
+}
+
+/* topbar: fully-rounded search, Ask AI, and CTA buttons */
+search-bar-entry button,
+search-bar-entry-mobile button,
+#search-bar-entry,
+#assistant-entry,
+#assistant-entry button,
+topbar-cta-button,
+topbar-cta-button a,
+topbar-cta-button button {
+  border-radius: 9999px !important;
 }
 
 /* hide top search and assistant entry when the homepage assistant entry is visible */
@@ -49,14 +57,20 @@
         border-radius: 1rem;
         transition: background-color 0.15s ease-out;
         background-color: rgb(var(--primary));
+        color: #ffffff !important;
         .group:hover & {
           filter: brightness(0.95);
         }
         svg {
           scale: 1.5;
-          color: white !important;
-          stroke: white !important;
-          fill: none !important;
+        }
+        svg,
+        svg * {
+          color: #ffffff !important;
+          stroke: #ffffff !important;
+        }
+        svg [fill]:not([fill="none"]) {
+          fill: #ffffff !important;
         }
         .dark & {
           background-color: rgb(var(--primary-dark));
