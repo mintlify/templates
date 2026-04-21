@@ -21,6 +21,7 @@
       {
         "group": "Getting started & account",
         "icon": "rocket",
+        "expanded": true,
         "root": "getting-started/index",
         "pages": [
           "getting-started/quickstart",
@@ -80,6 +81,7 @@
       {
         "group": "Product guides",
         "icon": "book-open",
+        "expanded": true,
         "root": "product/index",
         "pages": [
           "product/interface-overview",
@@ -138,6 +140,7 @@
       {
         "group": "Support & policies",
         "icon": "life-buoy",
+        "expanded": true,
         "root": "support/index",
         "pages": [
           "support/contact-support",

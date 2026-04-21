@@ -1,30 +1,61 @@
 /* table of contents: chevron next to the active (deepest) section */
-toc-item[data-active-deepest] > a,
-toc-item[data-active-deepest] {
+toc-item > a {
   position: relative;
+  padding-left: 1rem !important;
 }
-toc-item[data-active-deepest]::before {
+toc-item[data-active-deepest] > a::before {
   content: "";
   position: absolute;
-  left: -0.95rem;
-  top: 0.55rem;
+  left: 0;
+  top: 50%;
   width: 0.75rem;
   height: 0.75rem;
+  transform: translateY(-50%);
   background-color: currentColor;
   -webkit-mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><polyline points='9 18 15 12 9 6'/></svg>") no-repeat center / contain;
           mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><polyline points='9 18 15 12 9 6'/></svg>") no-repeat center / contain;
+  pointer-events: none;
 }
 
-/* topbar: fully-rounded search, Ask AI, and CTA buttons */
+/* topbar: match homepage styling for search, Ask AI, and CTA buttons */
+search-bar-entry,
+search-bar-entry-mobile,
+#search-bar-entry,
+#assistant-entry,
+topbar-cta-button {
+  --kb-topbar-bg-light: rgb(248 250 252); /* slate-50 / very light gray */
+  --kb-topbar-bg-dark: rgba(255, 255, 255, 0.04);
+  --kb-topbar-ring-light: rgb(241 245 249); /* slate-100 */
+  --kb-topbar-ring-dark: rgba(255, 255, 255, 0.08);
+}
+
 search-bar-entry button,
 search-bar-entry-mobile button,
 #search-bar-entry,
+#search-bar-entry button,
 #assistant-entry,
 #assistant-entry button,
 topbar-cta-button,
 topbar-cta-button a,
 topbar-cta-button button {
   border-radius: 9999px !important;
+  box-shadow: none !important;
+}
+
+search-bar-entry button,
+search-bar-entry-mobile button,
+#search-bar-entry button,
+#assistant-entry button {
+  background-color: var(--kb-topbar-bg-light) !important;
+  box-shadow: inset 0 0 0 1px var(--kb-topbar-ring-light) !important;
+}
+
+.dark search-bar-entry button,
+.dark search-bar-entry-mobile button,
+.dark #search-bar-entry button,
+.dark #assistant-entry button {
+  background-color: var(--kb-topbar-bg-dark) !important;
+  box-shadow: inset 0 0 0 1px var(--kb-topbar-ring-dark) !important;
 }
 
 /* hide top search and assistant entry when the homepage assistant entry is visible */
