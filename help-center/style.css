@@ -98,6 +98,17 @@ li.navbar-link > button:hover {
   background-color: rgb(var(--primary-dark)) !important;
 }
 
+/* tighten spacing between the topbar CTA buttons */
+ul:has(> #topbar-cta-button),
+ul:has(> li.navbar-link) {
+  gap: 0.25rem !important;
+}
+
+ul:has(> #topbar-cta-button) > li + li,
+ul:has(> li.navbar-link) > li + li {
+  margin-left: 0.125rem !important;
+}
+
 /* hide top search and assistant entry when the homepage assistant entry is visible */
 #search-bar-entry, #assistant-entry {
   transition: opacity 0.15s ease-out;
