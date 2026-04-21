@@ -17,45 +17,71 @@ toc-item[data-active-deepest] > a::before {
   pointer-events: none;
 }
 
-/* topbar: match homepage styling for search, Ask AI, and CTA buttons */
-search-bar-entry,
-search-bar-entry-mobile,
-#search-bar-entry,
-#assistant-entry,
-topbar-cta-button {
-  --kb-topbar-bg-light: rgb(248 250 252); /* slate-50 / very light gray */
+/* topbar: light-gray pill styling for search, Ask AI, and CTA buttons */
+:root {
+  --kb-topbar-bg-light: rgb(249 250 251); /* gray-50 */
+  --kb-topbar-ring-light: rgb(243 244 246); /* gray-100 */
   --kb-topbar-bg-dark: rgba(255, 255, 255, 0.04);
-  --kb-topbar-ring-light: rgb(241 245 249); /* slate-100 */
   --kb-topbar-ring-dark: rgba(255, 255, 255, 0.08);
 }
 
-search-bar-entry button,
-search-bar-entry-mobile button,
+/* fully-rounded + no shadow on every nested element of these controls */
+search-bar-entry,
+search-bar-entry *,
+search-bar-entry-mobile,
+search-bar-entry-mobile *,
 #search-bar-entry,
-#search-bar-entry button,
+#search-bar-entry *,
 #assistant-entry,
-#assistant-entry button,
+#assistant-entry *,
 topbar-cta-button,
-topbar-cta-button a,
-topbar-cta-button button {
+topbar-cta-button * {
   border-radius: 9999px !important;
   box-shadow: none !important;
 }
 
-search-bar-entry button,
-search-bar-entry-mobile button,
-#search-bar-entry button,
-#assistant-entry button {
+/* gray background + ring for topbar search, Ask AI, and CTAs */
+search-bar-entry > *,
+search-bar-entry-mobile > *,
+#search-bar-entry > *,
+#assistant-entry > *,
+topbar-cta-button > *,
+topbar-cta-button > * > * {
   background-color: var(--kb-topbar-bg-light) !important;
   box-shadow: inset 0 0 0 1px var(--kb-topbar-ring-light) !important;
+  color: rgb(107 114 128) !important; /* gray-500 */
 }
 
-.dark search-bar-entry button,
-.dark search-bar-entry-mobile button,
-.dark #search-bar-entry button,
-.dark #assistant-entry button {
+.dark search-bar-entry > *,
+.dark search-bar-entry-mobile > *,
+.dark #search-bar-entry > *,
+.dark #assistant-entry > *,
+.dark topbar-cta-button > *,
+.dark topbar-cta-button > * > * {
   background-color: var(--kb-topbar-bg-dark) !important;
   box-shadow: inset 0 0 0 1px var(--kb-topbar-ring-dark) !important;
+  color: rgba(255, 255, 255, 0.6) !important;
+}
+
+/* keep the primary CTA (e.g. Dashboard) on the configured primary color */
+topbar-cta-button[data-style="primary"] > *,
+topbar-cta-button[data-style="primary"] > * > *,
+topbar-cta-button:has([data-component-name="primary-header-button"]) > *,
+topbar-cta-button:has([data-component-name="primary-header-button"]) > * > *,
+[data-component-name="primary-header-button"],
+[data-component-name="primary-header-button"] * {
+  background-color: rgb(var(--primary)) !important;
+  color: #ffffff !important;
+  box-shadow: none !important;
+}
+.dark topbar-cta-button[data-style="primary"] > *,
+.dark topbar-cta-button[data-style="primary"] > * > *,
+.dark topbar-cta-button:has([data-component-name="primary-header-button"]) > *,
+.dark topbar-cta-button:has([data-component-name="primary-header-button"]) > * > *,
+.dark [data-component-name="primary-header-button"],
+.dark [data-component-name="primary-header-button"] * {
+  background-color: rgb(var(--primary-dark)) !important;
+  color: #ffffff !important;
 }
 
 /* hide top search and assistant entry when the homepage assistant entry is visible */
