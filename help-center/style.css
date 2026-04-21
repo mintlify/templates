@@ -94,14 +94,7 @@ search-bar-entry-mobile button,
         }
         svg {
           scale: 1.5;
-        }
-        svg,
-        svg * {
-          color: #ffffff !important;
-          stroke: #ffffff !important;
-        }
-        svg [fill]:not([fill="none"]) {
-          fill: #ffffff !important;
+          background-color: #ffffff;
         }
         .dark & {
           background-color: rgb(var(--primary-dark));
