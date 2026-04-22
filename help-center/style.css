@@ -98,6 +98,27 @@ li.navbar-link > button:hover {
   background-color: rgb(var(--primary-dark)) !important;
 }
 
+#topbar-cta-button > a,
+#topbar-cta-button > button,
+#topbar-cta-button > div,
+#topbar-cta-button > span {
+  transition: background-color 0.15s ease-out !important;
+}
+
+#topbar-cta-button > a:hover,
+#topbar-cta-button > button:hover,
+#topbar-cta-button > div:hover,
+#topbar-cta-button > span:hover {
+  background-color: rgb(var(--primary-dark)) !important;
+}
+
+.dark #topbar-cta-button > a:hover,
+.dark #topbar-cta-button > button:hover,
+.dark #topbar-cta-button > div:hover,
+.dark #topbar-cta-button > span:hover {
+  background-color: rgb(var(--primary-light)) !important;
+}
+
 /* tighten spacing between the topbar CTA buttons */
 ul:has(> #topbar-cta-button),
 ul:has(> li.navbar-link) {
