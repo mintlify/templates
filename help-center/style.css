@@ -163,16 +163,6 @@ li.navbar-link > :is(a, button) {
     color: #ffffff !important;
     background-color: transparent !important;
   }
-
-  .dark & {
-    > :is(a, button, div, span) {
-      background-color: rgb(var(--primary-dark)) !important;
-
-      &:hover {
-        background-color: rgb(var(--primary-light)) !important;
-      }
-    }
-  }
 }
 
 /* tighten spacing between the topbar CTA buttons */
