@@ -15,12 +15,21 @@
   "styling": {
     "eyebrows": "breadcrumbs"
   },
+  "contextual": {
+    "options": ["copy", "view", "assistant", "mcp", "add-mcp"]
+  },
   "navigation": {
     "directory": "card",
-    "groups": [
+    "products": [
+      {
+        "product": "Help Center",
+        "description": "Setup guides, product how-tos, automation tips, and policies.",
+        "icon": "life-buoy",
+        "groups": [
       {
         "group": "Getting started & account",
         "icon": "rocket",
+        "expanded": true,
         "root": "getting-started/index",
         "pages": [
           "getting-started/quickstart",
@@ -80,6 +89,7 @@
       {
         "group": "Product guides",
         "icon": "book-open",
+        "expanded": true,
         "root": "product/index",
         "pages": [
           "product/interface-overview",
@@ -138,6 +148,7 @@
       {
         "group": "Support & policies",
         "icon": "life-buoy",
+        "expanded": true,
         "root": "support/index",
         "pages": [
           "support/contact-support",
@@ -190,10 +201,43 @@
           }
         ]
       }
+        ]
+      },
+      {
+        "product": "Docs",
+        "description": "Mintlify product documentation.",
+        "icon": "book-open",
+        "href": "https://www.mintlify.com/docs"
+      },
+      {
+        "product": "Guides",
+        "description": "Best-practice guides for technical writing.",
+        "icon": "compass",
+        "href": "https://www.mintlify.com/guides/introduction"
+      },
+      {
+        "product": "Articles",
+        "description": "News, announcements, and engineering posts.",
+        "icon": "newspaper",
+        "href": "https://www.mintlify.com/blog"
+      }
     ]
   },
   "logo": {
     "light": "/logo/light.svg",
     "dark": "/logo/dark.svg"
+  },
+  "navbar": {
+    "links": [
+      {
+        "label": "Get support",
+        "href": "/support/contact-support"
+      }
+    ],
+    "primary": {
+      "type": "button",
+      "label": "Dashboard",
+      "href": "https://example.com/dashboard"
+    }
   }
 }
