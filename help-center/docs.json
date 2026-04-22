@@ -17,9 +17,10 @@
   },
   "navigation": {
     "directory": "card",
-    "dropdowns": [
+    "products": [
       {
-        "dropdown": "Help Center",
+        "product": "Help Center",
+        "description": "Setup guides, product how-tos, automation tips, and policies.",
         "icon": "life-buoy",
         "groups": [
       {
@@ -200,17 +201,20 @@
         ]
       },
       {
-        "dropdown": "Docs",
+        "product": "Docs",
+        "description": "Mintlify product documentation.",
         "icon": "book-open",
         "href": "https://www.mintlify.com/docs"
       },
       {
-        "dropdown": "Guides",
+        "product": "Guides",
+        "description": "Best-practice guides for technical writing.",
         "icon": "compass",
         "href": "https://www.mintlify.com/guides/introduction"
       },
       {
-        "dropdown": "Articles",
+        "product": "Articles",
+        "description": "News, announcements, and engineering posts.",
         "icon": "newspaper",
         "href": "https://www.mintlify.com/blog"
       }
