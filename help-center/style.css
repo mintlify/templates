@@ -17,6 +17,15 @@ toc-item[data-active-deepest] > a::before {
   pointer-events: none;
 }
 
+/* topbar logo: render smaller than its natural width */
+#navbar a[href="/"] img,
+#navbar a[href="/"] svg,
+#sidebar a[href="/"] img,
+#sidebar a[href="/"] svg {
+  max-width: 14rem;
+  height: auto;
+}
+
 /* topbar pill buttons: search, Ask AI, secondary CTA (Get support) */
 #search-bar-entry,
 #assistant-entry,
@@ -68,18 +77,14 @@ li.navbar-link > :is(a, button) {
   }
 }
 
-/* product item icon chips in the dropdown */
-[data-component-part="products-selector-item-icon"] {
+.nav-dropdown-products-selector-item-icon {
   background-color: rgb(var(--primary)) !important;
   color: #ffffff !important;
   border-radius: 0.375rem !important;
+  aspect-ratio: 1;
 
   svg {
     background-color: #ffffff !important;
-  }
-
-  .dark & {
-    background-color: rgb(var(--primary-dark)) !important;
   }
 }
 
@@ -100,10 +105,6 @@ li.navbar-link > :is(a, button) {
     border-radius: 0.5rem;
     background: rgb(var(--primary));
     pointer-events: none;
-  }
-
-  .dark &::before {
-    background: rgb(var(--primary-dark));
   }
 
   svg:not(:last-child) {
@@ -219,8 +220,6 @@ ul:is(:has(> #topbar-cta-button), :has(> li.navbar-link)) {
         }
 
         .dark & {
-          background-color: rgb(var(--primary-dark));
-
           .group:hover & {
             filter: brightness(1.1);
           }
