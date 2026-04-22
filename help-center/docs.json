@@ -17,7 +17,11 @@
   },
   "navigation": {
     "directory": "card",
-    "groups": [
+    "dropdowns": [
+      {
+        "dropdown": "Help Center",
+        "icon": "life-buoy",
+        "groups": [
       {
         "group": "Getting started & account",
         "icon": "rocket",
@@ -192,6 +196,23 @@
             ]
           }
         ]
+      }
+        ]
+      },
+      {
+        "dropdown": "Docs",
+        "icon": "book-open",
+        "href": "https://www.mintlify.com/docs"
+      },
+      {
+        "dropdown": "Guides",
+        "icon": "compass",
+        "href": "https://www.mintlify.com/guides/introduction"
+      },
+      {
+        "dropdown": "Articles",
+        "icon": "newspaper",
+        "href": "https://www.mintlify.com/blog"
       }
     ]
   },
