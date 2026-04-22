@@ -44,54 +44,40 @@ li.navbar-link > :is(a, button) {
   }
 }
 
-/* product switcher: outlined gray pill (not fully rounded) with primary-tinted item icons */
+/* product switcher: matches the navbar bg with a subtle outline + primary-tinted icons */
 [data-component-part="products-selector-trigger"] {
-  background-color: rgb(249 250 251) !important; /* gray-50 — matches other topbar buttons */
+  background-color: rgb(var(--background-light)) !important;
   box-shadow: inset 0 0 0 1px rgb(229 231 235) !important; /* gray-200 outline */
   border: none !important;
-  border-radius: 0.5rem !important; /* rounded-md, not pill */
+  border-radius: 0.5rem !important;
   height: 2.25rem !important;
   padding: 0 0.75rem !important;
   transition: background-color 0.15s ease-out, box-shadow 0.15s ease-out !important;
 
   &:hover {
-    background-color: rgb(243 244 246) !important; /* gray-100 */
     box-shadow: inset 0 0 0 1px rgb(209 213 219) !important; /* gray-300 */
   }
 
   .dark & {
-    background-color: rgba(255, 255, 255, 0.04) !important;
+    background-color: rgb(var(--background-dark)) !important;
     box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.10) !important;
 
     &:hover {
-      background-color: rgba(255, 255, 255, 0.08) !important;
       box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.18) !important;
     }
   }
 }
 
-[data-component-part="products-selector-item-icon"] {
-  background-color: rgb(var(--primary)) !important;
-  color: #ffffff !important;
-  border-radius: 0.5rem !important;
-
-  svg {
-    background-color: #ffffff;
-  }
-
-  .dark & {
-    background-color: rgb(var(--primary-dark)) !important;
-  }
-}
-
-/* the trigger's own leading icon (matches the product's icon) gets the same treatment */
+/* product item icon chips (in the dropdown and as the trigger's leading icon):
+   primary-colored background with a white glyph */
+[data-component-part="products-selector-item-icon"],
 [data-component-part="products-selector-trigger"] > :first-child:is(svg, span, div) {
   background-color: rgb(var(--primary)) !important;
   color: #ffffff !important;
   border-radius: 0.375rem !important;
 
   svg {
-    background-color: #ffffff;
+    background-color: #ffffff !important;
   }
 
   .dark & {
