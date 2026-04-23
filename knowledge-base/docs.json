@@ -1,0 +1,179 @@
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "theme": "sequoia",
+  "name": "Knowledge base",
+  "description": "Onboarding, employee handbook, HR guides, IT help, company policies, and department runbooks.",
+  "colors": {
+    "primary": "#1D4ED8",
+    "light": "#3B82F6",
+    "dark": "#1E3A8A"
+  },
+  "favicon": "/favicon.ico",
+  "icons": {
+    "library": "lucide"
+  },
+  "metadata": {
+    "timestamp": true
+  },
+  "contextual": {
+    "options": ["copy", "view", "assistant", "mcp", "add-mcp"]
+  },
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Onboarding",
+        "groups": [
+          {
+            "group": "Welcome",
+            "pages": ["index"]
+          },
+          {
+            "group": "Your first days",
+            "pages": [
+              "onboarding/first-day",
+              "onboarding/first-week",
+              "onboarding/meet-the-team"
+            ]
+          },
+          {
+            "group": "Tools & access",
+            "pages": [
+              "onboarding/tools/laptop-setup",
+              "onboarding/tools/account-access",
+              "onboarding/tools/vpn-setup"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "HR & People",
+        "groups": [
+          {
+            "group": "Overview",
+            "pages": ["hr-people/index"]
+          },
+          {
+            "group": "Benefits & time off",
+            "pages": [
+              "hr-people/benefits",
+              "hr-people/time-off"
+            ]
+          },
+          {
+            "group": "Growth & pay",
+            "pages": [
+              "hr-people/performance-reviews",
+              "hr-people/compensation/index",
+              "hr-people/compensation/salary-bands",
+              "hr-people/compensation/equity-overview"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "IT & Security",
+        "groups": [
+          {
+            "group": "Overview",
+            "pages": ["it-security/index"]
+          },
+          {
+            "group": "Access & devices",
+            "pages": [
+              "it-security/access-requests",
+              "it-security/device-policy"
+            ]
+          },
+          {
+            "group": "Security training",
+            "pages": [
+              "it-security/security-training/index",
+              "it-security/security-training/phishing",
+              "it-security/security-training/data-handling"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Policies",
+        "groups": [
+          {
+            "group": "Overview",
+            "pages": ["policies/index"]
+          },
+          {
+            "group": "Conduct & spend",
+            "pages": [
+              "policies/code-of-conduct",
+              "policies/expense-reimbursement",
+              "policies/travel-policy"
+            ]
+          },
+          {
+            "group": "Remote work",
+            "pages": [
+              "policies/remote-work/index",
+              "policies/remote-work/home-office-setup",
+              "policies/remote-work/time-zones"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Engineering",
+        "groups": [
+          {
+            "group": "Overview",
+            "pages": ["engineering/index"]
+          },
+          {
+            "group": "Setup & deployment",
+            "pages": [
+              "engineering/dev-setup",
+              "engineering/deployment"
+            ]
+          },
+          {
+            "group": "Incident response",
+            "pages": [
+              "engineering/incident-response/index",
+              "engineering/incident-response/on-call",
+              "engineering/incident-response/postmortem"
+            ]
+          },
+          {
+            "group": "Architecture",
+            "pages": [
+              "engineering/architecture/index",
+              "engineering/architecture/services-overview",
+              "engineering/architecture/data-models"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "logo": {
+    "light": "/logo/light.svg",
+    "dark": "/logo/dark.svg"
+  },
+  "navbar": {
+    "links": [
+      {
+        "label": "Submit IT ticket",
+        "href": "/it-security/access-requests"
+      }
+    ],
+    "primary": {
+      "type": "button",
+      "label": "Employee portal",
+      "href": "https://example.com/portal"
+    }
+  },
+  "footer": {
+    "socials": {
+      "x": "https://x.com/yourcompany",
+      "linkedin": "https://linkedin.com/company/yourcompany"
+    }
+  }
+}

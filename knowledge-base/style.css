@@ -1,0 +1,27 @@
+/* table of contents: chevron next to the active (deepest) section */
+toc-item > a {
+  position: relative;
+  padding-left: 1rem !important;
+}
+toc-item[data-active-deepest] > a::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 0.75rem;
+  height: 0.75rem;
+  transform: translateY(-50%);
+  background-color: currentColor;
+  -webkit-mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><polyline points='9 18 15 12 9 6'/></svg>") no-repeat center / contain;
+          mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><polyline points='9 18 15 12 9 6'/></svg>") no-repeat center / contain;
+  pointer-events: none;
+}
+
+/* topbar logo: render smaller than its natural width */
+#navbar a[href="/"] img,
+#navbar a[href="/"] svg,
+#sidebar a[href="/"] img,
+#sidebar a[href="/"] svg {
+  max-width: 14rem;
+  height: auto;
+}
