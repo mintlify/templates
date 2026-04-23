@@ -1,0 +1,40 @@
+---
+title: "Laptop setup"
+description: "Configure your company laptop from first boot to ready-to-work."
+---
+
+All company laptops ship with a base OS image and endpoint management pre-installed. Do not wipe or reimage your machine without IT approval.
+
+## First boot
+
+1. Power on and follow the OS setup wizard. Use your company email when prompted.
+2. IT's MDM profile will install automatically within a few minutes of connecting to Wi-Fi. Do not skip or dismiss any MDM prompts.
+3. Check your email for a message from IT confirming enrollment. If it doesn't arrive within 30 minutes, file a [ticket](/it-security/access-requests).
+
+## Required software
+
+IT pushes the following automatically via MDM:
+
+- Password manager
+- Endpoint security agent
+- VPN client (see [VPN setup](/onboarding/tools/vpn-setup))
+- SSO agent
+
+You do not need to install these manually. If any are missing after 24 hours, contact IT.
+
+## Role-specific setup
+
+Your manager or tech lead will point you to a team-specific setup guide. For engineers, see [developer setup](/engineering/dev-setup).
+
+## Encryption
+
+Full-disk encryption is required on all company devices. MDM enforces this automatically. Verify it's enabled:
+
+- **macOS** — System Settings → Privacy & Security → FileVault
+- **Windows** — Settings → Privacy & Security → Device encryption
+
+If encryption is off, IT can enable it remotely. File a ticket.
+
+## Issues
+
+If your machine has hardware problems or is missing software, contact the IT help desk. Do not try to resolve hardware issues yourself — it voids the warranty.
