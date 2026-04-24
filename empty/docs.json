@@ -19,11 +19,7 @@
     "options": ["copy", "view", "assistant", "mcp", "add-mcp"]
   },
   "navigation": {
-    "pages": [
-      {
-        "index"
-      }
-    ]
+    "pages": ["index"]
   },
   "logo": {
     "light": "/logo/light.svg",
