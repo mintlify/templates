@@ -1,0 +1,44 @@
+---
+title: "VPN setup"
+description: "Connect to the company VPN to access internal tools and systems."
+---
+
+The VPN client is installed automatically by MDM. This guide covers connecting for the first time and troubleshooting common issues.
+
+## First connection
+
+1. Open the VPN client from your Applications folder (macOS) or Start menu (Windows).
+2. When prompted for a server, enter the address IT provided in your welcome email.
+3. Authenticate with your credentials and MFA.
+4. You should see a "Connected" status within 10 seconds.
+
+## When VPN is required
+
+VPN is required to access:
+
+- Internal dashboards and admin tools
+- Staging and production environments
+- Code repositories
+- HR portal and payroll systems
+
+VPN is not required for: email, Slack, Zoom, or any SaaS tool that uses SSO.
+
+## Split vs. full tunnel
+
+The VPN is configured as split tunnel by default — only traffic destined for internal systems routes through the VPN. Normal web browsing goes direct. Do not change this setting.
+
+## Staying connected
+
+The VPN client reconnects automatically after sleep or network changes. If it doesn't, disconnect and reconnect manually.
+
+For remote work from a different country, check with IT first — some geo-restrictions apply.
+
+## Troubleshooting
+
+**Can't authenticate** — Make sure your MFA is set up. If it was recently reset, contact IT.
+
+**Connected but can't reach internal tools** — Try disconnecting and reconnecting. If the issue persists, restart the VPN client.
+
+**VPN client not installed** — Check that MDM enrollment completed. See [laptop setup](/onboarding/tools/laptop-setup).
+
+Still stuck? File an [IT ticket](/it-security/access-requests).

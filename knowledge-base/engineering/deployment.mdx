@@ -1,0 +1,51 @@
+---
+title: "Deployment"
+description: "How code goes from a merged PR to production, and how to roll back when something goes wrong."
+---
+
+We use a trunk-based deployment model. Merging to `main` triggers a staging deploy automatically; production deploys are triggered manually after verification.
+
+## Flow overview
+
+```
+feature branch → PR review → merge to main → auto-deploy to staging → manual promote to production
+```
+
+## Deploying to staging
+
+Every merge to `main` triggers a staging deployment automatically via CI. You don't need to do anything. Check the `#deploys` Slack channel for status notifications.
+
+Staging deployments take approximately 5–10 minutes. If a deploy fails, CI will post the error in `#deploys` with a link to the failed run.
+
+## Promoting to production
+
+Once a change is verified in staging:
+
+1. Go to the deploy tool (link in `#deploys` channel description).
+2. Select the staging build you want to promote.
+3. Click **Promote to production**.
+4. Monitor the `#deploys` channel for confirmation or errors.
+
+Production deploys require at least one engineer who didn't author the change to click promote. This is a soft guard — use judgment in an emergency.
+
+## Feature flags
+
+Most new features are deployed behind a feature flag to decouple deploy from release. Flags are managed in [Flag Tool Name]. Ask your tech lead about the flag naming convention and cleanup process.
+
+## Rollbacks
+
+If a production deploy causes an incident:
+
+1. Use the deploy tool to roll back to the previous production build immediately.
+2. Don't wait to diagnose — roll back first, investigate after.
+3. File an [incident](/engineering/incident-response) and start a postmortem if users were affected.
+
+Rolling back takes about 2 minutes. It's safe and reversible — do it early.
+
+## Database migrations
+
+Migrations run automatically as part of the deploy pipeline. Backward-incompatible migrations require a multi-phase deploy — ask in `#eng` before merging if your migration drops a column or changes a type.
+
+## Deploy freeze windows
+
+We freeze production deploys during major events or the last business day before a holiday. The `#deploys` channel will pin a message when a freeze is active.

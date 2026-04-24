@@ -1,0 +1,71 @@
+---
+title: "Developer setup"
+description: "Get your local environment running from a fresh machine in under an hour."
+---
+
+This guide assumes a fresh macOS machine with your company laptop already enrolled in MDM. For Windows, see the Windows setup note at the bottom.
+
+## Prerequisites
+
+Before you start, make sure you have:
+
+- Company laptop with MDM enrolled — see [laptop setup](/onboarding/tools/laptop-setup)
+- VPN connected — see [VPN setup](/onboarding/tools/vpn-setup)
+- Git repository access — see [account access](/onboarding/tools/account-access)
+
+## Step 1: Install core tooling
+
+Run the bootstrap script — your tech lead will share the link on your first day:
+
+```bash
+/bin/bash -c "$(curl -fsSL https://setup.yourcompany.com/bootstrap.sh)"
+```
+
+If you'd rather install manually, the script installs: a package manager, git, your language runtimes, Docker, and your IDE.
+
+## Step 2: Clone the main repository
+
+```bash
+mkdir ~/code && cd ~/code
+git clone git@git.yourcompany.com:your-repo.git
+```
+
+If `git clone` fails with a permission error, your SSH key isn't authorized. Ask your tech lead to check your access.
+
+## Step 3: Set up environment variables
+
+Each repo has a `.env.example` in the root. Copy it:
+
+```bash
+cp .env.example .env.local
+```
+
+Fill in the required values — ask your tech lead or check the `#eng-setup` Slack channel for development secrets. Do not commit `.env.local`.
+
+## Step 4: Install dependencies and run locally
+
+```bash
+cd your-repo
+npm install
+npm run dev
+```
+
+The app should be running at `http://localhost:3000`. If you hit errors, check the repo's own `README.md` for service-specific requirements (databases, queues, etc.).
+
+## Step 5: Verify your setup
+
+Run the test suite to confirm everything is wired up:
+
+```bash
+npm test
+```
+
+All tests should pass on a fresh clone. If they don't, post in `#eng-setup` with the error output before debugging solo.
+
+## Windows
+
+We don't officially support Windows for local development. WSL2 works for most engineers, but you'll need to adapt some steps. Check with your tech lead before your start date if you prefer Windows.
+
+## Getting help
+
+Post in `#eng-setup` on Slack. Include your OS version, the command you ran, and the full error output.

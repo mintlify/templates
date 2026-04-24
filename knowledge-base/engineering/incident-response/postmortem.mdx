@@ -1,0 +1,51 @@
+---
+title: "Postmortem process"
+description: "How to write a blameless postmortem, facilitate the review, and make sure action items land."
+---
+
+Postmortems are required for all SEV-1 and SEV-2 incidents, and optional for recurring SEV-3 patterns. The goal is learning, not blame.
+
+## Blameless means
+
+Blameless means we focus on what failed in the system — processes, tooling, alerting, communication — not on who made a mistake. Engineers make good decisions with the information available at the time. The postmortem identifies where the system let them down.
+
+## Timeline
+
+| Timing | Action |
+|--------|--------|
+| Within 24 hours of resolution | Create the postmortem doc from the template |
+| Within 48 hours | Draft the timeline and contributing factors |
+| Within 5 business days | Hold the postmortem review meeting |
+| Within 2 weeks | Action items assigned and tracked in your issue tracker |
+
+## Postmortem template
+
+Create a new doc in your wiki using the Postmortem template. Fill in:
+
+1. **Incident summary** — one paragraph: what happened, when, and what the impact was.
+2. **Timeline** — chronological log of events (use UTC). Include when the issue started, when it was detected, key actions taken, and when it was resolved.
+3. **Root cause** — what was the underlying cause? Use "5 Whys" if helpful.
+4. **Contributing factors** — what else made this worse or harder to detect?
+5. **Impact** — number of users affected, duration, data involved.
+6. **What went well** — things that helped during response.
+7. **Action items** — concrete, assigned, with due dates. At least one per significant contributing factor.
+
+## The review meeting
+
+Keep it to 30–45 minutes. The incident owner facilitates. Everyone who was involved should attend; others are welcome.
+
+Agenda:
+1. Walk through the timeline (10 min)
+2. Discuss root cause and contributing factors (10 min)
+3. Review and assign action items (15 min)
+
+Don't re-hash decisions made during the incident. Focus on what to do differently next time.
+
+## Action items
+
+Action items without owners don't get done. Every item needs:
+- A clear description of what "done" looks like
+- A single owner (not a team)
+- A due date
+
+Track them in your issue tracker. The engineering manager reviews open postmortem action items in the weekly team meeting.
