@@ -7,24 +7,18 @@ This page gives a high-level map of our backend services. Each service has its o
 
 ## Service map
 
-```
-                     +-------------+
-                     |  API        |  <- public-facing entry point
-                     |  Gateway    |
-                     +------+------+
-          +----------+------+------+----------+
-          |                 |                 |
-    +----------+     +----------+     +----------+
-    |  Auth    |     | Core API |     |  Worker  |
-    |  Service |     |          |     |  Service |
-    +----------+     +----+-----+     +----+-----+
-                          |                |
-                     +----+----------------+
-                     |
-               +----------+
-               | Database |  <- primary database
-               | + Cache  |  <- in-memory cache
-               +----------+
+```mermaid
+graph TD
+    Client([Client]) --> GW[API Gateway]
+    GW --> Auth[Auth Service]
+    GW --> Core[Core API]
+    GW --> Worker[Worker Service]
+    Core --> DB[(Database\nprimary store)]
+    Core --> Cache[(Cache\nin-memory)]
+    Worker --> DB
+    Worker --> Cache
+    Core -->|publishes jobs| Queue[[Job Queue]]
+    Worker -->|consumes jobs| Queue
 ```
 
 ## Services

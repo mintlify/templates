@@ -42,11 +42,11 @@ Junction table linking users to organizations with a role.
 
 ## Relationships
 
-```
-User -----< Membership >----- Organization
-                |
-             role enum
-          (owner/admin/member)
+```mermaid
+graph LR
+    User --- Membership
+    Organization --- Membership
+    User --- Organization
 ```
 
 A user can be a member of many organizations. An organization can have many members. The `Membership` table holds the role for each pair.
