@@ -1,0 +1,33 @@
+---
+title: "Incident response"
+description: "How we detect, respond to, and learn from production incidents."
+---
+
+When something breaks in production, the goal is to restore service as quickly as possible — then understand why.
+
+## Severity levels
+
+| Level | Description | Response target |
+|-------|-------------|-----------------|
+| SEV-1 | Production down or data loss | Immediate, all hands |
+| SEV-2 | Significant degradation, major feature broken | Within 30 minutes |
+| SEV-3 | Minor degradation, workaround available | Within 2 hours |
+| SEV-4 | Cosmetic or low-impact issue | Next business day |
+
+## Responding to an alert
+
+1. **Acknowledge** the alert in your alerting tool to signal you're on it.
+2. **Assess severity** — is this SEV-1/2 or lower?
+3. **Open a war room** — for SEV-1/2, create a Slack thread in `#incidents` and invite your on-call partner.
+4. **Mitigate first** — roll back, disable a feature flag, or scale up before diagnosing root cause.
+5. **Communicate** — post updates to `#incidents` every 15 minutes until resolved.
+6. **Resolve and document** — mark the incident resolved and file a postmortem for SEV-1/2.
+
+<CardGroup cols={2}>
+  <Card title="On-call expectations" icon="phone" href="/engineering/incident-response/on-call">
+    Rotation schedule, escalation paths, and what to do when you're paged.
+  </Card>
+  <Card title="Postmortem process" icon="file-text" href="/engineering/incident-response/postmortem">
+    How to write a blameless postmortem and drive follow-through.
+  </Card>
+</CardGroup>

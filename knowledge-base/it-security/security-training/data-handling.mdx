@@ -1,0 +1,39 @@
+---
+title: "Data handling"
+description: "How to classify, store, and share company and customer data responsibly."
+---
+
+How you handle data has legal, contractual, and reputational consequences. These guidelines apply to all employees and contractors.
+
+## Data classification
+
+We use four tiers:
+
+| Classification | Examples | Handling |
+|---------------|----------|----------|
+| **Public** | Marketing content, public docs | No restrictions |
+| **Internal** | Meeting notes, roadmaps, org charts | Don't share externally without approval |
+| **Confidential** | Customer data, financial data, contracts | Encrypt in transit and at rest, need-to-know access |
+| **Restricted** | Credentials, personal health data, M&A info | Strict access controls, report any exposure immediately |
+
+When in doubt, treat data as one level higher than you think it is.
+
+## Storage rules
+
+- **Approved tools only** — Use company-approved storage (e.g., Google Drive, Notion, S3). Don't store company data in personal Dropbox, iCloud, or similar.
+- **No local copies of customer data** — Customer data must stay in approved systems. Don't download it to your laptop for analysis. Use authorized query tools instead.
+- **Credentials are never stored in code** — Use a secrets manager. If you find credentials in a codebase, rotate them and file a security ticket.
+
+## Sharing data
+
+- **Internal** — Use the appropriate tool for the audience. Don't CC personal email addresses on internal threads.
+- **External** — Confidential data shared with vendors must be covered by an NDA. Check with legal if unsure.
+- **Customer data** — Never share customer data with third parties without a data processing agreement in place. If you receive a customer data request, route it through the legal and privacy team.
+
+## Retention and deletion
+
+Data should not be retained longer than necessary. When a project ends or a customer offboards, follow the data retention schedule in the legal team's runbook.
+
+## Reporting a data incident
+
+If you accidentally expose, share, or lose access to confidential or restricted data, report it to `security@example.com` immediately. Include what happened, what data was involved, and who may have seen it. Early reporting reduces harm — there is no penalty for honest mistakes reported promptly.
