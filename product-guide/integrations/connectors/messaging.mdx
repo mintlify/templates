@@ -1,0 +1,61 @@
+---
+title: Messaging connectors
+description: Send notifications and alerts to chat tools.
+---
+
+Messaging connectors route platform notifications and alerts to your team's chat tools—so the right people hear about important events without checking the platform manually.
+
+## Supported platforms
+
+- Slack
+- Microsoft Teams
+- Generic webhooks (any HTTP endpoint)
+
+## Setup
+
+<Tabs>
+  <Tab title="Slack">
+    1. Go to **Integrations → Catalog → Messaging → Slack** and click **Connect**.
+    2. You'll be redirected to Slack's OAuth authorization page. Select the workspace to connect and click **Allow**.
+    3. Once authorized, return to the integration settings and select the default channel for notifications.
+
+    You can configure multiple Slack channels for different notification types in the routing rules.
+  </Tab>
+  <Tab title="Microsoft Teams">
+    1. Go to **Integrations → Catalog → Messaging → Microsoft Teams** and click **Connect**.
+    2. Sign in with your Microsoft 365 account and grant the requested permissions.
+    3. Select the team and channel to send notifications to.
+
+    Teams notifications are delivered as Adaptive Cards with a summary of the event and a link to the relevant item.
+  </Tab>
+  <Tab title="Generic webhook">
+    1. Go to **Integrations → Catalog → Messaging → Webhook** and click **Add endpoint**.
+    2. Enter the URL of your HTTP endpoint.
+    3. Select the notification types to send to this endpoint.
+
+    Payloads are sent as JSON. See [event types](/integrations/webhooks/event-types) for payload schemas.
+  </Tab>
+</Tabs>
+
+## Channel routing
+
+Route different notification types to different channels or recipients using routing rules. For example:
+
+- Send `report.completed` events to the `#analytics-team` channel.
+- Send `user.deactivated` events to the `#security` channel.
+- Send all alert-level events to an on-call webhook.
+
+To configure routing rules, go to **Integrations → [Integration name] → Routing**.
+
+## Notification rules
+
+Each notification type can be toggled independently. Common notification types:
+
+| Type | Description |
+|------|-------------|
+| `report.completed` | A scheduled report has finished running |
+| `sync.failed` | A data source or connector sync has failed |
+| `user.invited` | A new member has been invited to the workspace |
+| `alert.triggered` | A configured threshold alert has fired |
+
+Notification volume can be high in active workspaces—start with the highest-priority types and expand from there.

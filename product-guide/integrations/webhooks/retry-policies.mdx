@@ -1,0 +1,53 @@
+---
+title: Retry policies
+description: Understand delivery guarantees and configure retry behavior for webhooks.
+---
+
+The platform guarantees at-least-once delivery for webhook events. If your endpoint does not return a `2xx` response within the timeout window, the platform retries the delivery automatically using an exponential backoff schedule.
+
+## Default retry schedule
+
+Failed deliveries are retried up to 5 times over approximately 24 hours:
+
+| Attempt | Delay after previous failure |
+|---------|------------------------------|
+| 1st retry | 5 minutes |
+| 2nd retry | 30 minutes |
+| 3rd retry | 2 hours |
+| 4th retry | 8 hours |
+| 5th retry | 24 hours |
+
+After the 5th retry, the delivery is marked as permanently failed. A `sync.failed` event is triggered if the endpoint has repeated failures across multiple events.
+
+<Info>
+  Because the platform retries on failure, your endpoint may receive the same event more than once. Use the event `id` field to deduplicate and ensure idempotent processing.
+</Info>
+
+## View failed deliveries
+
+To see a log of failed deliveries for an endpoint:
+
+1. Go to **Integrations → Webhooks → [Endpoint name]**.
+2. Click the **Delivery log** tab.
+3. Use the status filter to show only failed deliveries.
+
+Each entry shows the event type, timestamp, response status code, and response body returned by your endpoint.
+
+## Manual re-delivery
+
+You can manually trigger re-delivery for any failed event:
+
+1. Find the failed delivery in the delivery log.
+2. Click **Re-deliver**.
+3. The platform sends the original payload again immediately, independent of the retry schedule.
+
+Use manual re-delivery after fixing an issue with your endpoint to recover events without waiting for the next automatic retry.
+
+## Disable an endpoint
+
+If an endpoint is consistently failing and you need time to fix it, temporarily disable it to pause delivery:
+
+1. Open the endpoint settings.
+2. Toggle **Active** to off.
+
+Events that occur while an endpoint is disabled are not queued—they are dropped. Re-enable the endpoint once it is ready to receive traffic again.

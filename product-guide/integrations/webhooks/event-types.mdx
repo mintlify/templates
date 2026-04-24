@@ -1,0 +1,109 @@
+---
+title: Event types
+description: Reference of all available webhook events and their payloads.
+---
+
+Each webhook event has a stable `type` field and a `data` object containing the relevant resource. Payloads always include a top-level `id` for deduplication and a `created_at` timestamp in UTC ISO 8601 format.
+
+## User events
+
+### `user.created`
+
+Fired when a new user accepts an invitation and activates their account.
+
+```json
+{
+  "id": "evt_01hx4k2v8n9j3m5p7q",
+  "type": "user.created",
+  "created_at": "2025-03-12T09:14:33Z",
+  "data": {
+    "user_id": "usr_01hx4k1a2b3c4d5e6f",
+    "email": "alex@example.com",
+    "role": "member",
+    "workspace_id": "ws_01hx4j9x8w7v6u5t4r"
+  }
+}
+```
+
+### `user.deactivated`
+
+Fired when a workspace Admin deactivates a member's account.
+
+```json
+{
+  "id": "evt_01hx4k9m2n3p4q5r6s",
+  "type": "user.deactivated",
+  "created_at": "2025-03-15T16:42:01Z",
+  "data": {
+    "user_id": "usr_01hx4k1a2b3c4d5e6f",
+    "deactivated_by": "usr_01hx4j8w7v6u5t4r3q",
+    "workspace_id": "ws_01hx4j9x8w7v6u5t4r"
+  }
+}
+```
+
+## Project events
+
+### `project.updated`
+
+Fired when a project's name, description, or settings change.
+
+```json
+{
+  "id": "evt_01hx4l3p4q5r6s7t8u",
+  "type": "project.updated",
+  "created_at": "2025-03-18T11:05:22Z",
+  "data": {
+    "project_id": "prj_01hx4l1a2b3c4d5e6f",
+    "workspace_id": "ws_01hx4j9x8w7v6u5t4r",
+    "changed_fields": ["name", "description"],
+    "updated_by": "usr_01hx4j8w7v6u5t4r3q"
+  }
+}
+```
+
+## Analytics events
+
+### `report.completed`
+
+Fired when a scheduled report finishes running successfully.
+
+```json
+{
+  "id": "evt_01hx4m5r6s7t8u9v0w",
+  "type": "report.completed",
+  "created_at": "2025-03-19T07:00:04Z",
+  "data": {
+    "report_id": "rpt_01hx4m1a2b3c4d5e6f",
+    "report_name": "Weekly revenue",
+    "row_count": 1432,
+    "workspace_id": "ws_01hx4j9x8w7v6u5t4r",
+    "download_url": "https://example.com/reports/download/rpt_01hx4m1a2b3c4d5e6f"
+  }
+}
+```
+
+## Integration events
+
+### `sync.failed`
+
+Fired when a connector sync fails after all retries are exhausted.
+
+```json
+{
+  "id": "evt_01hx4n7s8t9u0v1w2x",
+  "type": "sync.failed",
+  "created_at": "2025-03-20T14:33:55Z",
+  "data": {
+    "connector_id": "con_01hx4n1a2b3c4d5e6f",
+    "connector_type": "salesforce",
+    "error_code": "auth_expired",
+    "error_message": "OAuth token refresh failed. Reconnect the integration.",
+    "workspace_id": "ws_01hx4j9x8w7v6u5t4r"
+  }
+}
+```
+
+<Info>
+  The `download_url` in `report.completed` events expires after 24 hours. Fetch the file promptly if your automation depends on it.
+</Info>
