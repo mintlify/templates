@@ -18,9 +18,10 @@ Always check the [Mintlify documentation](https://mintlify.com/docs) for the lat
 
 | Folder | Description |
 |--------|-------------|
-| [`help-center-homepage/`](./help-center-homepage/) | A help-center style landing page: centered hero, search entry, grids of cards for suggested category pages and articles. Includes companion `style.css` for card layout, `search.js` for opening Mintlify search from a custom trigger, and example `docs.json` plus logo and favicon assets. |
-
-More templates will be added over time as additional directories at the repository root.
+| [`empty/`](./empty/) | A minimal blank-slate site with a single placeholder page. Use this as a starting point when you want to build from scratch without any pre-existing copy or structure. |
+| [`help-center/`](./help-center/) | A help-center style landing page: centered hero, search entry, and card grids for category pages and articles. Includes `style.css` for card layout, `search.js` for opening Mintlify search from a custom trigger, example section pages, and `docs.json` plus logo and favicon assets. |
+| [`knowledge-base/`](./knowledge-base/) | An internal knowledge base including a landing page with department cards, plus example content sections for onboarding, different departments, and policies. Includes `style.css` for table-of-contents styling, a full multi-section navigation in `docs.json`, and logo and favicon assets. |
+| [`product-guide/`](./product-guide/) | A product guide site designed for multi-product documentation. Includes a landing page and product selector to switch between different product guides. |
 
 ## Contributing
 
