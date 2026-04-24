@@ -1,0 +1,47 @@
+---
+title: Audit logs
+description: Track user actions and export activity records for compliance.
+---
+
+Audit logs provide an immutable record of actions taken within your workspace. Use them to investigate access issues, meet compliance requirements, or understand how your team interacts with the platform.
+
+Navigate to **Settings → Audit logs** to access your workspace's activity log.
+
+## What is logged
+
+The following event categories are recorded:
+
+| Category | Examples |
+|----------|---------|
+| **Authentication** | Sign-in, sign-out, failed login attempts, SSO events |
+| **Member management** | Invitations sent, roles changed, accounts deactivated |
+| **Project activity** | Projects created, archived, deleted, or shared |
+| **Settings changes** | Workspace settings modified, SSO configured, IP allowlist updated |
+| **Data operations** | Exports initiated, API keys created or revoked, integrations connected |
+
+Each log entry includes: timestamp, actor (user or API key), action type, target resource, and the IP address of the request.
+
+## Search and filter
+
+Use the filter panel to narrow results:
+
+- **Date range** — Limit results to a specific time window.
+- **Actor** — Filter by a specific user or API key.
+- **Event type** — Show only events from a specific category.
+- **Resource** — Filter by a project name or settings area.
+
+Results update in real time as filters are applied. Audit logs are retained for 90 days by default; Enterprise plans can extend retention to 12 months.
+
+## Export
+
+To export logs for external analysis or compliance reporting:
+
+1. Apply any filters you want to capture.
+2. Click **Export** and choose CSV or JSON format.
+3. The export is generated and emailed to your account address.
+
+Large exports (over 10,000 rows) are processed asynchronously and delivered via email when ready.
+
+<Note>
+  Only workspace Admins can view and export audit logs.
+</Note>

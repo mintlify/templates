@@ -1,0 +1,6 @@
+<svg width="148" height="23" viewBox="0 0 148 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0" y="3" width="20" height="3.5" rx="1.75" fill="#EA580C"/>
+  <rect x="0" y="9.75" width="14" height="3.5" rx="1.75" fill="#FB923C"/>
+  <rect x="0" y="16.5" width="8" height="3.5" rx="1.75" fill="#FED7AA"/>
+  <text x="28" y="17.5" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="17" font-weight="400" letter-spacing="-0.01em" fill="#52525C">Product Guides</text>
+</svg>

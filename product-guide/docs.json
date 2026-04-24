@@ -1,0 +1,145 @@
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "theme": "willow",
+  "name": "Product Guides",
+  "description": "Step-by-step guides for every product—platform setup, analytics, and integrations in one place.",
+  "colors": {
+    "primary": "#EA580C",
+    "light": "#FB923C",
+    "dark": "#9A3412"
+  },
+  "favicon": "/favicon.ico",
+  "icons": {
+    "library": "lucide"
+  },
+  "styling": {
+    "eyebrows": "breadcrumbs"
+  },
+  "contextual": {
+    "options": ["copy", "view", "assistant", "mcp", "add-mcp"]
+  },
+  "navigation": {
+    "directory": "card",
+    "products": [
+      {
+        "product": "Platform",
+        "description": "Core platform setup, configuration, and administration.",
+        "icon": "layers",
+        "groups": [
+          {
+            "group": "Getting started",
+            "root": "platform/index",
+            "pages": [
+              "platform/quickstart",
+              "platform/key-concepts"
+            ]
+          },
+          {
+            "group": "Configuration",
+            "root": "platform/configuration/index",
+            "pages": [
+              "platform/configuration/settings",
+              "platform/configuration/user-management"
+            ]
+          },
+          {
+            "group": "Administration",
+            "root": "platform/administration/index",
+            "pages": [
+              "platform/administration/roles-permissions",
+              "platform/administration/audit-logs"
+            ]
+          }
+        ]
+      },
+      {
+        "product": "Analytics",
+        "description": "Build dashboards, run reports, and analyze your data.",
+        "icon": "chart-bar",
+        "groups": [
+          {
+            "group": "Getting started",
+            "root": "analytics/index",
+            "pages": [
+              "analytics/quickstart",
+              "analytics/connect-data"
+            ]
+          },
+          {
+            "group": "Dashboards",
+            "root": "analytics/dashboards/index",
+            "pages": [
+              "analytics/dashboards/create-dashboard",
+              "analytics/dashboards/charts-visualizations",
+              "analytics/dashboards/sharing-exports"
+            ]
+          },
+          {
+            "group": "Reports",
+            "root": "analytics/reports/index",
+            "pages": [
+              "analytics/reports/build-report",
+              "analytics/reports/scheduled-reports"
+            ]
+          }
+        ]
+      },
+      {
+        "product": "Integrations",
+        "description": "Connect your tools with pre-built connectors and webhooks.",
+        "icon": "plug",
+        "groups": [
+          {
+            "group": "Getting started",
+            "root": "integrations/index",
+            "pages": [
+              "integrations/quickstart",
+              "integrations/authentication"
+            ]
+          },
+          {
+            "group": "Connectors",
+            "root": "integrations/connectors/index",
+            "pages": [
+              "integrations/connectors/crm",
+              "integrations/connectors/data-warehouse",
+              "integrations/connectors/messaging"
+            ]
+          },
+          {
+            "group": "Webhooks & events",
+            "root": "integrations/webhooks/index",
+            "pages": [
+              "integrations/webhooks/configure",
+              "integrations/webhooks/event-types",
+              "integrations/webhooks/retry-policies"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "logo": {
+    "light": "/logo/light.svg",
+    "dark": "/logo/dark.svg"
+  },
+  "navbar": {
+    "links": [
+      {
+        "label": "Changelog",
+        "href": "#"
+      }
+    ],
+    "primary": {
+      "type": "button",
+      "label": "Dashboard",
+      "href": "https://example.com/dashboard"
+    }
+  },
+  "footer": {
+    "socials": {
+      "x": "https://x.com/yourcompany",
+      "linkedin": "https://linkedin.com/company/yourcompany"
+    }
+  }
+}
