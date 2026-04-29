@@ -1,0 +1,42 @@
+name: Notify templates-sync
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'empty/**'
+      - 'help-center/**'
+      - 'knowledge-base/**'
+      - 'product-guide/**'
+  workflow_dispatch:
+
+permissions: {}
+
+concurrency:
+  group: notify-templates-sync
+  cancel-in-progress: false
+
+jobs:
+  notify:
+    name: Trigger sync-starters workflow
+    runs-on: ubuntu-latest
+    steps:
+      - name: Mint notifier installation token
+        id: token
+        uses: actions/create-github-app-token@v1
+        with:
+          app-id: ${{ secrets.NOTIFY_APP_ID }}
+          private-key: ${{ secrets.NOTIFY_APP_PRIVATE_KEY }}
+          owner: mintlify
+          repositories: templates-sync
+
+      - name: Dispatch sync-starters in templates-sync
+        env:
+          GH_TOKEN: ${{ steps.token.outputs.token }}
+          REASON: "push to mintlify/templates@${{ github.sha }}"
+        run: |
+          set -euo pipefail
+          gh workflow run sync-starters.yml \
+            --repo mintlify/templates-sync \
+            --ref main \
+            -f reason="${REASON}"
