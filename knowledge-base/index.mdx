@@ -21,17 +21,14 @@ mode: custom
       href="/onboarding/first-day"
       className="group flex flex-col outline-none"
     >
-      <div className="relative flex h-[170px] items-center justify-center overflow-hidden rounded-2xl bg-gradient-to-br from-teal-800 via-teal-700 to-emerald-900 ring-1 ring-gray-100 transition group-hover:ring-gray-200 dark:ring-white/[0.08] dark:group-hover:ring-white/15">
-        <div
-          aria-hidden
-          className="absolute inset-0 opacity-40 mix-blend-soft-light"
-          style={{
-            backgroundImage:
-              'radial-gradient(circle at 20% 80%, rgba(255,255,255,0.35), transparent 45%), radial-gradient(circle at 80% 20%, rgba(255,255,255,0.2), transparent 40%)',
-          }}
-        />
-        <div className="relative flex size-10 items-center justify-center rounded-xl bg-white/15 shadow-lg ring-1 ring-white/25 backdrop-blur-sm dark:bg-white/10">
-          <Icon icon="calendar-check" size={22} className="text-white" />
+      <div
+        className="kb-feature-card relative flex h-[170px] items-center justify-center overflow-hidden rounded-2xl ring-1 ring-gray-100 transition group-hover:ring-gray-200 dark:ring-white/[0.08] dark:group-hover:ring-white/15"
+        style={{
+          "--kb-card-bg": 'url("/images/card-bg-1.png")',
+        }}
+      >
+        <div className="relative flex items-center justify-center">
+          <Icon icon="calendar-1" size={36} className="!bg-white" />
         </div>
       </div>
       <div className="flex flex-col gap-1 pt-4">
@@ -46,17 +43,14 @@ mode: custom
       href="/onboarding/tools/account-access"
       className="group flex flex-col outline-none"
     >
-      <div className="relative flex h-[170px] items-center justify-center overflow-hidden rounded-2xl bg-gradient-to-br from-blue-700 via-blue-600 to-indigo-800 ring-1 ring-gray-100 transition group-hover:ring-gray-200 dark:ring-white/[0.08] dark:group-hover:ring-white/15">
-        <div
-          aria-hidden
-          className="absolute inset-0 opacity-35 mix-blend-soft-light"
-          style={{
-            backgroundImage:
-              'radial-gradient(circle at 75% 75%, rgba(255,255,255,0.35), transparent 50%), radial-gradient(circle at 25% 25%, rgba(255,255,255,0.15), transparent 45%)',
-          }}
-        />
-        <div className="relative flex size-10 items-center justify-center rounded-xl bg-white/15 shadow-lg ring-1 ring-white/25 backdrop-blur-sm dark:bg-white/10">
-          <Icon icon="shield-check" size={22} className="text-white" />
+      <div
+        className="kb-feature-card relative flex h-[170px] items-center justify-center overflow-hidden rounded-2xl ring-1 ring-gray-100 transition group-hover:ring-gray-200 dark:ring-white/[0.08] dark:group-hover:ring-white/15"
+        style={{
+          "--kb-card-bg": 'url("/images/card-bg-2.png")',
+        }}
+      >
+        <div className="relative flex items-center justify-center">
+          <Icon icon="key-round" size={36} className="!bg-white" />
         </div>
       </div>
       <div className="flex flex-col gap-1 pt-4">
