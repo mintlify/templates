@@ -1,5 +1,6 @@
 :root {
   --default-border-color: var(--gray-200);
+  --card-bg: url("/images/sample-texture.png");
 }
 
 .dark {
@@ -107,7 +108,7 @@ body:has([data-product-guide-index]) #sidebar a.nav-anchor[href='/'] svg {
   flex-direction: column !important;
   justify-content: space-between !important;
   min-height: 260px;
-  background: url('/images/sample-texture-1.png') center / cover no-repeat !important;
+  background: var(--card-bg) center / cover no-repeat !important;
   border-radius: 0 !important;
   box-shadow: none !important;
   color: white !important;
