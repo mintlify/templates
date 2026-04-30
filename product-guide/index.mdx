@@ -14,41 +14,40 @@ mode: custom
     </p>
   </div>
 
-  <div className="flex flex-col gap-4">
-    <a
+  <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+    <Card
+      title="Platform overview"
+      icon="grid-2x2"
       href="/platform"
-      aria-label="Platform overview — setup, configure, and manage your workspace"
-      className="block w-full overflow-hidden rounded-none outline-none focus-visible:ring-2 focus-visible:ring-[#F97316] focus-visible:ring-offset-2 dark:focus-visible:ring-orange-500 dark:focus-visible:ring-offset-stone-900"
+      className="product-guide-feature-card sm:col-span-2"
     >
-      <img alt="" src="/images/platform-overview.jpg" className="block h-auto w-full max-w-full align-middle" />
-    </a>
+      Setup, configure, and manage your workspace.
+    </Card>
 
-    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-      <a
-        href="/analytics"
-        className="flex flex-col gap-4 rounded-none border border-stone-200 bg-stone-100 p-4 outline-none shadow-sm shadow-stone-950/5 transition hover:border-[#F97316]/35 hover:shadow-md dark:border-stone-600 dark:bg-stone-800 dark:shadow-black/20 dark:hover:border-[#FB923C]/40"
-      >
-        <Icon icon="chart-column" color="#F97316" size={18} className="shrink-0" />
-        <div className="flex flex-col gap-1">
-          <span className="font-serif text-base font-medium text-stone-900 dark:text-stone-50">Analytics</span>
-          <span className="text-sm leading-relaxed text-stone-600 dark:text-stone-400">
-            Build, report, and visualize your data.
-          </span>
-        </div>
-      </a>
-      <a
-        href="/integrations"
-        className="flex flex-col gap-4 rounded-none border border-stone-200 bg-stone-100 p-4 outline-none shadow-sm shadow-stone-950/5 transition hover:border-[#F97316]/35 hover:shadow-md dark:border-stone-600 dark:bg-stone-800 dark:shadow-black/20 dark:hover:border-[#FB923C]/40"
-      >
-        <Icon icon="code-xml" color="#F97316" size={18} className="shrink-0" />
-        <div className="flex flex-col gap-1">
-          <span className="font-serif text-base font-medium text-stone-900 dark:text-stone-50">Integrations</span>
-          <span className="text-sm leading-relaxed text-stone-600 dark:text-stone-400">
-            Ready-to-use connectors for common platforms and flexible webhooks.
-          </span>
-        </div>
-      </a>
-    </div>
+    <a
+      href="/analytics"
+      className="flex flex-col gap-4 rounded-none border border-stone-200 bg-stone-100 p-4 outline-none shadow-sm shadow-stone-950/5 transition hover:border-[#F97316]/35 hover:shadow-md dark:border-stone-600 dark:bg-stone-800 dark:shadow-black/20 dark:hover:border-[#FB923C]/40"
+    >
+      <Icon icon="chart-column" color="#F97316" size={18} className="shrink-0" />
+      <div className="flex flex-col gap-1">
+        <span className="font-serif text-base font-medium text-stone-900 dark:text-stone-50">Analytics</span>
+        <span className="text-sm leading-relaxed text-stone-600 dark:text-stone-400">
+          Build, report, and visualize your data.
+        </span>
+      </div>
+    </a>
+    <a
+      href="/integrations"
+      className="flex flex-col gap-4 rounded-none border border-stone-200 bg-stone-100 p-4 outline-none shadow-sm shadow-stone-950/5 transition hover:border-[#F97316]/35 hover:shadow-md dark:border-stone-600 dark:bg-stone-800 dark:shadow-black/20 dark:hover:border-[#FB923C]/40"
+    >
+      <Icon icon="code-xml" color="#F97316" size={18} className="shrink-0" />
+      <div className="flex flex-col gap-1">
+        <span className="font-serif text-base font-medium text-stone-900 dark:text-stone-50">Integrations</span>
+        <span className="text-sm leading-relaxed text-stone-600 dark:text-stone-400">
+          Ready-to-use connectors for common platforms and flexible webhooks.
+        </span>
+      </div>
+    </a>
   </div>
 
   <hr className="border-0 border-t border-stone-200 dark:border-stone-700" />
