@@ -7,12 +7,10 @@
 /* Sidebar canvas */
 #sidebar {
   background-color: #fafaf9;
-  border-right: 1px solid rgb(231 229 228); /* stone-200 */
 }
 
 .dark #sidebar {
   background-color: #09090b;
-  border-right-color: rgb(255 255 255 / 0.08);
 }
 
 /* Product dropdown trigger — flat row instead of bordered pill */
