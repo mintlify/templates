@@ -80,7 +80,9 @@ body:has([data-product-guide-index]) #sidebar a.nav-anchor[href='/'] svg {
 
 :is(#content-area[data-current-path='/'], [data-current-path='/'] #content-area):has([data-product-guide-index]) > div:first-child {
   background: transparent !important;
-  padding: 0 !important;
+  padding-right: 0 !important;
+  padding-bottom: 0 !important;
+  padding-left: 0 !important;
 }
 
 [data-product-guide-index] a:not(.product-guide-feature-card) {
