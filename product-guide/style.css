@@ -84,12 +84,22 @@ body:has([data-product-guide-index]) #sidebar a.nav-anchor[href='/'] svg {
 }
 
 .product-guide-feature-card {
+  grid-column: 1 / -1;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
   min-height: 260px;
-  background:
-    linear-gradient(180deg, rgb(12 10 9 / 0) 18%, rgb(12 10 9 / 0.74) 100%),
-    url('/images/platform-overview.jpg') center / cover no-repeat !important;
+  background: url('/images/sample-texture-1.png') center / cover no-repeat !important;
   border-radius: 0 !important;
+  box-shadow: none !important;
   color: white !important;
+}
+
+.product-guide-feature-card > div {
+  display: flex !important;
+  flex: 1;
+  flex-direction: column !important;
+  justify-content: space-between !important;
 }
 
 .product-guide-feature-card :is(h2, h3, p, span, svg) {
