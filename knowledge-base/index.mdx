@@ -1,39 +1,86 @@
 ---
 title: "Home"
 description: "Onboarding guides, HR policies, IT help, and department runbooks for the whole company."
+mode: custom
 ---
 
-This is your go-to reference for how things work here. Use the tabs to navigate to different resources or search with <kbd>⌘</kbd> <kbd>K</kbd>.
+<div className="mx-auto flex w-full max-w-[720px] flex-col gap-12 px-4 py-10 lg:gap-14 lg:py-16">
+  <div className="flex flex-col items-center gap-6">
+    <div className="flex max-w-[480px] flex-col gap-2 text-center">
+      <h1 className="text-2xl font-semibold tracking-tight text-gray-900 dark:text-gray-50">
+        Your journey begins here
+      </h1>
+      <p className="text-balance text-base text-gray-600 dark:text-gray-400">
+        This is your go-to reference for how things work here. Use the tabs to navigate to different resources or search with <kbd>⌘</kbd> <kbd>K</kbd>.
+      </p>
+    </div>
+  </div>
 
-## Get started
+  <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
+    <a
+      href="/onboarding/first-day"
+      className="group flex flex-col outline-none"
+    >
+      <div
+        className="kb-feature-card relative flex h-[170px] items-center justify-center overflow-hidden rounded-2xl ring-1 ring-gray-100 transition group-hover:ring-gray-200 dark:ring-white/[0.08] dark:group-hover:ring-white/15"
+        style={{
+          "--kb-card-bg": 'url("/images/sample-texture-1.png")',
+        }}
+      >
+        <div className="relative flex items-center justify-center">
+          <Icon icon="calendar-1" size={36} className="!bg-white" />
+        </div>
+      </div>
+      <div className="flex flex-col gap-1 pt-4">
+        <span className="text-base font-medium text-gray-900 dark:text-gray-50">Your first day</span>
+        <span className="text-sm leading-5 text-gray-600 dark:text-gray-400">
+          Your first day is all about getting oriented and connecting with key team members.
+        </span>
+      </div>
+    </a>
 
-<Card title="Your first day" icon="calendar-check" href="/onboarding/first-day">
-  Accounts to activate, tools to install, and people to meet.
-</Card>
+    <a
+      href="/onboarding/tools/account-access"
+      className="group flex flex-col outline-none"
+    >
+      <div
+        className="kb-feature-card relative flex h-[170px] items-center justify-center overflow-hidden rounded-2xl ring-1 ring-gray-100 transition group-hover:ring-gray-200 dark:ring-white/[0.08] dark:group-hover:ring-white/15"
+        style={{
+          "--kb-card-bg": 'url("/images/sample-texture-2.png")',
+        }}
+      >
+        <div className="relative flex items-center justify-center">
+          <Icon icon="key-round" size={36} className="!bg-white" />
+        </div>
+      </div>
+      <div className="flex flex-col gap-1 pt-4">
+        <span className="text-base font-medium text-gray-900 dark:text-gray-50">Account access</span>
+        <span className="text-sm leading-5 text-gray-600 dark:text-gray-400">
+          Which accounts you&apos;ll need, how to claim them, and what to do if anything is missing.
+        </span>
+      </div>
+    </a>
+  </div>
 
-## Browse
+  <div className="flex flex-col gap-4">
+    <h2 className="text-lg font-medium tracking-tight text-gray-900 dark:text-gray-50">Resources</h2>
 
-<CardGroup cols={2}>
-  <Card title="HR & People" icon="heart-handshake" href="/hr-people">
-    Benefits, time off, performance reviews, and compensation.
-  </Card>
-  <Card title="IT & Security" icon="shield" href="/it-security">
-    Access requests, device policy, and security training.
-  </Card>
-  <Card title="Policies" icon="scroll" href="/policies">
-    Code of conduct, expense reimbursement, travel, and remote work.
-  </Card>
-  <Card title="Engineering" icon="code" href="/engineering">
-    Dev setup, deployment, incident response, and architecture.
-  </Card>
-</CardGroup>
+    <Columns cols={2}>
+      <Card title="HR & People" icon="users" iconType="light" href="/hr-people">
+        Benefits, time off, performance reviews, and compensation.
+      </Card>
+      <Card title="IT & Security" icon="shield-check" iconType="light" href="/it-security">
+        Access requests, device policy, and security training.
+      </Card>
+    </Columns>
 
-## Ask a question
-
-Use the AI assistant <kbd>⌘</kbd> <kbd>I</kbd> to search across all articles or ask questions in plain language.
-
-<Tip>
-  Can't find what you're looking for? Drop a message in `#ask-anything` on Slack and someone will point you in the right direction.
-  
-  You can always update the knowledge base if you find something missing!
-</Tip>
+    <Columns cols={2}>
+      <Card title="Policies" icon="scroll" iconType="light" href="/policies">
+        Code of conduct, expense reimbursement, travel, and remote work.
+      </Card>
+      <Card title="Engineering" icon="code-xml" iconType="light" href="/engineering">
+        Dev setup, deployment, incident response, and architecture.
+      </Card>
+    </Columns>
+  </div>
+</div>

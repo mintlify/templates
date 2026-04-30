@@ -1,77 +1,134 @@
 ---
-title: Product Guides
-description: In-depth guides for Platform, Analytics, and Integrations.
+title: Product Guide
+description: Everything you need to set up, configure, and get the most out of Platform, Analytics, and Integrations tools.
 mode: custom
 ---
 
-<div className="mx-auto flex w-full max-w-5xl flex-col gap-14 px-4 py-12 lg:py-16">
-  <div className="flex flex-col gap-3">
-    <h1 className="text-4xl font-semibold tracking-tight text-gray-900 dark:text-zinc-50">
+<div data-product-guide-index className="flex w-full flex-col gap-8">
+  <div className="flex max-w-[540px] flex-col gap-2 self-center text-center">
+    <h1 className="font-serif text-[30px] font-medium leading-9 tracking-tight text-gray-900 dark:text-gray-50">
       Product Guide
     </h1>
-    <p className="text-base text-balance text-gray-600 dark:text-zinc-400 max-w-xl">
+    <p className="text-balance text-sm leading-relaxed tracking-tight text-gray-600 dark:text-gray-400">
       Everything you need to set up, configure, and get the most out of Platform, Analytics, and Integrations tools.
     </p>
   </div>
 
-  <div className="flex flex-col gap-4">
-    <h3 className="text-base font-medium text-gray-900 dark:text-zinc-50">Browse by product</h3>
-    <Columns cols={3}>
-      <Card icon="layers" iconType="light" title="Platform" href="/platform">
-        Setup, configure, and manage your workspace.
-      </Card>
-      <Card icon="chart-bar" iconType="light" title="Analytics" href="/analytics">
-        Build, report, and visualize your data.
-      </Card>
-      <Card icon="plug" iconType="light" title="Integrations" href="/integrations">
-        Pre-built connectors and webhooks.
-      </Card>
-    </Columns>
+  <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+    <Card
+      title={<span className="product-guide-feature-card-title">Platform overview</span>}
+      icon="grid-2x2"
+      href="/platform"
+      className="product-guide-feature-card border-border"
+      size={64}
+    >
+      <span className="product-guide-feature-card-description">Setup, configure, and manage your workspace.</span>
+    </Card>
+
+    <a
+      href="/analytics"
+      className="flex flex-col gap-4 rounded-none border border-border bg-gray-50 p-4 outline-none shadow-sm shadow-gray-950/5 transition hover:border-primary hover:shadow-md dark:bg-gray-950 dark:shadow-black/20 dark:hover:border-primary"
+    >
+      <Icon icon="chart-column" color="#F97316" size={18} className="shrink-0" />
+      <div className="flex flex-col gap-1">
+        <span className="font-serif text-base font-medium text-gray-900 dark:text-gray-50">Analytics</span>
+        <span className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
+          Build, report, and visualize your data.
+        </span>
+      </div>
+    </a>
+    <a
+      href="/integrations"
+      className="flex flex-col gap-4 rounded-none border border-border bg-gray-50 p-4 outline-none shadow-sm shadow-gray-950/5 transition hover:border-primary hover:shadow-md dark:bg-gray-950 dark:shadow-black/20 dark:hover:border-primary"
+    >
+      <Icon icon="code-xml" color="#F97316" size={18} className="shrink-0" />
+      <div className="flex flex-col gap-1">
+        <span className="font-serif text-base font-medium text-gray-900 dark:text-gray-50">Integrations</span>
+        <span className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
+          Ready-to-use connectors for common platforms and flexible webhooks.
+        </span>
+      </div>
+    </a>
   </div>
 
-  ---
+  <hr className="border-0 border-t border-border" />
 
   <div className="flex flex-col gap-4">
-    <h3 className="text-base font-medium text-gray-900 dark:text-zinc-50">Common tasks</h3>
-    <Columns cols={2}>
-      <Card horizontal icon="users" iconType="light" title="Manage your team" href="/platform/configuration/user-management">
-        Add members, assign roles, and control access across your workspace.
-      </Card>
-      <Card horizontal icon="database" iconType="light" title="Connect a data source" href="/analytics/connect-data">
-        Link a database, data warehouse, or third-party data provider.
-      </Card>
-      <Card horizontal icon="building-2" iconType="light" title="Connect your CRM" href="/integrations/connectors/crm">
-        Sync your CRM through native connectors or a custom strategy.
-      </Card>
-      <Card horizontal icon="layout-dashboard" iconType="light" title="Build a dashboard" href="/analytics/dashboards/create-dashboard">
-        Add charts, set filters, and share a live dashboard.
-      </Card>
-      <Card horizontal icon="webhook" iconType="light" title="Set up a webhook" href="/integrations/webhooks/configure">
-        Subscribe to events and route them to any endpoint.
-      </Card>
-      <Card horizontal icon="calendar-clock" iconType="light" title="Schedule a report" href="/analytics/reports/scheduled-reports">
-        Send recurring snapshots via email or Slack.
-      </Card>
-    </Columns>
-  </div>
+    <h2 className="font-serif text-xl font-medium leading-normal text-gray-900 dark:text-gray-50">Common tasks</h2>
 
-  ---
-
-  <div className="flex flex-col gap-4">
-    <div className="flex flex-col gap-1">
-      <h3 className="text-base font-medium text-gray-900 dark:text-zinc-50">New here? Start with the basics.</h3>
-      <p className="text-sm text-gray-500 dark:text-zinc-400">Three quickstarts to get your workspace, data, and integrations running.</p>
+    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+      <a
+        href="/platform/configuration/user-management"
+        className="flex flex-col gap-4 rounded-none border border-border bg-gray-50 p-4 outline-none shadow-sm shadow-gray-950/5 transition hover:border-primary hover:shadow-md dark:bg-gray-950 dark:shadow-black/20 dark:hover:border-primary"
+      >
+        <Icon icon="users" color="#F97316" size={18} className="shrink-0" />
+        <div className="flex flex-col gap-1">
+          <span className="font-serif text-base font-medium text-gray-900 dark:text-gray-50">Manage your team</span>
+          <span className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
+            Add members, assign roles, and control access across your workspace.
+          </span>
+        </div>
+      </a>
+      <a
+        href="/analytics/connect-data"
+        className="flex flex-col gap-4 rounded-none border border-border bg-gray-50 p-4 outline-none shadow-sm shadow-gray-950/5 transition hover:border-primary hover:shadow-md dark:bg-gray-950 dark:shadow-black/20 dark:hover:border-primary"
+      >
+        <Icon icon="database" color="#F97316" size={18} className="shrink-0" />
+        <div className="flex flex-col gap-1">
+          <span className="font-serif text-base font-medium text-gray-900 dark:text-gray-50">Connect a data source</span>
+          <span className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
+            Link a database, data warehouse, or third-party data provider.
+          </span>
+        </div>
+      </a>
+      <a
+        href="/integrations/connectors/crm"
+        className="flex flex-col gap-4 rounded-none border border-border bg-gray-50 p-4 outline-none shadow-sm shadow-gray-950/5 transition hover:border-primary hover:shadow-md dark:bg-gray-950 dark:shadow-black/20 dark:hover:border-primary"
+      >
+        <Icon icon="building-2" color="#F97316" size={18} className="shrink-0" />
+        <div className="flex flex-col gap-1">
+          <span className="font-serif text-base font-medium text-gray-900 dark:text-gray-50">Connect your CRM</span>
+          <span className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
+            Sync your CRM through native connectors or a custom strategy.
+          </span>
+        </div>
+      </a>
+      <a
+        href="/analytics/dashboards/create-dashboard"
+        className="flex flex-col gap-4 rounded-none border border-border bg-gray-50 p-4 outline-none shadow-sm shadow-gray-950/5 transition hover:border-primary hover:shadow-md dark:bg-gray-950 dark:shadow-black/20 dark:hover:border-primary"
+      >
+        <Icon icon="layout-dashboard" color="#F97316" size={18} className="shrink-0" />
+        <div className="flex flex-col gap-1">
+          <span className="font-serif text-base font-medium text-gray-900 dark:text-gray-50">Build a dashboard</span>
+          <span className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
+            Add charts, set filters, and share a live dashboard.
+          </span>
+        </div>
+      </a>
+      <a
+        href="/integrations/webhooks/configure"
+        className="flex flex-col gap-4 rounded-none border border-border bg-gray-50 p-4 outline-none shadow-sm shadow-gray-950/5 transition hover:border-primary hover:shadow-md dark:bg-gray-950 dark:shadow-black/20 dark:hover:border-primary"
+      >
+        <Icon icon="webhook" color="#F97316" size={18} className="shrink-0" />
+        <div className="flex flex-col gap-1">
+          <span className="font-serif text-base font-medium text-gray-900 dark:text-gray-50">Set up a webhook</span>
+          <span className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
+            Subscribe to events and route them to any endpoint.
+          </span>
+        </div>
+      </a>
+      <a
+        href="/analytics/reports/scheduled-reports"
+        className="flex flex-col gap-4 rounded-none border border-border bg-gray-50 p-4 outline-none shadow-sm shadow-gray-950/5 transition hover:border-primary hover:shadow-md dark:bg-gray-950 dark:shadow-black/20 dark:hover:border-primary"
+      >
+        <Icon icon="calendar-clock" color="#F97316" size={18} className="shrink-0" />
+        <div className="flex flex-col gap-1">
+          <span className="font-serif text-base font-medium text-gray-900 dark:text-gray-50">Schedule a report</span>
+          <span className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
+            Send recurring snapshots via email or Slack.
+          </span>
+        </div>
+      </a>
     </div>
-    <Columns cols={3}>
-      <Card icon="rocket" iconType="light" title="Platform quickstart" href="/platform/quickstart" cta="Get started">
-        Configure your workspace and invite your team.
-      </Card>
-      <Card icon="search" iconType="light" title="Analytics quickstart" href="/analytics/quickstart" cta="Get started">
-        Connect a data source and build a dashboard.
-      </Card>
-      <Card icon="plug" iconType="light" title="Integrations quickstart" href="/integrations/quickstart" cta="Get started">
-        Connect third-party tools and services.
-      </Card>
-    </Columns>
   </div>
 </div>
