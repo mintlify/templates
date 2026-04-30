@@ -16,12 +16,13 @@ mode: custom
 
   <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
     <Card
-      title="Platform overview"
+      title={<span className="product-guide-feature-card-title">Platform overview</span>}
       icon="grid-2x2"
       href="/platform"
       className="product-guide-feature-card"
+      size={64}
     >
-      Setup, configure, and manage your workspace.
+      <span className="product-guide-feature-card-description">Setup, configure, and manage your workspace.</span>
     </Card>
 
     <a
