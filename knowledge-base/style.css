@@ -25,3 +25,8 @@ toc-item[data-active-deepest] > a::before {
   max-width: 14rem;
   height: auto;
 }
+
+a[nav-tabs-item] {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

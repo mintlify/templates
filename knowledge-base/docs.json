@@ -4,9 +4,9 @@
   "name": "Knowledge base",
   "description": "Onboarding, employee handbook, HR guides, IT help, company policies, and department runbooks.",
   "colors": {
-    "primary": "#1D4ED8",
+    "primary": "#2563EB",
     "light": "#3B82F6",
-    "dark": "#1E3A8A"
+    "dark": "#2563EB"
   },
   "favicon": "/favicon.ico",
   "icons": {
