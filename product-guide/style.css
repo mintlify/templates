@@ -83,12 +83,16 @@ body:has([data-product-guide-index]) #sidebar a.nav-anchor[href='/'] svg {
   padding: 0 !important;
 }
 
-[data-product-guide-index] a:not(.product-guide-feature-card) {
-  background-color: #fafafa !important;
+[data-product-guide-index] {
+  --product-guide-card-muted-bg: #fafafa;
 }
 
-.dark [data-product-guide-index] a:not(.product-guide-feature-card) {
-  background-color: #09090b !important;
+.dark [data-product-guide-index] {
+  --product-guide-card-muted-bg: #09090b;
+}
+
+[data-product-guide-index] a:not(.product-guide-feature-card) {
+  background-color: var(--product-guide-card-muted-bg) !important;
 }
 
 .product-guide-feature-card {
