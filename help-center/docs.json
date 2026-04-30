@@ -4,9 +4,9 @@
   "name": "Help Center",
   "description": "Documentation and guides for this template—workspace setup, product how-tos, and support.",
   "colors": {
-    "primary": "#15803D",
-    "light": "#22C55E",
-    "dark": "#14532D"
+    "primary": "#166E3F",
+    "light": "#26BD6C",
+    "dark": "#166E3F"
   },
   "favicon": "/favicon.ico",
   "icons": {
