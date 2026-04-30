@@ -83,6 +83,14 @@ body:has([data-product-guide-index]) #sidebar a.nav-anchor[href='/'] svg {
   padding: 0 !important;
 }
 
+[data-product-guide-index] a:not(.product-guide-feature-card) {
+  background-color: #fafafa !important;
+}
+
+.dark [data-product-guide-index] a:not(.product-guide-feature-card) {
+  background-color: #09090b !important;
+}
+
 .product-guide-feature-card {
   grid-column: 1 / -1;
   display: flex !important;
