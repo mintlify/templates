@@ -73,8 +73,12 @@ body:has([data-product-guide-index]) #sidebar a.nav-anchor[href='/'] svg {
   background-color: #fb923c !important;
 }
 
-@media (min-width: 1280px) {
-  #content-area:has([data-product-guide-index]) {
-    padding-right: 2.5rem !important;
-  }
+:is(#content-area[data-current-path='/'], [data-current-path='/'] #content-area):has([data-product-guide-index]) {
+  background: transparent !important;
+  padding: 0 !important;
+}
+
+:is(#content-area[data-current-path='/'], [data-current-path='/'] #content-area):has([data-product-guide-index]) > div:first-child {
+  background: transparent !important;
+  padding: 0 !important;
 }
