@@ -43,7 +43,7 @@ a[nav-tabs-item] {
   content: "";
   position: absolute;
   inset: 0;
-  background-image: var(--kb-card-bg);
+  background-image: url('/images/sample-texture.png');
   background-position: center;
   background-size: cover;
   opacity: 0.875;
