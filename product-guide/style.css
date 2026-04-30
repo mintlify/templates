@@ -133,8 +133,11 @@ body:has([data-product-guide-index]) #sidebar a.nav-anchor[href='/'] svg {
 
 .product-guide-feature-card-title {
   font-size: 1.2em;
+  font-weight: 500;
 }
 
-.product-guide-feature-card-description {
+.product-guide-feature-card :is(h2, h3, p, span, svg).product-guide-feature-card-description {
   font-size: 1.05em;
+  font-weight: 400;
+  color: rgb(var(--gray-400)) !important;
 }
