@@ -61,7 +61,7 @@
 }
 
 body:has([data-product-guide-index]) #sidebar a.nav-anchor[href='/'] {
-  color: #f97316 !important;
+  color: var(--primary) !important;
   font-weight: 600 !important;
 }
 
@@ -70,7 +70,7 @@ body:has([data-product-guide-index]) #sidebar a.nav-anchor[href='/'] span {
 }
 
 body:has([data-product-guide-index]) #sidebar a.nav-anchor[href='/'] svg {
-  background-color: #f97316 !important;
+  background-color: var(--primary) !important;
 }
 
 .dark body:has([data-product-guide-index]) #sidebar a.nav-anchor[href='/'] {
