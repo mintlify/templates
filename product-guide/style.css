@@ -1,19 +1,23 @@
-/*
- * Product Guide (Willow) — sidebar + homepage layout tweaks.
- * Sidebar: light gray rail, flat product switcher, mono-style anchors.
- * Homepage: Starter Templates panel — tinted canvas, inset card shell below top bar, TOC balance at xl.
- */
+:root {
+  --pg-mark-muted: #78716c;
+  --pg-mark-ink: #0c0a09;
+  --pg-app-gutter: color-mix(in srgb, #fafaf9 85%, var(--pg-mark-muted) 15%);
+  --pg-border-warm: color-mix(in srgb, #e7e5e4 72%, var(--pg-mark-muted) 28%);
+}
 
-/* Sidebar canvas */
+.dark {
+  --pg-app-gutter: color-mix(in srgb, var(--pg-mark-ink) 90%, var(--pg-mark-muted) 10%);
+  --pg-border-warm: rgb(255 255 255 / 0.11);
+}
+
 #sidebar {
-  background-color: #fafaf9;
+  background-color: var(--pg-app-gutter);
 }
 
-.dark #sidebar {
-  background-color: #09090b;
+#content-area {
+  background-color: var(--pg-app-gutter) !important;
 }
 
-/* Product dropdown trigger — flat row instead of bordered pill */
 #sidebar .nav-dropdown-trigger {
   border: none !important;
   border-radius: 0 !important;
@@ -30,7 +34,6 @@
   background-color: rgb(255 255 255 / 0.06) !important;
 }
 
-/* Icon wells inside trigger — line icons only */
 #sidebar .nav-dropdown-trigger .nav-dropdown-item-icon {
   border: none !important;
   border-radius: 0 !important;
@@ -40,7 +43,6 @@
   padding: 0 !important;
 }
 
-/* Dropdown panel portals to document root — keep flat for this template site */
 .nav-dropdown-content {
   border-radius: 0 !important;
 }
@@ -62,7 +64,6 @@
   display: none !important;
 }
 
-/* Global anchors — mono uppercase caps like template */
 #sidebar .nav-anchor span {
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
   font-size: 12px;
@@ -71,12 +72,8 @@
   text-transform: uppercase;
 }
 
-/*
- * Home on index: global anchors are merged with isActive: false in client nav, so active
- * styling never applies. Orange the Home row only while the homepage MDX marker is present.
- */
 body:has([data-product-guide-index]) #sidebar a.nav-anchor[href='/'] {
-  color: #ea580c !important;
+  color: #f97316 !important;
   font-weight: 600 !important;
 }
 
@@ -85,7 +82,7 @@ body:has([data-product-guide-index]) #sidebar a.nav-anchor[href='/'] span {
 }
 
 body:has([data-product-guide-index]) #sidebar a.nav-anchor[href='/'] svg {
-  background-color: #ea580c !important;
+  background-color: #f97316 !important;
 }
 
 .dark body:has([data-product-guide-index]) #sidebar a.nav-anchor[href='/'] {
@@ -96,33 +93,20 @@ body:has([data-product-guide-index]) #sidebar a.nav-anchor[href='/'] svg {
   background-color: #fb923c !important;
 }
 
-/*
- * Homepage — Starter Templates layout (Figma): centered ~844px panel on a tinted canvas,
- * dropped slightly below the top bar with a defined edge so it reads as a floating card.
- */
-#content-area:has([data-product-guide-index]) {
-  background-color: #fafaf9 !important;
-}
-
-.dark #content-area:has([data-product-guide-index]) {
-  background-color: #09090b !important;
-}
-
-/* First band is Willow’s max-w-[844px] article shell (footer uses a sibling band). */
 #content-area:has([data-product-guide-index]) > div:first-child {
   margin-top: 1.5rem !important;
-  border: 1px solid rgb(231 229 228);
+  border: 1px solid var(--pg-border-warm);
   border-radius: 0;
   box-shadow:
-    0 1px 2px rgb(15 23 42 / 0.06),
-    0 12px 28px rgb(15 23 42 / 0.07);
+    0 1px 2px rgb(28 25 23 / 0.055),
+    0 12px 28px rgb(28 25 23 / 0.085);
 }
 
 .dark #content-area:has([data-product-guide-index]) > div:first-child {
-  border-color: rgb(255 255 255 / 0.08);
+  border-color: var(--pg-border-warm);
   box-shadow:
-    0 1px 2px rgb(0 0 0 / 0.45),
-    0 16px 40px rgb(0 0 0 / 0.4);
+    0 1px 2px rgb(0 0 0 / 0.48),
+    0 16px 40px rgb(0 0 0 / 0.42);
 }
 
 @media (min-width: 1024px) {
@@ -131,7 +115,6 @@ body:has([data-product-guide-index]) #sidebar a.nav-anchor[href='/'] svg {
   }
 }
 
-/* TOC rail reservation at xl — keeps the centered panel visually balanced in the pane. */
 @media (min-width: 1280px) {
   #content-area:has([data-product-guide-index]) {
     padding-right: 2.5rem !important;
