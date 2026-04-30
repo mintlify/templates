@@ -33,12 +33,10 @@ a[nav-tabs-item] {
 
 .kb-feature-card {
   background-color: rgb(var(--foreground-light, 17 24 39));
-  color: rgb(var(--background-light, 255 255 255));
 }
 
 .dark .kb-feature-card {
   background-color: rgb(var(--foreground-dark, 250 250 250));
-  color: rgb(var(--background-dark, 9 9 11));
 }
 
 .kb-feature-card::before {
