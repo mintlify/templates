@@ -4,9 +4,9 @@
   "name": "Product Guide",
   "description": "Step-by-step guides for every product—platform setup, analytics, and integrations in one place.",
   "colors": {
-    "primary": "#F97316",
-    "light": "#FB923C",
-    "dark": "#9A3412"
+    "primary": "#EA580C",
+    "light": "#F97316",
+    "dark": "#EA580C"
   },
   "favicon": "/favicon.ico",
   "icons": {
