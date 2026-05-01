@@ -29,12 +29,12 @@
         {
           "anchor": "Changelog",
           "icon": "scroll-text",
-          "href": "#"
+          "href": "https://www.mintlify.com/docs/changelog"
         },
         {
           "anchor": "Help",
           "icon": "life-buoy",
-          "href": "#"
+          "href": "https://www.mintlify.com/docs/contact-support"
         }
       ]
     },
