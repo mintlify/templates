@@ -156,7 +156,7 @@
     "primary": {
       "type": "button",
       "label": "Dashboard",
-      "href": "https://example.com/dashboard"
+      "href": "https://dashboard.mintlify.com"
     }
   },
   "footer": {

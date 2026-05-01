@@ -167,7 +167,7 @@
     "primary": {
       "type": "button",
       "label": "Employee portal",
-      "href": "https://example.com/portal"
+      "href": "https://dashboard.mintlify.com"
     }
   },
   "footer": {
