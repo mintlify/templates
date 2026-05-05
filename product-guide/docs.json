@@ -48,7 +48,6 @@
           {
             "group": "Getting started",
             "expanded": true,
-            "root": "platform/index",
             "pages": [
               "platform/quickstart",
               "platform/key-concepts"
@@ -57,7 +56,6 @@
           {
             "group": "Configuration",
             "expanded": true,
-            "root": "platform/configuration/index",
             "pages": [
               "platform/configuration/settings",
               "platform/configuration/user-management"
@@ -66,7 +64,6 @@
           {
             "group": "Administration",
             "expanded": true,
-            "root": "platform/administration/index",
             "pages": [
               "platform/administration/roles-permissions",
               "platform/administration/audit-logs"
@@ -82,7 +79,6 @@
           {
             "group": "Getting started",
             "expanded": true,
-            "root": "analytics/index",
             "pages": [
               "analytics/quickstart",
               "analytics/connect-data"
@@ -91,7 +87,6 @@
           {
             "group": "Dashboards",
             "expanded": true,
-            "root": "analytics/dashboards/index",
             "pages": [
               "analytics/dashboards/create-dashboard",
               "analytics/dashboards/charts-visualizations",
@@ -101,7 +96,6 @@
           {
             "group": "Reports",
             "expanded": true,
-            "root": "analytics/reports/index",
             "pages": [
               "analytics/reports/build-report",
               "analytics/reports/scheduled-reports"
@@ -117,7 +111,6 @@
           {
             "group": "Getting started",
             "expanded": true,
-            "root": "integrations/index",
             "pages": [
               "integrations/quickstart",
               "integrations/authentication"
@@ -126,7 +119,6 @@
           {
             "group": "Connectors",
             "expanded": true,
-            "root": "integrations/connectors/index",
             "pages": [
               "integrations/connectors/crm",
               "integrations/connectors/data-warehouse",
@@ -136,7 +128,6 @@
           {
             "group": "Webhooks & events",
             "expanded": true,
-            "root": "integrations/webhooks/index",
             "pages": [
               "integrations/webhooks/configure",
               "integrations/webhooks/event-types",
