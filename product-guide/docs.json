@@ -39,110 +39,32 @@
       ]
     },
     "directory": "card",
-    "products": [
+    "groups": [
       {
-        "product": "Platform",
-        "description": "Core platform setup, configuration, and administration.",
-        "icon": "layers",
-        "groups": [
-          {
-            "group": "Getting started",
-            "icon": "rocket",
-            "expanded": true,
-            "pages": [
-              "platform/quickstart",
-              "platform/key-concepts"
-            ]
-          },
-          {
-            "group": "Configuration",
-            "icon": "settings",
-            "expanded": true,
-            "pages": [
-              "platform/configuration/settings",
-              "platform/configuration/user-management"
-            ]
-          },
-          {
-            "group": "Administration",
-            "icon": "shield-check",
-            "expanded": true,
-            "pages": [
-              "platform/administration/roles-permissions",
-              "platform/administration/audit-logs"
-            ]
-          }
+        "group": "Getting started",
+        "icon": "rocket",
+        "expanded": true,
+        "pages": [
+          "platform/quickstart",
+          "platform/key-concepts"
         ]
       },
       {
-        "product": "Analytics",
-        "description": "Build dashboards, run reports, and analyze your data.",
-        "icon": "chart-bar",
-        "groups": [
-          {
-            "group": "Getting started",
-            "icon": "rocket",
-            "expanded": true,
-            "pages": [
-              "analytics/quickstart",
-              "analytics/connect-data"
-            ]
-          },
-          {
-            "group": "Dashboards",
-            "icon": "layout-dashboard",
-            "expanded": true,
-            "pages": [
-              "analytics/dashboards/create-dashboard",
-              "analytics/dashboards/charts-visualizations",
-              "analytics/dashboards/sharing-exports"
-            ]
-          },
-          {
-            "group": "Reports",
-            "icon": "file-chart-column",
-            "expanded": true,
-            "pages": [
-              "analytics/reports/build-report",
-              "analytics/reports/scheduled-reports"
-            ]
-          }
+        "group": "Configuration",
+        "icon": "settings",
+        "expanded": true,
+        "pages": [
+          "platform/configuration/settings",
+          "platform/configuration/user-management"
         ]
       },
       {
-        "product": "Integrations",
-        "description": "Connect your tools with pre-built connectors and webhooks.",
-        "icon": "plug",
-        "groups": [
-          {
-            "group": "Getting started",
-            "icon": "rocket",
-            "expanded": true,
-            "pages": [
-              "integrations/quickstart",
-              "integrations/authentication"
-            ]
-          },
-          {
-            "group": "Connectors",
-            "icon": "cable",
-            "expanded": true,
-            "pages": [
-              "integrations/connectors/crm",
-              "integrations/connectors/data-warehouse",
-              "integrations/connectors/messaging"
-            ]
-          },
-          {
-            "group": "Webhooks & events",
-            "icon": "webhook",
-            "expanded": true,
-            "pages": [
-              "integrations/webhooks/configure",
-              "integrations/webhooks/event-types",
-              "integrations/webhooks/retry-policies"
-            ]
-          }
+        "group": "Administration",
+        "icon": "shield-check",
+        "expanded": true,
+        "pages": [
+          "platform/administration/roles-permissions",
+          "platform/administration/audit-logs"
         ]
       }
     ]
