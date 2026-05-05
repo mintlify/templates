@@ -41,30 +41,37 @@
     "directory": "card",
     "groups": [
       {
-        "group": "Getting started",
-        "icon": "rocket",
+        "group": "Platform",
+        "icon": "layers",
         "expanded": true,
         "pages": [
           "platform/quickstart",
-          "platform/key-concepts"
-        ]
-      },
-      {
-        "group": "Configuration",
-        "icon": "settings",
-        "expanded": true,
-        "pages": [
+          "platform/key-concepts",
           "platform/configuration/settings",
-          "platform/configuration/user-management"
+          "platform/configuration/user-management",
+          "platform/administration/roles-permissions"
         ]
       },
       {
-        "group": "Administration",
-        "icon": "shield-check",
+        "group": "Analytics",
+        "icon": "chart-bar",
         "expanded": true,
         "pages": [
-          "platform/administration/roles-permissions",
-          "platform/administration/audit-logs"
+          "analytics/quickstart",
+          "analytics/connect-data",
+          "analytics/dashboards/create-dashboard",
+          "analytics/reports/scheduled-reports"
+        ]
+      },
+      {
+        "group": "Integrations",
+        "icon": "plug",
+        "expanded": true,
+        "pages": [
+          "integrations/quickstart",
+          "integrations/authentication",
+          "integrations/connectors/crm",
+          "integrations/webhooks/configure"
         ]
       }
     ]
