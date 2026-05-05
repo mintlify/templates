@@ -8,7 +8,6 @@
 
 #sidebar .nav-dropdown-trigger {
   border: none !important;
-  border-radius: 0 !important;
   background: transparent !important;
   box-shadow: none !important;
   padding-left: 0.375rem;
@@ -24,7 +23,6 @@
 
 #sidebar .nav-dropdown-trigger .nav-dropdown-item-icon {
   border: none !important;
-  border-radius: 0 !important;
   background: transparent !important;
   height: auto !important;
   width: auto !important;
@@ -32,16 +30,13 @@
 }
 
 .nav-dropdown-content {
-  border-radius: 0 !important;
 }
 
 .nav-dropdown-content .nav-dropdown-item {
-  border-radius: 0 !important;
 }
 
 .nav-dropdown-content .nav-dropdown-item-icon {
   border: none !important;
-  border-radius: 0 !important;
   background: transparent !important;
   height: auto !important;
   width: auto !important;
@@ -108,7 +103,7 @@ body:has([data-product-guide-index]) #sidebar a.nav-anchor[href='/'] svg {
   justify-content: space-between !important;
   min-height: 260px;
   background: url('/images/sample-feature-light.png') center / cover no-repeat !important;
-  border-radius: 0 !important;
+  border: none !important;
   box-shadow: none !important;
   color: white !important;
   .dark & {
@@ -146,4 +141,9 @@ body:has([data-product-guide-index]) #sidebar a.nav-anchor[href='/'] svg {
   .dark & {
     color: rgb(var(--gray-50) / 50%) !important;
   }
+}
+
+img.nav-logo {
+  max-width: 220px;
+  height: auto;
 }
