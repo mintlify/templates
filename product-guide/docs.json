@@ -47,6 +47,7 @@
         "groups": [
           {
             "group": "Getting started",
+            "icon": "rocket",
             "expanded": true,
             "pages": [
               "platform/quickstart",
@@ -55,6 +56,7 @@
           },
           {
             "group": "Configuration",
+            "icon": "settings",
             "expanded": true,
             "pages": [
               "platform/configuration/settings",
@@ -63,6 +65,7 @@
           },
           {
             "group": "Administration",
+            "icon": "shield-check",
             "expanded": true,
             "pages": [
               "platform/administration/roles-permissions",
@@ -78,6 +81,7 @@
         "groups": [
           {
             "group": "Getting started",
+            "icon": "rocket",
             "expanded": true,
             "pages": [
               "analytics/quickstart",
@@ -86,6 +90,7 @@
           },
           {
             "group": "Dashboards",
+            "icon": "layout-dashboard",
             "expanded": true,
             "pages": [
               "analytics/dashboards/create-dashboard",
@@ -95,6 +100,7 @@
           },
           {
             "group": "Reports",
+            "icon": "file-chart-column",
             "expanded": true,
             "pages": [
               "analytics/reports/build-report",
@@ -110,6 +116,7 @@
         "groups": [
           {
             "group": "Getting started",
+            "icon": "rocket",
             "expanded": true,
             "pages": [
               "integrations/quickstart",
@@ -118,6 +125,7 @@
           },
           {
             "group": "Connectors",
+            "icon": "cable",
             "expanded": true,
             "pages": [
               "integrations/connectors/crm",
@@ -127,6 +135,7 @@
           },
           {
             "group": "Webhooks & events",
+            "icon": "webhook",
             "expanded": true,
             "pages": [
               "integrations/webhooks/configure",
