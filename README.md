@@ -8,7 +8,7 @@ Templates are meant to be mixed and matched. Treat them as starting points for c
 
 There are two ways to start a new Mintlify project from one of these templates:
 
-1. **Select it during onboarding.** When you create a new docs site through [Mintlify onboarding](https://dashboard.mintlify.com/onboarding), pick the template you want and Mintlify will scaffold a project from it.
+1. **Select it during onboarding.** When you create a new docs site through [Mintlify onboarding](https://dashboard.mintlify.com), pick the template you want and Mintlify will scaffold a project from it.
 2. **Use the Mintlify CLI.** Install and set up the CLI by following the [CLI documentation](https://www.mintlify.com/docs/cli/install), then create a new project using the `--template` flag with the template's directory name:
 
    ```bash
@@ -21,7 +21,7 @@ There are two ways to start a new Mintlify project from one of these templates:
    mint new --template help-center
    ```
 
-Always check the [Mintlify documentation](https://mintlify.com/docs) for the latest options for custom pages, components, and theming.
+Always check the [Mintlify documentation](https://mintlify.com/docs) for the latest on components, themes, `docs.json` configuration, and the rest of the Mintlify platform.
 
 ## Templates in this repository
 
