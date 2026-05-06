@@ -37,7 +37,3 @@ Always check the [Mintlify documentation](https://mintlify.com/docs) for the lat
 - **Product Guide** ([source](./product-guide/), [preview](https://product-guide-starter.mintlify.app))
 
   A product guide site designed for multi-product documentation. Includes a landing page and product selector to switch between different product guides.
-
-## Contributing
-
-If you open a pull request to add a new template, it should live in its own folder under the root directory of this repository. Keep filenames predictable (`index.mdx`, `style.css`, etc. when needed), and include it in the list above so others can discover it quickly.
