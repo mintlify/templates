@@ -25,9 +25,6 @@ Always check the [Mintlify documentation](https://mintlify.com/docs) for the lat
 
 ## Templates in this repository
 
-- **Empty** ([source](./empty/), [preview](https://empty-starter.mintlify.app))
-
-  A minimal blank-slate site with a single placeholder page. Use this as a starting point when you want to build from scratch without any pre-existing copy or structure.
 - **Help Center** ([source](./help-center/), [preview](https://help-center-starter.mintlify.app))
 
   A help-center style landing page: centered hero, search entry, and card grids for category pages and articles. Includes `style.css` for card layout, `search.js` for opening Mintlify search from a custom trigger, example section pages, and `docs.json` plus logo and favicon assets.
