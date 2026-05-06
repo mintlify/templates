@@ -6,11 +6,20 @@ Templates are meant to be mixed and matched. Treat them as starting points for c
 
 ## How to use a template
 
-1. Open the folder for the template you want (see below).
-2. Copy the **MDX** (and any **CSS** or **JavaScript** files) into your Mintlify content or static paths, following your project’s structure.
-3. Merge **configuration** carefully: colors, logo paths, favicon, and navigation in `docs.json` should align with your existing site. Do not overwrite your whole `docs.json` unless you intend to replace it. The `docs.json` files bundled with these templates are intentionally minimal so the example stays easy to read; they are not a full production navigation or settings setup.
-4. If the template ships a `style.css`, add it to your documentation repository (alongside your MDX). Mintlify loads CSS files from your repo, so those rules and class names apply in your project instantly once loaded. See [Custom scripts](https://mintlify.com/docs/settings/custom-scripts) in the Mintlify docs for details, including how `style.css` works and which UI selectors are safe to target.
-5. Replace placeholder **logo**, **favicon**, and **copy** with your own.
+There are two ways to start a new Mintlify project from one of these templates:
+
+1. **Select it during onboarding.** When you create a new docs site through [Mintlify onboarding](https://dashboard.mintlify.com/onboarding), pick the template you want and Mintlify will scaffold a project from it.
+2. **Use the Mintlify CLI.** Install and set up the CLI by following the [CLI documentation](https://www.mintlify.com/docs/cli/install), then create a new project using the `--template` flag with the template's directory name:
+
+   ```bash
+   mint new --template <template-name>
+   ```
+
+   For example, to start from the `help-center` template:
+
+   ```bash
+   mint new --template help-center
+   ```
 
 Always check the [Mintlify documentation](https://mintlify.com/docs) for the latest options for custom pages, components, and theming.
 
