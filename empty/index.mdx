@@ -1,0 +1,72 @@
+---
+title: "Template"
+description: "A blank page for your new site."
+---
+
+This is a Mintlify starter template.
+
+Update this page, add your content, and delete these setup sections when you're done.
+
+## Configuration
+
+All site-wide settings live in `docs.json` at the root of your project. Start by updating your site name, description, colors, and theme.
+
+```json
+{
+  "name": "Your Site Name",
+  "description": "A short description.",
+  "theme": "sequoia",
+  "colors": {
+    "primary": "#0F172A",
+    "light": "#3B82F6",
+    "dark": "#0F172A"
+  }
+}
+```
+
+Replace `/logo/light.svg` and `/logo/dark.svg` with your own wordmark, and `/favicon.ico` with your own icon.
+
+Full reference: [mintlify.com/docs/settings/global](https://mintlify.com/docs/settings/global)
+
+## Navigation
+
+Navigation is defined in `docs.json`. Use **tabs** for top-level sections and **groups** to organize pages within each tab.
+
+```json
+{
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Section name",
+        "groups": [
+          {
+            "group": "Group name",
+            "pages": ["folder/page-one", "folder/page-two"]
+          }
+        ]
+      }
+    ]
+  }
+}
+```
+
+Pages are file paths relative to the project root, without `.mdx`. The file must exist or the build will warn.
+
+Full reference: [mintlify.com/docs/settings/navigation](https://mintlify.com/docs/settings/navigation)
+
+## Writing content
+
+Pages are `.mdx` files—Markdown that supports the use of JSX. Every page starts with frontmatter:
+
+```mdx
+---
+title: "Page title"
+description: "Shown in search and link previews."
+---
+
+Your content here.
+```
+
+Mintlify provides built-in components to structure and style your content.
+
+Full reference: [mintlify.com/docs/components](https://mintlify.com/docs/components)
