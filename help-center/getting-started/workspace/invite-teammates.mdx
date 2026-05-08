@@ -1,35 +1,39 @@
 ---
-title: "Invite teammates to your workspace"
+title: "Invite teammates"
 sidebarTitle: "Invite teammates"
-description: "Send invites, assign initial roles, and manage pending invitations."
+description: "Add editors and admins to your Mintlify organization."
 ---
 
-Invitations are the front door to your workspace. Clear roles and timely follow-up prevent “I never got access” threads during launches. Treat pending invites like inventory—review them weekly until cleared.
+Mintlify has two places where you can invite collaborators: the organization level (for broad access) and the project level (for access to a specific docs site).
 
-## Send invites
+## Invite to your organization
 
-From **Settings → Members**, enter email addresses and pick a default role. Invites expire after fourteen days unless resent.
+1. Go to [dashboard.mintlify.com](https://dashboard.mintlify.com) and open your organization.
+2. Go to **Settings → Members**.
+3. Enter the email address of the person you want to invite.
+4. Select their role: **Admin** or **Editor**.
+5. Click **Send invite**.
 
-### Bulk import
+The invitee receives an email with a link to accept. Invitation links expire after 7 days — resend from the Members page if the link expires.
 
-If your product supports CSV import, validate columns against HR data first—typos in email addresses generate unnecessary support tickets.
+### Role assignment
 
-### Messaging
+Assign the **Editor** role to most teammates — they can write and publish content but can't access billing or organization settings. Reserve **Admin** for people who need to manage the organization, billing, or security settings.
 
-Tell people to expect an invite from a specific sender name so corporate filters do not hide it. Link to your internal wiki for “why we adopted this tool.”
+## Invite to a specific project
 
-## Roles at invite time
+To give someone access to one project without adding them to the organization:
 
-You can assign **Member**, **Admin**, or custom roles if your plan supports them. You can change roles after someone joins.
+1. Open the project in your dashboard.
+2. Go to **Settings → Members**.
+3. Enter their email and select a project-level role.
 
-### Principle of least privilege
+Project-level access doesn't grant access to other projects or organization settings.
 
-Default to Member unless someone truly needs billing or security settings. Elevate admins in pairs so coverage exists during PTO.
+## Pending invites
 
-## Revoking invites
+Pending invites are listed in **Settings → Members → Pending**. You can resend or revoke them from there. Revoking an invite doesn't notify the recipient — the link simply stops working.
 
-Pending invites can be revoked individually. Revocation does not notify the recipient beyond the link no longer working.
-
-### Audit trail
-
-Keep a note if you revoke because someone left the company—helps during access reviews and prevents accidental re-invite from stale spreadsheets.
+<Tip>
+  Tell new teammates to expect an invite email from Mintlify. Corporate email filters sometimes flag unfamiliar senders and send the message to spam.
+</Tip>

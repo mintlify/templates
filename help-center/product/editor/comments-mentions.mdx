@@ -1,39 +1,36 @@
 ---
-title: "Comments and mentions"
-sidebarTitle: "Comments & mentions"
-description: "Threaded comments, @mentions, and notification controls."
+title: "Comments and collaboration"
+sidebarTitle: "Comments"
+description: "Leave comments on docs pages and collaborate with your team during review."
 ---
 
-Comments turn static pages into lightweight review spaces. Mentions pull the right people into the loop without forwarding threads in email. This article covers threading, @mentions, and how to stay sane when notification volume spikes.
+The Mintlify web editor supports inline comments, making it easy to give feedback on specific sections of a page during the review process.
 
-## Threads
+## Adding a comment
 
-Start a thread on a selection. Resolve threads when addressed so everyone can see what is still open versus done.
+1. Select the text you want to comment on.
+2. Click the comment icon that appears in the toolbar.
+3. Type your comment and press **Enter** to submit.
 
-### Best practices
+Comments are visible to all editors with access to the project. They appear as markers on the text and in a comments panel on the right side of the editor.
 
-Keep one topic per thread when you can—easier to resolve and easier for newcomers to scan. Quote or anchor to specific paragraphs so replies stay in context months later.
+## Resolving comments
 
-### Permissions
+When a comment has been addressed, click **Resolve** to close the thread. Resolved comments are hidden from the active view but remain in the comment history.
 
-Readers may or may not see comment sidebars depending on project policy. If someone says they cannot view a thread, check their project role and whether the page is in a restricted space.
+### Reviewing before publish
 
-## Mentions
-
-@mention teammates to pull them in. Mentions respect project membership: you cannot @mention someone who should not already access the underlying content.
-
-### Typing and suggestions
-
-Most editors autocomplete @handles after a few characters. If a colleague recently joined, refresh the member list or wait for directory sync before assuming a name is missing.
-
-### Bots and integrations
-
-Some integrations post as service accounts. Mentions to those accounts may open tickets or chat channels—confirm behavior in your automation settings.
+Before publishing a page, check the comments panel to make sure all open threads have been resolved. Unresolved comments don't block publishing, but they're a signal that someone is still waiting on a response.
 
 ## Notifications
 
-Mute noisy threads or adjust frequency in personal notification settings. Batch digests work well for deep work; real-time alerts suit on-call rotations or launch weeks.
+Mintlify sends email notifications when:
+- Someone leaves a comment on a page you've edited.
+- Someone replies to a thread you're part of.
 
-### Email vs in-app
+Adjust notification preferences in your account settings if the volume is too high.
 
-If email feels loud, switch critical threads to in-app only and reserve email for @mentions directly to you. Mobile push can mirror desktop preferences or be disabled for weekends.
+## Best practices
+
+- Use comments for feedback during review, not for long-term notes. Resolve threads once the issue is addressed.
+- If you need to leave a note for future editors (not just reviewers), add it as a code comment in the MDX source instead — those persist in the file.

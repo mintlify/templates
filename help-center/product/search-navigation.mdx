@@ -1,35 +1,41 @@
 ---
 title: "Search and navigation"
 sidebarTitle: "Search"
-description: "Find projects, pages, and automation using search."
+description: "How search works on your Mintlify docs site and how to configure navigation."
 ---
 
-Search is the fastest path from “where was that?” to the right page—especially as your workspace grows. Combine query syntax, filters, and recents to cut noise and land on canonical answers your team already wrote.
+Mintlify includes built-in search on every docs site. No external search provider or index configuration required.
 
-## Global search
+## Reader search
 
-Search spans titles, bodies, and selected metadata. Filters narrow results by owner, date, and type so you can answer “what changed last week?” without scanning every project.
+Readers can search your docs by clicking the search bar or pressing `⌘K`. Search covers page titles, headings, and body content.
 
-### Operators
+### AI search
 
-Use quoted phrases for exact matches and minus terms to exclude noise (for example, a term you know appears in boilerplate). Combine filters when you remember the author but not the title.
+On Growth and Enterprise plans, enable AI search in **Project Settings → Search**. AI search understands natural language questions — readers can ask "how do I do X?" and get a direct answer drawn from your docs, rather than a list of links.
 
-### Ranking
+### Search analytics
 
-Results usually favor recent edits and stronger title matches. If something ranks oddly, try a more specific phrase or open the containing project and browse by folder structure.
+The **Analytics → Search** tab in your dashboard shows what readers are searching for, including queries that returned no results. Use the "no results" list to identify gaps in your documentation.
 
-## Recent
+## Site navigation
 
-Recent items appear in the sidebar for fast return visits. Clear recents when demoing or handing off a laptop so you do not leak internal titles on a shared screen.
+Your docs site's navigation is defined in `docs.json`. The sidebar structure supports:
 
-### Pinning
+- **Groups** — Collapsible sections containing pages.
+- **Tabs** — A top-level nav bar for switching between major sections.
+- **Anchors** — Persistent links to external URLs or specific pages, always visible in the sidebar.
 
-If your client supports pins or favorites, use them for runbooks and onboarding hubs you open daily—faster than typing the same query repeatedly.
+### Tips for good navigation
 
-## Tips
+- Keep group names short and action-oriented ("Get started", "Configure", "Reference").
+- Limit nesting to 2-3 levels — deeper hierarchies are hard to scan.
+- Use anchors for frequently accessed external links like your API reference or changelog.
 
-Use quoted phrases for exact matches and minus terms to exclude noise. When you find the canonical page, add a short internal link from related articles so the next person finds it in one click.
+## Editor navigation
 
-### When search is not enough
+In the web editor, the sidebar on the left shows all pages in your docs site. You can drag pages to reorder them, create new pages with the `+` button, and rename pages by clicking on their name.
 
-If content is missing, file a docs ticket or add a stub page—search cannot surface what does not exist yet. For automation IDs, search by stable slug or external key when titles drift.
+<Note>
+  Navigation order in the web editor reflects the order in `docs.json`. If you reorder pages in `docs.json` directly via Git, the change will appear in the editor after the next sync.
+</Note>

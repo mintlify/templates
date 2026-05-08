@@ -1,33 +1,33 @@
 ---
-title: "Rate limits"
-sidebarTitle: "Rate limits"
-description: "Understand automation rate limits and how to design around them."
+title: "Build limits and quotas"
+sidebarTitle: "Build limits"
+description: "Mintlify build limits, concurrent deployments, and what to do when you hit them."
 ---
 
-Rate limits keep shared infrastructure healthy. Treat them as part of your design—not surprises—when you connect automation to external APIs or run fan-out jobs across many tenants.
+Mintlify imposes some limits on deployments to keep the build infrastructure reliable for all customers.
 
-## Defaults
+## Concurrent builds
 
-Limits protect shared infrastructure. Burst allowances exist for short spikes, but sustained traffic above quota will throttle or fail requests—often with `429` responses you must handle.
+By default, a project can have one active build at a time. If a new push arrives while a build is in progress, Mintlify queues the new build and starts it when the current one finishes.
 
-### Headers
+For high-velocity teams that push frequently, this means two rapid pushes may result in one of them being built after a short wait.
 
-Many APIs return `Retry-After` or rate-limit headers. Log them during integration testing so your backoff code respects server hints instead of guessing.
+## Build frequency
 
-## Strategies
+There's no hard limit on how many deployments you can trigger per day, but very frequent deployments (many per minute) may be rate-limited temporarily. If you're triggering programmatic deployments, add a delay between requests.
 
-- Batch work where possible—one request with twenty IDs beats twenty serial requests.
-- Queue externally when needed so spikes flatten into steady throughput.
-- Shed load with sampling under stress: process every Nth event until pressure drops.
+## Large repositories
 
-### Tenant fairness
+Build times scale with the number of pages in your docs site. Most sites with fewer than 1,000 pages build in under a minute. Very large sites (thousands of pages) may take a few minutes.
 
-Multi-tenant systems sometimes enforce per-tenant caps. Coordinate with platform admins if one customer’s automation crowds others.
+To reduce build times:
+- Avoid generating pages dynamically from external sources — pre-render content where possible.
+- Keep images optimized — large image files slow down builds and page loads.
 
-## Monitoring
+## Plan limits
 
-Graph throttle events to spot hot workflows early. Alert when throttle rates exceed a baseline for more than a few minutes—often the first sign of an infinite loop or misconfigured poll interval.
+Starter plans are limited to one project. Growth and Enterprise plans support multiple projects. Check **Settings → Billing** for the limits on your current plan.
 
-### Capacity planning
-
-Before launch week, rehearse peak traffic with load tests against staging. Compare observed QPS to your quotas and pad headroom for retries.
+<Info>
+  If you're consistently hitting build quotas or need higher concurrency, contact [support](mailto:support@mintlify.com) — Enterprise plans include custom limits.
+</Info>

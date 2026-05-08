@@ -1,35 +1,43 @@
 ---
-title: "Conditions and branches"
-sidebarTitle: "Conditions & branches"
-description: "Model conditional paths and merge strategies in workflows."
+title: "Branch deployments"
+sidebarTitle: "Branch deployments"
+description: "Deploy specific branches to dedicated environments for staging and feature preview."
 ---
 
-Branches let workflows mirror real decisions: approvals vs auto-reject, regional routing, or parallel reviews that must all pass. Invest time in condition clarity—ambiguous logic becomes expensive to debug under load.
+Beyond PR previews, you can configure Mintlify to deploy specific branches to dedicated, persistent environments. This is useful for staging environments or long-running feature branches.
 
-## Conditions
+## Configure branch deployments
 
-Express rules with comparisons on fields, regex, and presence checks. Prefer explicit comparisons over implicit truthiness so empty strings and nulls behave predictably.
+1. Go to **Project Settings → Git → Additional branches**.
+2. Add the branches or branch patterns you want to deploy automatically.
+3. Each branch gets a unique subdomain: `[project]-[branch].mintlify.app`.
 
-### Short-circuit behavior
+### Branch patterns
 
-Know whether conditions evaluate lazily. If expensive checks run even when a prior clause already failed, you may hit rate limits unnecessarily.
+You can use wildcards to match multiple branches:
+- `staging` — deploy the `staging` branch.
+- `feature/*` — deploy any branch starting with `feature/`.
+- `release/*` — deploy any branch starting with `release/`.
 
-### Testing matrices
+## Common patterns
 
-Build a small table of inputs and expected branches before go-live. Include malformed payloads your API might emit during incidents.
+### Staging environment
 
-## Branches
+Use a `staging` branch as a buffer before production. Writers merge to `staging` for internal review, then merge to `main` for production release.
 
-Run mutually exclusive branches or parallel branches that join later. Parallel paths reduce latency but require clear merge semantics when both sides finish out of order.
+```
+feature/update-api-docs → staging (internal review) → main (production)
+```
 
-### Dependencies
+### Version-specific docs
 
-If branch B needs artifacts from branch A, enforce ordering with explicit dependencies rather than hoping wall-clock timing works out.
+For products with multiple supported versions, deploy each version from a separate branch:
 
-## Merge
+- `v1` branch → `v1.docs.yourcompany.com`
+- `v2` branch → `v2.docs.yourcompany.com`
 
-Define how conflicting branch outputs combine—first wins, merge maps, or custom reducers. Document the merge rule in the workflow description so the next editor does not “simplify” it incorrectly.
+Use Mintlify's versioning feature in `docs.json` to add a version selector within a single project instead if you prefer to keep versions in one place.
 
-### Conflicts
-
-When two branches set the same field, specify precedence. Last-write-wins is easy but surprising; structured merges are safer for financial totals.
+<Info>
+  Branch deployments count toward your plan's project limits. Check your plan details if you're adding many branch environments.
+</Info>

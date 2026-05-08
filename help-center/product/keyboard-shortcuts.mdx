@@ -1,39 +1,45 @@
 ---
 title: "Keyboard shortcuts"
 sidebarTitle: "Shortcuts"
-description: "Speed up navigation and editing with keyboard shortcuts."
+description: "Speed up navigation and editing in the Mintlify web editor and dashboard."
 ---
 
-Shortcuts reduce context switching: keep hands on the keyboard for formatting, navigation, and comments. The tables below cover common defaults; your organization may publish a one-page cheat sheet for onboarding.
+Keyboard shortcuts make navigating and editing faster. Here are the most useful ones for the Mintlify web editor and dashboard.
 
-## General
-
-| Action | Shortcut |
-|--------|----------|
-| Command palette | ⌘K / Ctrl+K |
-| Search | ⌘P / Ctrl+P |
-
-On Windows and Linux, **Ctrl** replaces **⌘** where both are listed. If a shortcut conflicts with your browser or OS, disable the conflicting extension or remap inside the product when supported.
-
-## Editor
+## Global
 
 | Action | Shortcut |
 |--------|----------|
-| Bold | ⌘B / Ctrl+B |
-| Comment | ⌘⌥M / Ctrl+Alt+M |
+| Open command palette | `⌘K` / `Ctrl+K` |
+| Open search | `⌘K` / `Ctrl+K`, then type |
+| Toggle dark mode | Available in the user menu |
 
-### Selection and blocks
+On Windows and Linux, `Ctrl` replaces `⌘` in all shortcuts.
 
-Many editors support **⌘D** / **Ctrl+D** for multi-cursor or duplicate-line behaviors—check in-app hints because they can vary by block type (paragraph vs code).
+## Web editor
 
-### Accessibility
+| Action | Shortcut |
+|--------|----------|
+| Bold | `⌘B` / `Ctrl+B` |
+| Italic | `⌘I` / `Ctrl+I` |
+| Inline code | `⌘E` / `Ctrl+E` |
+| Add link | `⌘K` / `Ctrl+K` (with text selected) |
+| Heading 1 | `#` at the start of a line |
+| Heading 2 | `##` at the start of a line |
+| Heading 3 | `###` at the start of a line |
+| Bulleted list | `-` at the start of a line |
+| Numbered list | `1.` at the start of a line |
 
-If reduced-motion or sticky keys are enabled at the OS level, chord shortcuts may require slower presses. Screen reader users should verify focus lands in the expected region after palette commands.
+## Component shortcuts
 
-## Customize
+Type `/` at the beginning of a line to open the component picker. Start typing the component name to filter:
 
-Some shortcuts can be remapped in **Settings → Accessibility** on supported clients. Export your mapping before switching machines so you can import or recreate it on a new laptop.
+- `/note` → Insert a Note callout
+- `/warning` → Insert a Warning callout
+- `/steps` → Insert a Steps component
+- `/code` → Insert a code block
+- `/card` → Insert a Card
 
-### Conflicts with input methods
+## Markdown
 
-IME users composing CJK text may need to disable certain chords temporarily or use the command palette instead of direct shortcuts that steal modifier keys.
+The Mintlify web editor understands standard Markdown shortcuts. Most formatting can be applied either through the toolbar or via keyboard. If you're more comfortable writing raw MDX, switch to the code view using the toggle in the top-right corner of the editor.

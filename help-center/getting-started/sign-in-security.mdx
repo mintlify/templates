@@ -1,37 +1,37 @@
 ---
-title: "Sign-in and security basics"
+title: "Sign-in and security"
 sidebarTitle: "Sign-in & security"
-description: "Passwords, SSO, session length, and how we protect your workspace."
+description: "Authentication options, SSO, and security best practices for your Mintlify account."
 ---
 
-Good security balances friction for attackers without blocking legitimate work. Understand how people authenticate, how long sessions last, and what admins can require before high-risk actions.
+Mintlify supports several authentication methods. Choose the one that fits your team's security requirements and identity provider setup.
 
 ## Authentication options
 
-- Email and password with optional MFA
-- SAML SSO on eligible plans
-- IdP-initiated login where supported
+- **GitHub or GitLab OAuth** — Sign in with your Git provider account. Fast to set up and familiar to developers.
+- **Email and password** — Standard email-based login with an optional magic link.
+- **SAML SSO** — Available on Growth and Enterprise plans. Connect your identity provider (Okta, Azure AD, Google Workspace, etc.) for centralized authentication.
 
-### MFA
+### Enabling SSO
 
-Require MFA for every member when your data classification demands it—not only admins. Attackers target contributors with broad file access too.
+SSO is configured at the organization level by an Admin:
 
-### SSO cutover
+1. Go to **Settings → Security → SSO**.
+2. Select your identity provider.
+3. Enter the metadata URL or upload the XML metadata file from your IdP.
+4. Map the required attributes (email, name).
+5. Test with a pilot user before enforcing SSO for all members.
 
-Plan a maintenance window when enabling SAML: communicate downtime, validate attribute mapping with a pilot group, and keep a break-glass local admin.
+<Warning>
+  Keep at least one non-SSO admin account as a break-glass access method while you validate SSO. If the IdP configuration is wrong, you could lock everyone out.
+</Warning>
 
 ## Sessions
 
-Sessions expire after a period of inactivity. Admins can require re-authentication for sensitive actions. Shorter sessions reduce risk on shared machines; longer sessions reduce nagging on trusted laptops.
-
-### Device hygiene
-
-Encourage disk encryption and screen locks on machines that hold session cookies. Remote wipe policies complement session timeouts for lost hardware.
+Mintlify sessions stay active until you sign out or the session expires. If your organization requires shorter session lifetimes, configure the session duration in **Settings → Security**.
 
 ## Best practices
 
-Enforce MFA for all admins, use separate staging and production workspaces, and review connected OAuth apps quarterly.
-
-### OAuth review
-
-Remove tokens for tools you no longer use—old integrations keep API access until revoked. Pair reviews with offboarding checklists when people change roles.
+- Use a dedicated service account to connect Mintlify to your CI/CD pipeline rather than a personal account — this prevents access loss when team members change.
+- Rotate API keys periodically and immediately when someone with access leaves the team.
+- Review connected OAuth apps quarterly and revoke any you no longer use.
