@@ -1,6 +1,6 @@
 ---
 title: "Incident response"
-description: "How we detect, respond to, and learn from production incidents."
+description: "How Mintlify detects, responds to, and learns from production incidents."
 ---
 
 When something breaks in production, the goal is to restore service as quickly as possible — then understand why.
@@ -9,17 +9,17 @@ When something breaks in production, the goal is to restore service as quickly a
 
 | Level | Description | Response target |
 |-------|-------------|-----------------|
-| SEV-1 | Production down or data loss | Immediate, all hands |
-| SEV-2 | Significant degradation, major feature broken | Within 30 minutes |
+| SEV-1 | Docs sites down or data loss | Immediate, all hands |
+| SEV-2 | Significant degradation, builds broken, major feature down | Within 30 minutes |
 | SEV-3 | Minor degradation, workaround available | Within 2 hours |
 | SEV-4 | Cosmetic or low-impact issue | Next business day |
 
-## Responding to an alert
+## Responding to an incident
 
-1. **Acknowledge** the alert in your alerting tool to signal you're on it.
-2. **Assess severity** — is this SEV-1/2 or lower?
-3. **Open a war room** — for SEV-1/2, create a Slack thread in `#incidents` and invite your on-call partner.
-4. **Mitigate first** — roll back, disable a feature flag, or scale up before diagnosing root cause.
+1. **Acknowledge** the alert in your alerting tool to stop re-paging.
+2. **Assess severity** — SEV-1/2 or lower?
+3. **Open a thread** — for SEV-1/2, start a thread in `#incidents` on Slack and tag the team.
+4. **Mitigate first** — roll back on Vercel, disable a feature flag, or scale up before diagnosing root cause.
 5. **Communicate** — post updates to `#incidents` every 15 minutes until resolved.
 6. **Resolve and document** — mark the incident resolved and file a postmortem for SEV-1/2.
 

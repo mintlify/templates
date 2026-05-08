@@ -1,44 +1,41 @@
 ---
 title: "VPN setup"
-description: "Connect to the company VPN to access internal tools and systems."
+description: "Connect to the Mintlify VPN to access internal tools and development environments."
 ---
 
-The VPN client is installed automatically by MDM. This guide covers connecting for the first time and troubleshooting common issues.
+Mintlify uses Tailscale for VPN. The client is installed automatically by MDM — this guide covers connecting for the first time and resolving common issues.
 
 ## First connection
 
-1. Open the VPN client from your Applications folder (macOS) or Start menu (Windows).
-2. When prompted for a server, enter the address IT provided in your welcome email.
-3. Authenticate with your credentials and MFA.
-4. You should see a "Connected" status within 10 seconds.
+1. Open **Tailscale** from your Applications folder or menu bar.
+2. Click **Log in** and authenticate with your `@mintlify.com` Google account.
+3. You'll see a "Connected" status in the menu bar icon within a few seconds.
+4. Your device is now on the Mintlify network.
 
 ## When VPN is required
 
-VPN is required to access:
+Tailscale is required to access:
 
-- Internal dashboards and admin tools
-- Staging and production environments
-- Code repositories
-- HR portal and payroll systems
+- Internal staging and development environments
+- Database admin tools
+- Internal dashboards (monitoring, logs)
 
-VPN is not required for: email, Slack, Zoom, or any SaaS tool that uses SSO.
+VPN is **not** required for: email, Slack, Linear, Notion, GitHub, Figma, or Vercel — these use SSO directly.
 
-## Split vs. full tunnel
+## Split tunnel
 
-The VPN is configured as split tunnel by default — only traffic destined for internal systems routes through the VPN. Normal web browsing goes direct. Do not change this setting.
+Tailscale is configured as split tunnel by default — only traffic destined for Mintlify's internal network routes through the VPN. Normal internet traffic goes direct. Do not change this configuration.
 
 ## Staying connected
 
-The VPN client reconnects automatically after sleep or network changes. If it doesn't, disconnect and reconnect manually.
-
-For remote work from a different country, check with IT first — some geo-restrictions apply.
+Tailscale reconnects automatically after sleep or network changes. If it disconnects and doesn't reconnect, click the menu bar icon and select **Connect**.
 
 ## Troubleshooting
 
-**Can't authenticate** — Make sure your MFA is set up. If it was recently reset, contact IT.
+**Not showing as connected after login** — Make sure MDM enrollment completed successfully. See [laptop setup](/onboarding/tools/laptop-setup).
 
-**Connected but can't reach internal tools** — Try disconnecting and reconnecting. If the issue persists, restart the VPN client.
+**Connected but can't reach an internal service** — Try disconnecting and reconnecting Tailscale. If the issue persists, post in `#general` with the URL you're trying to reach.
 
-**VPN client not installed** — Check that MDM enrollment completed. See [laptop setup](/onboarding/tools/laptop-setup).
+**Kicked out of Tailscale network** — Your device may have failed a health check (e.g., OS out of date, FileVault disabled). Check Kolide in your menu bar for any flagged issues.
 
-Still stuck? File an [IT ticket](/it-security/access-requests).
+Still stuck? Post in `#general` on Slack.
