@@ -11,7 +11,7 @@ mode: custom
         How can we help?
       </h1>
       <p className="text-center text-balance text-base text-gray-600 dark:text-gray-400 mt-2">
-        Search the Help Center for setup guides, product how-tos, automation tips, and policies—all in one
+        Search the Mintlify Help Center for setup guides, deployment how-tos, editor tips, and legal docs—all in one
         place.
       </p>
     </div>
@@ -59,7 +59,7 @@ mode: custom
       <div className="flex flex-wrap items-center justify-center gap-3 text-sm text-gray-500 dark:text-gray-400">
         <span>Popular searches</span>
         <div className="flex flex-wrap justify-center gap-1">
-          {['integrations', 'workspace', 'billing'].map((term) => (
+          {['custom domain', 'deployment', 'web editor'].map((term) => (
             <button
               key={term}
               type="button"
@@ -82,16 +82,16 @@ mode: custom
         horizontal
         icon="rocket"
         iconType="light"
-        title="Getting started & account"
+        title="Getting started"
         href="/getting-started"
       >
-        Account setup, workspace, billing, and integrations
+        Account setup, billing, integrations, and your first deploy
       </Card>
       <Card horizontal icon="book-open" iconType="light" title="Product guides" href="/product">
-        Interface, projects, editor, automation, and workflows
+        Dashboard, web editor, projects, and deployments
       </Card>
-      <Card horizontal icon="life-buoy" iconType="light" title="Support & policies" href="/support">
-        Help, status, troubleshooting, data, and policies
+      <Card horizontal icon="life-buoy" iconType="light" title="Support & legal" href="/support">
+        Contact support, status, troubleshooting, and legal docs
       </Card>
     </Columns>
   </div>
@@ -102,13 +102,13 @@ mode: custom
     <h3 className="text-base font-medium text-gray-900 dark:text-gray-50">All guides</h3>
     <Columns cols={3}>
     <Card
-      title="Workspace"
+      title="Organization & members"
       icon="users"
       iconType="light"
       href="/getting-started/workspace"
       cta="3 articles"
     >
-      Invites, roles, and organization settings
+      Invite editors, assign roles, and configure org settings
     </Card>
     <Card
       title="Billing & plans"
@@ -117,7 +117,7 @@ mode: custom
       href="/getting-started/billing"
       cta="3 articles"
     >
-      Compare plans, upgrades, and invoices
+      Compare plans, upgrade, and download invoices
     </Card>
     <Card
       title="Developer integrations"
@@ -126,7 +126,7 @@ mode: custom
       href="/getting-started/integrations/developer"
       cta="3 articles"
     >
-      OAuth apps, webhooks, and API keys
+      API keys, deployment webhooks, and private docs auth
     </Card>
     <Card
       title="Projects"
@@ -135,7 +135,7 @@ mode: custom
       href="/product/projects"
       cta="2 articles"
     >
-      Create projects and archive or restore them
+      Create and manage your Mintlify docs projects
     </Card>
     <Card
       title="Troubleshooting"
@@ -144,7 +144,7 @@ mode: custom
       href="/support/troubleshooting"
       cta="2 articles"
     >
-      Login issues and performance troubleshooting
+      Login issues, build failures, and performance problems
     </Card>
     <Card
       title="Legal & compliance"
@@ -153,7 +153,7 @@ mode: custom
       href="/support/legal"
       cta="7 articles"
     >
-      Terms of service, privacy & GDPR, and regional specifics
+      Terms of service, privacy policy, DPA, and regional data
     </Card>
     </Columns>
   </div>
@@ -169,40 +169,40 @@ mode: custom
 
   <Columns cols={2} className="suggested-articles">
     <Card
-      title="Quickstart: get set up in under 15 minutes"
+      title="Deploy your docs in under 15 minutes"
       icon="timer"
       iconType="light"
       href="/getting-started/quickstart"
       cta="Read article"
     >
-      A fast path from signup to first project: invites, roles, and your first integration.
+      Connect your repo, deploy your site, and make your first edit.
     </Card>
     <Card
-      title="Conditions and branches"
+      title="Set up PR previews"
       icon="git-branch"
       iconType="light"
-      href="/product/automation/workflows/conditions-branches"
+      href="/product/automation/workflows/build-first-workflow"
       cta="Read article"
     >
-      Model conditional paths and merge strategies in workflows.
+      Review docs changes at a unique URL before merging to production.
     </Card>
     <Card
-      title="Privacy policy"
-      icon="scroll-text"
+      title="Custom domain setup"
+      icon="globe"
       iconType="light"
-      href="/support/legal/privacy/privacy-policy"
+      href="/getting-started/integrations/partners/custom-connector-template"
       cta="Read article"
     >
-      Demo privacy policy for this help center.
+      Point docs.yourcompany.com to your Mintlify project.
     </Card>
     <Card
-      title="Connect your CRM"
-      icon="building-2"
+      title="Connect an analytics provider"
+      icon="chart-bar"
       iconType="light"
       href="/getting-started/integrations/connect-crm"
       cta="Read article"
     >
-      Link Salesforce or HubSpot through partner connectors or a custom sync strategy.
+      Add PostHog, GA4, or another analytics tool to your docs site.
     </Card>
   </Columns>
 </div>

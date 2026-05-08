@@ -1,32 +1,33 @@
 ---
-title: "Quickstart: get set up in under 15 minutes"
+title: "Deploy your docs in under 15 minutes"
 sidebarTitle: "Quickstart"
-description: "A fast path from signup to first project: invites, roles, and your first integration."
+description: "Connect your repository, deploy your site, and make your first edit."
 ---
 
-This checklist gets a small team from zero to a credible pilot: verified accounts, a safe place to collaborate, and one integration proving data can flow in and out. Adjust order if your security team requires SSO before invites.
+This guide gets you from zero to a live Mintlify docs site with a deployed URL and your first published change.
 
 ## Before you begin
 
-- A verified email you can access
-- Admin access if you are enabling SSO later
-- Rough idea of who belongs in the pilot (five to fifteen people is typical)
-
-If you are migrating from another tool, keep a CSV of users and roles handy—you will move faster than recreating access from memory.
+- A GitHub or GitLab account (either will work)
+- A repository for your documentation, or permission to create one
 
 ## Steps
 
-1. **Create your organization** — Pick a name your team will recognize in notifications. Avoid internal codenames if customers might see the name on shared artifacts.
-2. **Invite teammates** — Start with a small pilot group before rolling out widely. Ask them to accept within a week so you are not debugging expired invites during launch.
-3. **Connect one integration** — Choose Slack or your CRM to see data flow end to end. Validate credentials in a sandbox or test channel first.
-4. **Create a first project** — Use it as a sandbox for workflows and permissions. Seed a few realistic tasks so demos feel grounded.
+1. **Sign up** — Go to [mintlify.com/start](https://mintlify.com/start) and create your account. You can sign up with GitHub for a faster setup.
 
-### Time checks
+2. **Connect your repository** — Select the GitHub or GitLab repo that contains your docs. Mintlify installs a GitHub App that watches for pushes and triggers deployments automatically.
 
-If any step waits on IT (DNS, SSO metadata, firewall rules), parallelize what you can—draft project structure while tickets move.
+3. **Wait for the first deploy** — The initial build takes about a minute. When it's done, your site is live at a `*.mintlify.app` URL shown in your dashboard.
+
+4. **Make your first edit** — Choose your path:
+   - **Web editor** — Click **Edit** in the dashboard. Edit pages in the browser and click **Publish** when ready.
+   - **CLI** — Run `npm i -g mintlify && mintlify dev` to preview locally, then push to Git to deploy.
+
+5. **Share a preview** — Open a pull request. Mintlify automatically builds a preview deployment and posts the URL as a status check on the PR.
 
 ## Next steps
 
-Review [sign-in and security](/getting-started/sign-in-security) and explore the [workspace](/getting-started/workspace) guides when you are ready to tighten access.
-
-Consider a short retro after week one: what confused newcomers, which doc they opened first, and whether search surfaced the right page.
+- Set a [custom domain](/getting-started/integrations/partners/custom-connector-template) so your docs live at `docs.yourcompany.com`.
+- [Invite teammates](/getting-started/workspace/invite-teammates) to edit and review.
+- [Connect an analytics provider](/getting-started/integrations/connect-crm) to track page views and search queries.
+- Explore [Mintlify's component library](https://mintlify.com/docs/components) to add Cards, Steps, Tabs, and more.

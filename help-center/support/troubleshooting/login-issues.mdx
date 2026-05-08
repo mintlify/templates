@@ -1,35 +1,40 @@
 ---
 title: "Login issues"
 sidebarTitle: "Login issues"
-description: "Resolve password resets, SSO failures, and session problems."
+description: "Fix problems signing in to Mintlify — password resets, SSO errors, and session issues."
 ---
 
-Login problems cluster around expired passwords, SSO misconfiguration, and browser state. Work through the sections below before opening a ticket—most resolutions take minutes.
+If you can't sign in to Mintlify, work through these steps before contacting support. Most issues resolve within minutes.
 
-## Password reset
+## Can't sign in with email
 
-Use the reset link once; repeated clicks invalidate older tokens.
+1. Try the **Forgot password** link on the sign-in page.
+2. Check your spam folder for the password reset email — Mintlify sends from `noreply@mintlify.com`.
+3. If the reset email doesn't arrive within 5 minutes, check whether your email provider is blocking the sender domain, or contact your IT team.
 
-### Inbox rules
+## Can't sign in with GitHub
 
-If resets never arrive, check quarantine and forwarding rules. Some enterprises strip links from unknown senders.
+1. Make sure you're signing in with the same GitHub account that's connected to your Mintlify organization.
+2. Try signing out of GitHub in your browser and signing back in, then retry the Mintlify login.
+3. If your GitHub organization uses SSO, complete the GitHub SSO authorization first.
 
-## SSO
+## SSO errors
 
-Confirm IdP certificates are valid and attribute mappings match service expectations.
+| Error | Likely cause | Fix |
+|-------|-------------|-----|
+| "SAML configuration error" | Invalid IdP metadata or certificate | Re-upload the metadata from your IdP and verify the certificate hasn't expired. |
+| "User not found" | Email claim doesn't match Mintlify | Confirm the email attribute in the SAML assertion matches the email on the Mintlify account. |
+| "Clock skew detected" | Server time mismatch | Sync the clock on your IdP server with an NTP source. |
 
-### SAML traces
+## Session expired
 
-Capture a SAML trace from your IdP when failures persist—support can compare assertion attributes to what the product expects.
+If you're repeatedly logged out, check whether your browser is blocking cookies from `mintlify.com`. Mintlify uses first-party cookies for session management — blocking them causes immediate session expiry.
 
-### Clock skew
+In Chrome: **Settings → Privacy and security → Cookies → Allow `mintlify.com`**.
 
-Large skew between IdP and SP can break assertions—sync NTP on servers.
+## Can't access a specific project
 
-## Sessions
-
-Clear site data for stale cookies and retry from a private window to isolate extensions.
-
-### Corporate proxies
-
-SSL inspection occasionally breaks OAuth flows—try off-network or a personal device to isolate the proxy as a variable.
+If you can sign in but can't see a project:
+- Confirm you've been invited to the project (or the organization containing it).
+- Ask an Admin to verify your membership in **Settings → Members**.
+- Check whether the project requires SSO — you may need to complete SSO enrollment first.

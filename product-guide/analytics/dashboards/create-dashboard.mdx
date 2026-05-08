@@ -1,42 +1,44 @@
 ---
-title: Create a dashboard
-description: Steps to create, name, and organize a dashboard.
+title: Analytics dashboard
+sidebarTitle: Analytics dashboard
+description: What you can measure natively in the Mintlify dashboard and how to use it.
 ---
 
-Dashboards group related charts and metrics into a single view. This guide walks through creating a dashboard from scratch and organizing its layout.
+Every Mintlify project includes a built-in analytics dashboard, visible to project Admins under the **Analytics** tab. No external service required.
 
-## Create a new dashboard
+## Overview metrics
 
-1. Go to **Analytics → Dashboards**.
-2. Click **New dashboard**.
-3. Enter a name. Use a name that reflects the audience or question the dashboard answers—for example, "Revenue by region" or "Support queue health".
-4. Optionally add a description to help teammates understand the dashboard's purpose.
-5. Click **Create**.
+The top of the dashboard shows summary cards for the selected date range:
 
-## Add charts
+- **Total page views** — All page loads across your site, including repeat visitors.
+- **Unique visitors** — Distinct readers estimated using anonymous session identifiers.
+- **Searches** — Total number of search bar queries.
+- **Feedback votes** — Combined thumbs up and thumbs down responses across all pages.
 
-With the dashboard open, click **Add chart** to insert a new visualization. Each chart is configured independently and can pull from any connected data source.
+Click any metric card to jump to the detailed view for that signal.
 
-For help choosing chart types and configuring axes, see [charts and visualizations](/analytics/dashboards/charts-visualizations).
+## Page performance
 
-## Arrange the layout
+The page table lists every page on your site with view counts for the selected period. Use it to:
 
-Charts can be resized and repositioned by dragging. The grid snaps to a 12-column layout. To reorganize:
+- Find your most-read pages and make sure they're up to date.
+- Spot pages with near-zero views that may be hard to discover.
+- Identify pages that drive the most search traffic (cross-reference with search queries).
 
-1. Click **Edit layout** in the dashboard toolbar.
-2. Drag charts to new positions.
-3. Resize by dragging the bottom-right corner of any chart.
-4. Click **Save layout** when done.
+Sort by views or percentage change to surface trends quickly.
 
-<Info>
-  Layout changes are saved separately from chart configuration. You can rearrange without affecting the underlying queries.
-</Info>
+## Search insights
 
-## Dashboard settings
+The search report shows every query typed into your search bar, ranked by frequency. The most valuable column is **No results** — queries that returned zero matches. These are gaps in your documentation.
 
-Access dashboard-level settings from the **⋯** menu in the header:
+<Tip>
+  Export the no-results list and use it as a backlog for new content. Readers who searched and found nothing are the clearest signal of what's missing.
+</Tip>
 
-- **Rename** — Update the dashboard name and description.
-- **Duplicate** — Copy the dashboard to a new one, including all charts and layout.
-- **Auto-refresh** — Set a refresh interval (30 seconds, 1 minute, or 5 minutes) for live monitoring dashboards.
-- **Delete** — Permanently removes the dashboard. Charts are not deleted and remain available as standalone components.
+## Feedback
+
+Each page on your site shows a thumbs up/down widget. The feedback report aggregates responses per page and lets you filter for pages with a net-negative score. Pages with many negative votes are strong candidates for a rewrite.
+
+## Date range and filtering
+
+Use the date picker in the top-right corner to select a custom range or one of the presets (last 7 days, last 30 days, last 90 days). The dashboard does not support filtering by segment or user property — use a [connected analytics provider](/analytics/connect-data) for that level of detail.

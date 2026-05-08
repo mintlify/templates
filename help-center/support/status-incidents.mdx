@@ -1,31 +1,41 @@
 ---
 title: "Status and incidents"
 sidebarTitle: "Status & incidents"
-description: "Where to find live status and how incidents are communicated."
+description: "Check Mintlify service status and subscribe to incident notifications."
 ---
 
-Transparency during incidents builds trust. Subscribe before you need it—during an outage you will not want to hunt for the status page URL.
+Mintlify publishes real-time service status and incident updates at [status.mintlify.com](https://status.mintlify.com).
 
 ## Status page
 
-Bookmark the status page for component health and historical incidents.
+The status page shows the current health of each Mintlify component:
 
-### Components
+- **Dashboard** — The Mintlify web dashboard and web editor.
+- **Deployments** — Build and deploy pipeline for all projects.
+- **Hosting** — CDN and serving infrastructure for deployed docs sites.
+- **API** — The Mintlify REST API.
 
-Understand which component maps to your integration path (API vs auth vs attachments) so partial outages make sense.
+When all components show "Operational," there are no known issues.
 
-## Subscriptions
+## Subscribe to updates
 
-Subscribe to email or RSS updates for maintenance windows.
+Click **Subscribe to updates** on the status page to receive notifications by email, RSS, Slack, or webhook when Mintlify creates, updates, or resolves an incident.
 
-### On-call
+Subscribe before you need it — you won't want to hunt for the status page during an outage.
 
-Mirror status subscriptions into your incident channel so whoever is on-call sees updates without checking email.
+### On-call teams
+
+If your team has an on-call rotation, route status page notifications to your incident channel in Slack or PagerDuty so on-call responders see Mintlify incidents alongside your own alerts.
+
+## During an incident
+
+When an incident is active:
+
+1. Check the status page for the current status and timeline.
+2. Look at the **Affected components** list to understand whether your use case is impacted.
+3. Check for workarounds in the incident update — Mintlify posts workarounds when available.
+4. Subscribe to the incident for updates rather than polling the status page manually.
 
 ## Postmortems
 
-Major incidents include summaries with remediation steps for transparency.
-
-### Your runbooks
-
-After a vendor incident, update your internal runbook with workarounds you discovered—future you will thank past you.
+After significant incidents, Mintlify publishes a postmortem on the status page explaining the root cause, timeline, and steps taken to prevent recurrence. Past incident history is available on the status page.

@@ -1,46 +1,80 @@
 ---
-title: General settings
-description: Configure workspace name, timezone, and display preferences.
+title: docs.json settings
+sidebarTitle: Settings
+description: Configure your site's name, appearance, navigation, and integrations in docs.json.
 ---
 
-General settings control how your workspace is identified, how dates and times are displayed, and which notification behaviors apply by default to all members.
+`docs.json` is the single configuration file that controls everything about your Mintlify site. It lives at the root of your documentation repository.
 
-Navigate to **Settings → General** to access these options.
+## Required fields
 
-## General
+Every `docs.json` must include these four fields:
 
-| Setting | Description |
-|---------|-------------|
-| **Workspace name** | The display name used in the UI, email notifications, and shared links. |
-| **Workspace slug** | The URL-safe identifier used in API calls. Changing this updates all URLs—notify your team before doing so. |
-| **Timezone** | The default timezone for date displays and scheduled jobs. Members can override this in their personal preferences. |
-| **Language** | The default display language for new members. |
+| Field | Description |
+|-------|-------------|
+| `name` | The site name shown in the browser tab and default social previews. |
+| `theme` | The visual theme (`mint`, `almond`, `willow`, `sequoia`, and others). |
+| `colors.primary` | Your brand's primary color as a hex code. Used for links, buttons, and accents. |
+| `navigation` | Defines the sidebar structure. See [navigation](/platform/key-concepts#navigation) for details. |
 
-## Security
+## Appearance
 
 <Tabs>
-  <Tab title="Session settings">
-    Control how long authenticated sessions remain active. Shorter session durations reduce risk if a device is lost, but require more frequent logins.
+  <Tab title="Logo and favicon">
+    Set `logo.light` and `logo.dark` to paths for your logo images. Mintlify switches between them based on the visitor's color scheme preference.
 
-    - **Session timeout** — Idle sessions are signed out after this period. Default is 7 days.
-    - **Force re-authentication** — Require password or SSO confirmation before accessing sensitive settings.
+    ```json
+    "logo": {
+      "light": "/logo/light.svg",
+      "dark": "/logo/dark.svg"
+    },
+    "favicon": "/favicon.ico"
+    ```
   </Tab>
-  <Tab title="IP allowlist">
-    Restrict access to specific IP ranges. When enabled, users outside the allowlist cannot authenticate, even with valid credentials.
+  <Tab title="Colors">
+    Beyond `colors.primary`, you can set `colors.light` and `colors.dark` for fine-grained control in each mode.
 
-    <Warning>
-      Verify your own IP is included before enabling the allowlist—you can lock yourself out.
-    </Warning>
+    ```json
+    "colors": {
+      "primary": "#0D9373",
+      "light": "#07C983",
+      "dark": "#0D9373"
+    }
+    ```
   </Tab>
-  <Tab title="SSO">
-    Connect a SAML 2.0 or OIDC identity provider to centralize authentication. Once SSO is enforced, password-based login is disabled for all non-admin members.
+  <Tab title="Fonts">
+    Override the default font by setting `styling.font`. Mintlify supports Google Fonts by name.
+
+    ```json
+    "styling": {
+      "font": "Inter"
+    }
+    ```
   </Tab>
 </Tabs>
 
-## Notification defaults
+## Site structure
 
-These settings apply to all new members. Existing members retain their personal notification preferences unless you reset them.
+- **`navbar`** — Configure the top navigation bar: links and a primary CTA button.
+- **`footer`** — Add social media links displayed at the bottom of every page.
+- **`banner`** — Show a site-wide announcement bar with a message and optional link.
+- **`redirects`** — Map old URLs to new ones to preserve links when you restructure content.
 
-- **Email digests** — Daily or weekly summaries of activity in projects the member belongs to.
-- **Mention alerts** — Immediate email when a member is @-mentioned in a comment or task.
-- **Project updates** — Notify members when a project they belong to changes status.
+## API settings
+
+If your docs include an API reference, configure it under `api`:
+
+```json
+"api": {
+  "openapi": "openapi.yaml",
+  "playground": {
+    "mode": "show"
+  }
+}
+```
+
+Mintlify reads your OpenAPI or AsyncAPI spec and generates interactive playground pages automatically.
+
+## SEO
+
+Set `metadata` fields to control how your site appears in search results and social link previews. The `timestamp` option adds a last-updated date to each page automatically from its Git history.

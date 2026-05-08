@@ -1,45 +1,49 @@
 ---
-title: Quickstart
+title: Add an integration
 sidebarTitle: Quickstart
-description: Connect your first integration in under 10 minutes.
+description: Connect a third-party service to your docs site by adding a few lines to docs.json.
 ---
 
-This guide walks through connecting a pre-built integration from the connector catalog. The steps are the same for most connector types—only the authentication method varies.
+Mintlify integrations are configured in `docs.json` — no separate dashboard or plugin installation required. This guide covers the general pattern. See the pages in this section for provider-specific details.
 
 ## Before you begin
 
-- Admin or Member role in your workspace
-- Credentials for the tool you want to connect (API key, OAuth app client ID and secret, or service account)
+- Your API key, tracking ID, or credentials from the service you want to connect
+- Write access to your documentation repository
 
 ## Steps
 
 <Steps>
-  <Step title="Find your integration">
-    Go to **Integrations → Catalog** and search for or browse to the tool you want to connect. Each connector card shows the authentication method and sync capabilities.
+  <Step title="Get your credentials">
+    Log in to the service you're connecting and find your API key, measurement ID, or project token. The exact location varies by provider — check the provider's documentation under "API keys" or "Tracking."
   </Step>
-  <Step title="Authenticate">
-    Click **Connect** on the connector. Depending on the authentication method:
+  <Step title="Add the integration to docs.json">
+    Open `docs.json` and add an `integrations` object if it doesn't exist yet. Add your provider and credentials:
 
-    - **API key** — Paste the key into the provided field.
-    - **OAuth 2.0** — Click **Authorize** to be redirected to the tool's authorization page. Sign in and grant access, then you'll be returned automatically.
-    - **Service account** — Upload the credentials file (usually a JSON key file) and enter any required fields.
+    ```json
+    "integrations": {
+      "posthog": {
+        "apiKey": "phc_your_key_here"
+      }
+    }
+    ```
 
-    See [Authentication methods](/integrations/authentication) for details on each approach.
+    For providers that need multiple fields (like Hotjar), the schema shows all required keys. See [authentication](/integrations/authentication) for how Mintlify handles credentials.
   </Step>
-  <Step title="Configure field mapping">
-    Map fields from the connected tool to your workspace's data model. Default mappings are pre-filled for common fields—review them and adjust as needed. Required fields are marked with an asterisk.
+  <Step title="Deploy">
+    Commit and push your updated `docs.json`. Mintlify deploys automatically and injects the integration script on every page.
   </Step>
-  <Step title="Test the connection">
-    Click **Test connection** to trigger a sample sync. The test pulls a small number of records and displays them for review. If the test fails, an error message explains the cause.
+  <Step title="Verify">
+    Visit your docs site and open your browser's network tab. Confirm the provider's script loaded and that events are appearing in the provider's dashboard. Most providers show a real-time event stream you can use for verification.
   </Step>
 </Steps>
 
 <Note>
-  Some connectors require the platform's outbound IP addresses to be allowlisted on your end. Check the connector's setup notes for IP requirements before testing.
+  You can add multiple integrations simultaneously. Each one listed in `docs.json` is loaded on every page of your site.
 </Note>
 
 ## Next steps
 
-- Review [authentication methods](/integrations/authentication) to understand when to rotate credentials.
-- Explore [connectors](/integrations/connectors) for category-specific setup details.
-- Set up [webhooks](/integrations/webhooks/configure) if you need event-driven automation.
+- See [supported analytics providers](/analytics/connect-data) for analytics and session recording tools.
+- Add a [chat or support widget](/integrations/connectors/crm) to let readers get help without leaving your docs.
+- Use [custom scripts](/integrations/webhooks/configure) for anything not covered by a built-in integration.

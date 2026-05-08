@@ -1,47 +1,58 @@
 ---
-title: Scheduled reports
-description: Deliver reports to inboxes on a recurring schedule.
+title: Analytics digests and alerts
+sidebarTitle: Digests and alerts
+description: Set up recurring reports and anomaly alerts from your connected analytics provider.
 ---
 
-Scheduled reports run automatically on a defined cadence and deliver results to one or more recipients via email or Slack. Use them to eliminate manual report pulls and keep stakeholders informed without extra effort.
+Mintlify's built-in analytics dashboard is on-demand. For scheduled reports and automated alerts, configure them in the analytics provider you've connected to your docs site.
 
-## Create a schedule
+## Scheduled email digests
 
-1. Open a saved report and click **Schedule delivery**.
-2. Set the frequency: daily, weekly, or monthly.
-3. Choose the day and time (all times are in the workspace timezone).
-4. Click **Next** to configure recipients.
-
-## Choose recipients
+Most analytics providers support recurring report delivery by email. Here's how to set one up in the most common tools:
 
 <Tabs>
-  <Tab title="Email">
-    Enter one or more email addresses. Recipients do not need to be workspace members—any valid email address works.
+  <Tab title="Google Analytics 4">
+    1. Open your GA4 property and go to **Reports**.
+    2. Build and save the report you want to schedule.
+    3. Click the share icon and select **Schedule email**.
+    4. Set the frequency (daily, weekly, monthly) and enter recipient addresses.
+    5. Click **Schedule**.
 
-    The delivery includes:
-    - A summary header with the report name and run time
-    - An inline preview of the first 10 rows
-    - A link to view or download the full report
-    - An attached CSV (optional—toggle in delivery settings)
+    Recipients receive a PDF snapshot of the report at the configured interval.
   </Tab>
-  <Tab title="Slack">
-    Connect your workspace's Slack integration (if not already connected), then select a channel or enter a direct message recipient.
+  <Tab title="PostHog">
+    1. Open your PostHog project and navigate to **Insights** or **Dashboards**.
+    2. Create or open the insight you want to monitor.
+    3. Click **Subscribe** and enter your email address.
+    4. Choose the delivery cadence.
 
-    The Slack message includes a summary card with row count and key metrics, plus a link to view the full report in the browser.
+    PostHog sends a snapshot of the insight to your inbox on the selected schedule.
+  </Tab>
+  <Tab title="Plausible">
+    1. Go to your Plausible site settings.
+    2. Under **Email reports**, enable weekly or monthly reports.
+    3. Add recipient email addresses.
 
-    <Info>
-      Slack delivery requires the Slack integration to be connected. See [Messaging connectors](/integrations/connectors/messaging) for setup steps.
-    </Info>
+    Plausible sends a concise weekly or monthly traffic summary directly to your inbox.
   </Tab>
 </Tabs>
 
-## Manage subscriptions
+## Anomaly alerts
 
-Scheduled deliveries are listed under **Analytics → Reports → Schedules**. From there you can:
+Set up alerts to be notified when traffic drops or spikes unexpectedly:
 
-- **Pause** a schedule without deleting it.
-- **Edit** the frequency, time, or recipient list.
-- **Run now** to trigger an immediate delivery outside the regular cadence.
-- **Delete** to permanently remove the schedule.
+- **Google Analytics 4** — Use the **Insights** feature under **Reports** to create custom alerts for significant changes in page views or sessions.
+- **PostHog** — Create an alert on any Insight by clicking **Set alert** and defining a threshold condition.
+- **Datadog / PagerDuty** — If your analytics data flows into an observability platform, create monitors on the docs traffic metrics you care about.
 
-Recipients can unsubscribe from scheduled emails using the unsubscribe link in the footer of each delivery. Admins can also remove recipients from the schedule management page.
+## Slack notifications
+
+Several providers support sending report summaries to Slack:
+
+- **PostHog** — Connect a Slack webhook in project settings and subscribe dashboards to it.
+- **Google Tag Manager + Google Apps Script** — Build a custom script to post GA4 data to a Slack webhook on a schedule.
+- **Plausible** — Use the Plausible API with a scheduled cloud function to push weekly summaries to Slack.
+
+<Note>
+  Mintlify does not send analytics reports directly. All scheduling and alerting is handled by your connected provider.
+</Note>

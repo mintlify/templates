@@ -1,61 +1,74 @@
 ---
-title: Connect a data source
-description: Supported sources and how to authenticate and configure sync frequency.
+title: Connect an analytics provider
+sidebarTitle: Connect a provider
+description: Supported analytics platforms and how to configure them in docs.json.
 ---
 
-Before you can build dashboards or run reports, you need to connect at least one data source. The platform supports databases, data warehouses, and SaaS tools through a unified connection interface.
+Mintlify integrates with most major analytics platforms. Add your provider's credentials to `docs.json` and Mintlify injects the tracking script on every page automatically.
 
-## Supported sources
+## Supported providers
 
 <Tabs>
-  <Tab title="Databases">
-    - PostgreSQL
-    - MySQL / MariaDB
-    - Microsoft SQL Server
-    - SQLite (file upload)
-    - Oracle Database
+  <Tab title="Product analytics">
+    - PostHog
+    - Mixpanel
+    - Amplitude
+    - Heap
+    - Segment (as a source for any downstream destination)
   </Tab>
-  <Tab title="Data warehouses">
-    - Snowflake
-    - Google BigQuery
-    - Amazon Redshift
-    - Databricks
-    - ClickHouse
+  <Tab title="Web analytics">
+    - Google Analytics 4
+    - Google Tag Manager
+    - Plausible
+    - Fathom
+    - Pirsch
+    - Microsoft Clarity
   </Tab>
-  <Tab title="SaaS tools">
-    - Salesforce
-    - HubSpot
-    - Stripe
-    - Google Analytics
-    - Zendesk
+  <Tab title="Session recording">
+    - Hotjar
+    - LogRocket
+    - Microsoft Clarity
   </Tab>
 </Tabs>
 
-## Connection settings
+## Configuration
 
-Navigate to **Analytics → Data sources → Add source** and complete the following fields:
+All providers are configured inside the `integrations` object in `docs.json`. Each entry uses the provider's name as the key:
 
-| Field | Description |
-|-------|-------------|
-| **Source name** | A human-readable label used in the UI. |
-| **Source type** | Select from the supported list above. |
-| **Host / URL** | Hostname or endpoint URL for the source. |
-| **Port** | Default ports are pre-filled for common sources. |
-| **Database / Schema** | The specific database or schema to connect to. |
-| **Username / API key** | Authentication credential for the source. |
-| **Password / Secret** | Stored encrypted and never displayed after saving. |
-| **SSL mode** | Require, prefer, or disable SSL. Require SSL for production sources. |
-
-Click **Test connection** to validate credentials before saving. Errors include a specific reason code to help troubleshoot firewall or credential issues.
-
-## Sync frequency
-
-After connecting a source, configure how often data is refreshed:
-
-- **Real-time** — Queries run live against the source on every dashboard load. Best for low-latency sources with indexed queries.
-- **Scheduled sync** — Data is fetched on a fixed interval (15 minutes, 1 hour, 6 hours, or daily) and cached. Best for large datasets or rate-limited APIs.
-- **Manual** — Refresh only when you click **Sync now**. Suitable for one-off data imports.
+```json
+"integrations": {
+  "ga4": {
+    "measurementId": "G-XXXXXXXXXX"
+  },
+  "posthog": {
+    "apiKey": "phc_your_key_here"
+  }
+}
+```
 
 <Info>
-  Scheduled sync intervals depend on your plan. Free plans support daily sync only.
+  You can configure multiple providers simultaneously. Mintlify loads all of them on every page.
 </Info>
+
+## Provider-specific fields
+
+| Provider | Key in docs.json | Required field |
+|----------|-----------------|----------------|
+| Google Analytics 4 | `ga4` | `measurementId` |
+| Google Tag Manager | `gtm` | `tagId` |
+| PostHog | `posthog` | `apiKey` |
+| Mixpanel | `mixpanel` | `projectToken` |
+| Plausible | `plausible` | `domain` |
+| Fathom | `fathom` | `siteId` |
+| Hotjar | `hotjar` | `hjid`, `hjsv` |
+| Segment | `segment` | `writeKey` |
+| Amplitude | `amplitude` | `apiKey` |
+
+## What Mintlify sends to your provider
+
+Mintlify fires these events to connected providers:
+
+- **Page view** — Triggered on every page load, with the current URL.
+- **Search** — Triggered when a reader uses the search bar, including the query string.
+- **Feedback** — Triggered when a reader clicks the thumbs up/down on a page.
+- **API playground request** — Triggered when a reader sends a request from an API playground page.

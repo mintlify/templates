@@ -1,35 +1,40 @@
 ---
-title: "Rules and triggers"
-sidebarTitle: "Rules & triggers"
-description: "Define when automation runs using events, filters, and guardrails."
+title: "Deployment triggers"
+sidebarTitle: "Triggers"
+description: "What causes a Mintlify deployment and how to configure which events trigger builds."
 ---
 
-Rules answer **when** something should run. Triggers are the signals—product events, webhooks, or schedules—that start evaluation. Filters and guardrails keep runs safe when traffic spikes or data is messy.
+Mintlify builds and deploys your docs automatically in response to Git events. Here's what triggers a deployment and how to configure each type.
 
-## Events
+## Push to default branch
 
-Pick source events such as item created, status changed, or webhook received. Prefer the narrowest event that still captures your intent so you do not wake automation on unrelated edits.
+Every push to your repository's default branch (typically `main`) triggers a production deployment. This is the primary trigger for most teams.
 
-### Ordering
+To change the production branch, go to **Project Settings → Git → Production branch**.
 
-If multiple rules subscribe to the same event, understand whether execution is parallel or ordered. Side-effect-heavy rules may need explicit sequencing or a queue.
+## Pull request previews
 
-### Payload shape
+Every pull request against your default branch gets a preview deployment at a unique URL. Preview URLs look like `https://[project]-[pr-number].mintlify.app`.
 
-Automation often receives a structured payload with IDs and timestamps. Log sample payloads in a sandbox when writing conditions so you do not guess field names.
+Share preview links in your PR description for reviews before merging. Preview deployments are deleted automatically when the PR closes.
 
-## Filters
+### Disabling previews
 
-Narrow by project, label, or field values to avoid noisy runs. Combine predicates carefully: over-filtering misses legitimate cases; under-filtering spams logs and external systems.
+Preview deployments are enabled by default. Disable them in **Project Settings → Git → Pull request previews** if you don't want them.
 
-### Testing filters
+## Manual redeploys
 
-Use historical replay or dry-run tools when available. “It worked once” is not the same as “it works for every region code.”
+Trigger a deployment manually from the dashboard without making a code change:
 
-## Guardrails
+1. Go to **[Project] → Deployments**.
+2. Click **Redeploy** on the most recent successful deployment.
 
-Set concurrency caps and failure alerts before automation touches production data. Caps protect downstream APIs; alerts help humans notice misconfigured filters before customers do.
+This is useful if you've updated an external resource (like an OpenAPI spec hosted at a URL) that your docs reference.
 
-### Kill switches
+## Branch deployments
 
-Document how to disable a rule quickly—feature flag, toggle, or removal—during incidents. Practice the rollback path once per quarter.
+Beyond the default branch, you can configure specific branches to deploy automatically. Go to **Project Settings → Git → Additional branches** to add branch patterns.
+
+<Info>
+  Branch deployments are useful for long-running feature branches or staging environments. Each branch gets its own subdomain under `mintlify.app`.
+</Info>

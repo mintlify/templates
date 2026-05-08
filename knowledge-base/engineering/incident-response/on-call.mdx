@@ -1,15 +1,15 @@
 ---
 title: "On-call expectations"
-description: "How the on-call rotation works, what's expected of you, and how to escalate."
+description: "How the Mintlify on-call rotation works, what's expected of you, and how to escalate."
 ---
 
-On-call responsibility rotates weekly among engineers on each team. Being on-call means you're the first responder for production alerts during your shift.
+On-call responsibility rotates among engineers on the team. Being on-call means you're the first responder for production alerts during your shift.
 
 ## Rotation schedule
 
-Check your team's on-call schedule in NightWatch. Schedules are set four weeks in advance. If you need to swap a shift, arrange it directly with a teammate and update the schedule — don't just not show up.
+The on-call schedule is maintained in the alerting tool and posted in `#eng`. Schedules are set two weeks in advance. If you need to swap a shift, arrange it directly with a teammate and update the schedule.
 
-New engineers join the rotation after 60 days. Your first few on-call weeks are shadowed — you respond, but a senior engineer is on secondary in case you need backup.
+New engineers join the rotation after 60 days. Your first few on-call shifts are shadowed — you respond, but a senior engineer is on secondary in case you need backup.
 
 ## Before your shift
 
@@ -24,24 +24,24 @@ New engineers join the rotation after 60 days. Your first few on-call weeks are 
 **For each alert:**
 
 1. Acknowledge the alert to stop re-paging.
-2. Triage: is this a real issue or noise? If noise, resolve and file a ticket to fix the alert.
+2. Triage — is this a real issue or a noisy alert? If noise, resolve and file a Linear ticket to fix the alert.
 3. If real, follow the [incident response process](/engineering/incident-response).
 
-**Keeping notes:** Keep a running Slack thread in `#incidents` even for small issues. It creates a record and helps the next on-call engineer understand what happened.
+**Keeping notes:** Post a running thread in `#incidents` even for small issues. It creates a record and helps the next on-call engineer understand recent history.
 
 ## Escalation path
 
 If you've been investigating for 15 minutes and are stuck:
 
 1. Page the secondary on-call engineer.
-2. If still stuck after another 15 minutes, escalate to your engineering manager.
+2. If still stuck after another 15 minutes, escalate to a founder or your engineering lead.
 
 Don't wait until you're really stuck. Asking for help quickly is the right call.
 
 ## After your shift
 
-Hand off any open issues to the next on-call engineer in `#incidents`. Include: what happened, current status, and what to watch for.
+Hand off any open issues to the next on-call in `#incidents`. Include: what happened, current status, and what to watch for.
 
 ## On-call compensation
 
-On-call shifts outside of business hours are compensated. See HR or your manager for current rates.
+On-call shifts that result in pages outside of business hours are compensated. Ask People for current rates.
