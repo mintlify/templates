@@ -1,0 +1,11 @@
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "name": "Your site",
+  "theme": "mint",
+  "colors": {
+    "primary": "#000aaa"
+  },
+  "navigation": {
+    "pages": ["your-first-page"]
+  }
+}
