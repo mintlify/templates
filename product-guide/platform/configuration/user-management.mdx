@@ -1,45 +1,39 @@
 ---
-title: User management
-description: Invite, deactivate, and bulk-manage team members.
+title: Editors and collaborators
+sidebarTitle: User management
+description: Invite teammates to edit your docs and manage who has access to your project.
 ---
 
-Admins can manage the full member lifecycle from **Settings → Users**: invite new members, adjust roles, deactivate accounts, and bulk-import users via CSV.
+Mintlify projects have two levels of access: the dashboard (where you manage settings and deployments) and the web editor (where editors write and publish content). You can invite people to either or both.
 
-## Invite by email
+## Invite an editor
 
-1. Go to **Settings → Users → Invite members**.
-2. Enter one or more email addresses, separated by commas.
-3. Select the workspace role to assign (Admin, Member, or Viewer).
-4. Click **Send invitations**.
+1. Open your project in the [Mintlify dashboard](https://dashboard.mintlify.com).
+2. Go to **Settings → Members**.
+3. Enter the email address of the person you want to invite.
+4. Select their role: **Admin** or **Editor**.
+5. Click **Send invite**.
 
-Invitees receive an email with a time-limited link. Links expire after 72 hours—resend from the pending invites list if needed.
+Invitees receive an email with a link to accept. The link is valid for 7 days — resend from the Members page if it expires.
 
 <Info>
-  You can override the workspace-level role on a per-project basis after the member accepts their invitation.
+  Editors can create, edit, and publish pages using the web editor. They cannot access billing or project settings. Admins have full access to both.
 </Info>
 
-## Deactivating accounts
+## The web editor
 
-Deactivating a member revokes their access immediately without deleting their data. Any content they created remains intact and accessible to other members.
+Invited editors can open the web editor directly from your docs site — no CLI or Git setup required. The editor provides a rich-text experience for writing MDX and a one-click **Publish** button that triggers a deployment.
 
-To deactivate a member:
+Changes made in the web editor are committed to your default branch automatically. Editors see a live preview of their changes before publishing.
 
-1. Find the member in **Settings → Users**.
-2. Open their profile and select **Deactivate account**.
-3. Confirm the action.
+## Remove a collaborator
 
-Deactivated accounts can be reactivated at any time by an Admin. Reactivating restores the member's original role and project memberships.
+1. Go to **Settings → Members** in your project.
+2. Find the member and click the **⋯** menu next to their name.
+3. Select **Remove member**.
 
-## Bulk CSV import
+Removing a member revokes their dashboard and editor access immediately. Any content they published remains in your repository.
 
-For larger teams, use CSV import to invite multiple members at once.
+## GitHub-based access
 
-**Required columns:** `email`, `role`
-
-**Optional columns:** `first_name`, `last_name`
-
-Download the CSV template from the Users page, fill it in, and upload. The system validates each row before sending invitations—rows with errors are skipped and listed in the import summary.
-
-<Warning>
-  CSV import sends invitations immediately. Review the file carefully before uploading, especially role assignments.
-</Warning>
+If your team uses Git directly, any GitHub user with write access to your documentation repository can push changes that trigger deployments. Dashboard membership and GitHub repository access are managed independently.

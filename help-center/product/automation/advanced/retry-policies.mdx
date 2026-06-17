@@ -1,31 +1,40 @@
 ---
-title: "Retry policies"
-sidebarTitle: "Retry policies"
-description: "Configure exponential backoff, max attempts, and dead-letter handling."
+title: "Build retries and recovery"
+sidebarTitle: "Build retries"
+description: "How Mintlify handles failed builds, retries, and recovery paths."
 ---
 
-Retries turn transient failures into success stories—when configured carefully. Backoff spreads load; max attempts bound damage; dead-letter queues preserve poison messages for inspection instead of infinite loops.
+When a Mintlify build fails, the previous successful deployment continues to serve traffic. Your live site stays up even when a build fails.
 
-## Backoff
+## Automatic retries
 
-Exponential backoff reduces thundering herds. Add jitter to desynchronize clients so retries do not align on the same second.
+Mintlify does not automatically retry failed builds — a failed build means there's a problem that needs to be fixed (usually a syntax error or misconfiguration). Fix the issue and push a new commit to trigger a new build.
 
-### Caps
+## Manual retries
 
-Put an upper bound on delay so a permanently broken endpoint does not stall workers for hours between attempts—pair backoff with a max attempts ceiling.
+If a build failed due to a transient issue (network timeout, external resource unavailable), you can retry from the dashboard:
 
-## Max attempts
+1. Go to **[Project] → Deployments**.
+2. Find the failed deployment.
+3. Click **Retry**.
 
-Stop after N tries and surface to operators with context. Include the last error code, truncated body, and correlation ID so the first responder does not reproduce the whole incident from scratch.
+Only retry if you believe the failure was transient — retrying a build with the same code will fail again if the root cause isn't fixed.
 
-### Idempotency
+## Recovering from a bad deployment
 
-Retries assume idempotent handlers. If a step is not idempotent, disable blind retries or scope them to safe sub-operations.
+If a deployment succeeded but introduced a problem (broken layout, incorrect content, broken links), you have two recovery paths:
 
-## Dead letters
+**Option 1: Revert in Git**
+Revert the problematic commit in your repository. Mintlify deploys the reverted version automatically.
 
-Send poison messages to a dead-letter queue for manual inspection. Monitor DLQ depth: a flat line at zero might mean alerts are misconfigured; a rising line means systemic failure.
+```bash
+git revert HEAD
+git push
+```
 
-### Replay
+**Option 2: Redeploy a previous version**
+In **[Project] → Deployments**, find the last known-good deployment and click **Redeploy**.
 
-Document a safe replay procedure after fixing root cause—sometimes replay requires a new idempotency key or compensating cleanup first.
+## Monitoring deployments
+
+Set up GitHub Actions notifications (see [Slack notifications](/getting-started/integrations/connect-slack)) to alert your team when a deployment fails. Catching failures early prevents readers from hitting broken preview links or outdated content.

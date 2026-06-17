@@ -1,31 +1,25 @@
 ---
 title: "US data residency"
 sidebarTitle: "US"
-description: "US data residency notes for this demo."
+description: "Data storage and compliance information for US customers."
 ---
 
-US customers may choose US regions for latency, contractual requirements, or comfort with domestic legal process. Pair residency choice with encryption and key management policies.
+Mintlify's standard deployment stores data in the United States on AWS infrastructure. No additional configuration is needed for US customers who want their data to remain in the US.
 
-## Regions
+## Default data location
 
-Choose US data centers for latency and regulatory alignment where required.
+Customer data (account information, repository content, analytics) is stored on AWS US East (N. Virginia) by default.
 
-### Multi-cloud
+## Compliance frameworks
 
-If you span multiple providers, document failover behavior—some failover paths cross regions unless explicitly constrained.
+**SOC 2 Type II** — Mintlify's infrastructure and security controls are audited annually. Enterprise customers can request a copy of the SOC 2 report under NDA by contacting [security@mintlify.com](mailto:security@mintlify.com).
+
+**CCPA** — Mintlify supports California Consumer Privacy Act rights for California residents. Submit data rights requests to [privacy@mintlify.com](mailto:privacy@mintlify.com).
+
+**HIPAA** — Mintlify does not currently offer a Business Associate Agreement (BAA) for HIPAA-covered entities. Do not store protected health information (PHI) in Mintlify.
+
+**FedRAMP** — Mintlify is not FedRAMP authorized. For US federal government customers with FedRAMP requirements, contact [sales@mintlify.com](mailto:sales@mintlify.com) to discuss options.
 
 ## Government requests
 
-We publish high-level transparency about requests as permitted by law.
-
-### Customer notice
-
-Your enterprise agreement may define when you receive notice of legal requests affecting your content—verify timelines and contact paths.
-
-## Education
-
-FERPA and similar frameworks may impose additional obligations—consult specialists.
-
-### Student data
-
-If you serve schools, map product features to FERPA roles and allowable disclosures before onboarding student populations.
+Mintlify publishes an annual transparency report covering the number and type of government requests for customer data. We notify customers of requests affecting their data when legally permitted to do so.

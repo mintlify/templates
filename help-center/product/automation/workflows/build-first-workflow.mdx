@@ -1,34 +1,41 @@
 ---
-title: "Build your first workflow"
-sidebarTitle: "First workflow"
-description: "Step-by-step creation of a simple approval workflow."
+title: "Set up PR previews"
+sidebarTitle: "PR previews"
+description: "Use pull request previews to review docs changes before they go live."
 ---
 
-This walkthrough builds confidence before you model complex branching. You will route new items to a human, time out if nobody responds, and notify a channel when the outcome is approved—patterns common to access requests, content launches, and finance approvals.
+Pull request previews give every docs change its own live URL for review before merging. This is the foundation of a safe docs review workflow.
 
-## Goal
+## How PR previews work
 
-Route new items to a reviewer and notify Slack on approval. Keep scope intentionally small: one project, one template, one external integration.
+When you open a pull request against your default branch, Mintlify automatically builds and deploys the changes at a unique preview URL. The URL appears in your PR comments as a status check.
 
-### Success criteria
+No configuration required — previews are enabled by default for all projects connected to GitHub or GitLab.
 
-Define what “done” means: reviewer assigned within five minutes, decision within one business day, and an audit log entry for compliance.
+## Using previews effectively
 
-## Steps
+<Steps>
+  <Step title="Open a PR for your docs change">
+    Make your docs changes in a branch and open a pull request. The Mintlify GitHub App posts a comment with a link to the preview deployment once the build completes.
+  </Step>
+  <Step title="Share the preview with reviewers">
+    Copy the preview URL and add it to the PR description or a comment. Reviewers can see the rendered page without checking out the branch locally.
+  </Step>
+  <Step title="Iterate on feedback">
+    Push additional commits to the branch — each push updates the preview deployment automatically. Reviewers can reload the preview URL to see changes.
+  </Step>
+  <Step title="Merge and deploy">
+    When approved, merge the PR. Mintlify deploys to production automatically within seconds.
+  </Step>
+</Steps>
 
-1. Create a workflow from a template. Pick the closest match, then rename steps so stakeholders recognize language from your internal process doc.
-2. Add a human approval step with timeout. Escalate or cancel when time expires—avoid infinite waits.
-3. Connect Slack notification on success. Map channel names to environments (`#proj-approvals-staging` vs production).
-4. Test in a sandbox project. Seed fake items that mirror real field shapes, including edge cases like missing optional fields.
+## Adding Mintlify as a required check
 
-### Data contracts
+To enforce previews and require a successful build before merging:
 
-Confirm the payload your steps receive matches what integrations expect. A missing `requesterId` in test data can hide a production-only failure.
+1. In GitHub, go to **Repository → Settings → Branches → Branch protection rules**.
+2. Add a rule for your default branch.
+3. Enable **Require status checks to pass before merging**.
+4. Search for and add the Mintlify status check.
 
-## Validation
-
-Run dry-run executions with sample payloads before enabling for all projects. Capture logs for the first ten production runs and compare timings to your SLA.
-
-### Rollout
-
-Enable for a pilot team, gather feedback on wording and timeouts, then expand. Feature-flag the workflow if your platform supports gradual exposure.
+This prevents broken docs changes from reaching production.

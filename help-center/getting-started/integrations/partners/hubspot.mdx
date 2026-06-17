@@ -1,31 +1,36 @@
 ---
-title: "HubSpot connector"
-sidebarTitle: "HubSpot"
-description: "Connect HubSpot CRM for deals and company records."
+title: "Cloudflare Pages deployment"
+sidebarTitle: "Cloudflare"
+description: "Deploy your Mintlify docs on Cloudflare Pages for edge hosting."
 ---
 
-HubSpot works well when marketing and sales already live there—your product becomes the execution layer while HubSpot remains the system of record for pipeline stages and company attributes.
+Cloudflare Pages is another option for hosting Mintlify docs close to your users. This approach uses Cloudflare's global edge network and works well if your team already uses Cloudflare for DNS and CDN.
 
-## OAuth
+## When to use Cloudflare Pages
 
-Authorize HubSpot with a user who can grant CRM scopes. Use a service account if your policy requires it.
+Use Cloudflare Pages when you:
+- Already use Cloudflare for your DNS and want everything in one place.
+- Need Cloudflare Access for authentication in front of your docs.
+- Want Cloudflare's DDoS protection and WAF on your docs site.
 
-### Scope review
+## Setup overview
 
-Confirm read vs write scopes against what your workflows actually need. Over-scoped tokens worry security reviewers.
+<Steps>
+  <Step title="Build your Mintlify project">
+    Run `mintlify build` locally or in CI to generate a static build of your docs:
 
-## Pipelines
+    ```bash
+    mintlify build
+    ```
+  </Step>
+  <Step title="Connect to Cloudflare Pages">
+    In the Cloudflare dashboard, go to **Pages → Create a project** and connect your Git repository. Set the build command to `mintlify build` and the output directory to `.mintlify/build`.
+  </Step>
+  <Step title="Configure your domain">
+    Add a custom domain in **Pages → [Your project] → Custom domains**. Cloudflare manages the DNS automatically if your domain's nameservers point to Cloudflare.
+  </Step>
+</Steps>
 
-Align HubSpot deal stages with project states for cleaner reporting.
+## Cloudflare Access
 
-### Definitions
-
-Maintain a shared glossary of stage names so dashboards match what revenue teams say on calls.
-
-## Limits
-
-Watch API rate limits during large backfills; throttle initial syncs accordingly.
-
-### Pagination
-
-Use cursor-based APIs where available—safer than offset paging on large datasets.
+To require authentication before readers can access your docs, add a Cloudflare Access policy in front of your Pages project. This works independently of Mintlify's built-in authentication features.

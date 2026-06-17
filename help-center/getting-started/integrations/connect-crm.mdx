@@ -1,32 +1,38 @@
 ---
-title: "Connect your CRM"
-sidebarTitle: "CRM"
-description: "Link Salesforce or HubSpot through partner connectors or a custom sync strategy."
+title: "Connect your repository"
+sidebarTitle: "Repository"
+description: "How Mintlify connects to GitHub and GitLab to deploy your docs."
 ---
 
-CRM integrations keep customer context next to internal work. The hardest part is agreeing which system owns which field—decide that before you flip the sync on.
+Mintlify deploys directly from your Git repository. Connecting your repository is the first step to getting your docs site live.
 
-## Supported paths
+## GitHub
 
-- Official partner connectors (see partner guides)
-- CSV or API-based sync via developer tools
+<Steps>
+  <Step title="Install the GitHub App">
+    During signup (or from **Settings → Integrations → GitHub**), click **Install GitHub App**. Choose the GitHub organization or personal account where your docs repository lives.
 
-### When to use each
+    Grant the app access to the specific repository (or all repositories, if you prefer). Mintlify only reads your repository content — it does not write to your repo.
+  </Step>
+  <Step title="Select your repository">
+    After installing the app, return to the Mintlify dashboard and select the repository to use for your project. Mintlify clones the repo and starts the first build.
+  </Step>
+  <Step title="Configure your default branch">
+    By default, Mintlify deploys from your repository's default branch (usually `main`). You can change the deployment branch in **Project Settings → Git**.
+  </Step>
+</Steps>
 
-Partner connectors trade flexibility for speed. Custom sync suits unusual object models or heavy transformations mid-pipeline.
+## GitLab
 
-## Data expectations
+GitLab integration uses a webhook instead of an app:
 
-Define which objects sync and how conflicts resolve. Document owner fields so automation behaves predictably.
+1. In your Mintlify project settings, go to **Settings → Git → GitLab**.
+2. Copy the provided webhook URL and secret.
+3. In your GitLab repository, go to **Settings → Webhooks** and add the URL and secret.
+4. Enable the **Push events** trigger.
 
-### Conflict rules
+Mintlify will deploy whenever you push to the configured branch.
 
-“CRM wins” vs “product wins” should be explicit for every field. Ambiguity shows up first when sales reassigns accounts during a territory change.
+## Monorepos
 
-## Privacy
-
-Limit synced fields to the minimum needed for your workflows and review access regularly.
-
-### Retention
-
-Align deletion policies: when a CRM record disappears, decide whether related artifacts should archive, anonymize, or remain linked for audits.
+If your documentation lives in a subdirectory of a larger repository, set the **Docs root** in **Project Settings → Git** to the path of the subdirectory (for example, `docs/`). Mintlify will treat that directory as the root of your docs site.

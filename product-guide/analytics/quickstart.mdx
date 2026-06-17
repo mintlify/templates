@@ -1,40 +1,50 @@
 ---
-title: Quickstart
+title: Enable analytics
 sidebarTitle: Quickstart
-description: Connect a data source and build your first dashboard in minutes.
+description: Start tracking page views, search queries, and reader engagement in minutes.
 ---
 
-This guide takes you from a blank workspace to a live dashboard with at least one chart pulling from a real data source.
+Mintlify tracks a baseline set of metrics automatically — page views, search queries, feedback votes, and AI assistant conversations — all visible in the dashboard without any setup. To get deeper insights, connect a third-party analytics provider.
 
-## Before you begin
+## What Mintlify tracks natively
 
-- Credentials for the data source you plan to connect (database hostname, username, password, or API key for a SaaS source)
-- Admin or Member role in your workspace
+Once your site is deployed, the **Analytics** tab in your project dashboard shows:
 
-## Steps
+- **Page views** — Total and unique visitors per page, filterable by date range.
+- **Popular pages** — Your most-visited pages, ranked by view count.
+- **Search queries** — What readers type into your search bar, including queries that returned no results.
+- **Feedback** — Thumbs up/down votes and optional written feedback collected on each page.
+- **AI conversations** — Questions asked to your site's AI assistant and whether they were answered.
+
+No configuration required for any of the above.
+
+## Add a third-party analytics provider
+
+For cohort analysis, custom funnels, or data that lives alongside your product metrics, connect a provider in `docs.json`:
 
 <Steps>
-  <Step title="Connect a data source">
-    Go to **Analytics → Data sources → Add source**. Select your source type from the list, enter the connection details, and click **Test connection**. Once the test passes, save the source.
+  <Step title="Get your tracking ID or API key">
+    Log in to your analytics provider (Google Analytics 4, PostHog, Segment, Mixpanel, Plausible, or others) and find your measurement ID or write key.
+  </Step>
+  <Step title="Add it to docs.json">
+    Add an `integrations` block to your `docs.json`:
 
-    See [Connect a data source](/analytics/connect-data) for a full list of supported sources and field-by-field setup instructions.
+    ```json
+    "integrations": {
+      "posthog": {
+        "apiKey": "phc_your_key_here"
+      }
+    }
+    ```
+
+    See [Connect an analytics provider](/analytics/connect-data) for the exact field names for each supported provider.
   </Step>
-  <Step title="Create a dashboard">
-    Go to **Analytics → Dashboards → New dashboard**. Give it a name that reflects the data or team it serves (for example, "Weekly revenue" or "Support KPIs").
-  </Step>
-  <Step title="Add a chart">
-    Inside the dashboard, click **Add chart**. Select your data source, choose a chart type (bar, line, or number card are good starting points), and configure the x-axis and y-axis fields. Click **Save**.
-  </Step>
-  <Step title="Share your dashboard">
-    Click **Share** in the dashboard header. Copy the link to share with teammates, or generate an embed code to display the dashboard in another tool. Set an access level to control who can view the shared link.
+  <Step title="Deploy and verify">
+    Push the change to your repository. After the deployment completes, visit your docs site and confirm events are appearing in your analytics provider's dashboard. Use browser dev tools to verify the tracking script loaded if you don't see events right away.
   </Step>
 </Steps>
 
-<Note>
-  If your data source requires an allowlisted IP, add the platform's outbound IP addresses to your firewall rules before testing the connection.
-</Note>
-
 ## Next steps
 
-- Explore [charts and visualizations](/analytics/dashboards/charts-visualizations) to learn about all available chart types.
-- Set up [scheduled reports](/analytics/reports/scheduled-reports) to deliver insights to your team automatically.
+- See [all supported analytics providers](/analytics/connect-data) and their configuration options.
+- Learn what the [native analytics dashboard](/analytics/dashboards/create-dashboard) shows and how to use it.

@@ -1,58 +1,68 @@
 ---
 title: "Services overview"
-description: "The main services that make up our platform, what each one does, and how they communicate."
+description: "The main services that make up the Mintlify platform, what each one does, and how they communicate."
 ---
 
-This page gives a high-level map of our backend services. Each service has its own README with deeper documentation.
+This page gives a high-level map of Mintlify's backend services. Each service has its own README with deeper documentation.
 
 ## Service map
 
 ```mermaid
 graph TD
-    Client([Client]) --> GW[API Gateway]
+    Client([Customer browser]) --> Edge[Cloudflare CDN]
+    Edge --> Renderer[Docs Renderer]
+    Client --> GW[API Gateway]
     GW --> Auth[Auth Service]
     GW --> Core[Core API]
-    GW --> Worker[Worker Service]
-    Core --> DB[(Database\nprimary store)]
-    Core --> Cache[(Cache\nin-memory)]
-    Worker --> DB
-    Worker --> Cache
+    Core --> DB[(Postgres\nprimary store)]
+    Core --> Cache[(Redis\ncache)]
     Core -->|publishes jobs| Queue[[Job Queue]]
-    Worker -->|consumes jobs| Queue
+    Worker[Build Worker] -->|consumes jobs| Queue
+    Worker --> Storage[(S3\ndocs assets)]
 ```
 
 ## Services
 
-### API Gateway
-The public-facing entry point. Handles routing, rate limiting, and authentication checks before forwarding requests to downstream services. Deployed on [Platform].
+### Docs Renderer
 
-**Repo:** `api-gateway`
+Serves customer docs sites at `*.mintlify.app` and custom domains. Fetches built docs assets from S3 and renders them server-side. Deployed on Vercel with Cloudflare in front for CDN caching.
+
+**Repo:** `mintlify/web`
+
+### API Gateway
+
+The public-facing API entry point. Handles routing, rate limiting, and authentication before forwarding requests to downstream services.
+
+**Repo:** `mintlify/api`
 
 ### Auth Service
-Manages user identity, sessions, and permissions. Integrates with your identity provider for SSO. All authentication decisions are delegated here — other services call Auth to validate tokens.
 
-**Repo:** `auth-service`
+Manages user identity, sessions, and organization memberships. Handles GitHub and GitLab OAuth flows, SSO via SAML, and JWT generation.
+
+**Repo:** `mintlify/auth`
 
 ### Core API
-The main application backend. Handles business logic for the primary product domain. Owns the primary database.
 
-**Repo:** `core-api`
+The main application backend. Handles business logic for projects, deployments, analytics, and billing integration. Owns the primary Postgres database.
 
-### Worker Service
-Processes background jobs: email delivery, async data processing, scheduled tasks, and webhook delivery. Consumes from the job queue.
+**Repo:** `mintlify/core`
 
-**Repo:** `worker`
+### Build Worker
+
+Processes documentation builds: clones repos, runs the Mintlify build pipeline, and uploads output to S3. Triggered by GitHub webhook pushes and PR events.
+
+**Repo:** `mintlify/worker`
 
 ## Communication patterns
 
-- **Synchronous:** Services communicate via internal HTTP APIs. Auth headers are passed through and validated at each service boundary.
-- **Asynchronous:** Workers consume from the job queue. The Core API publishes jobs; workers process them independently.
-- **Events:** Significant domain events (user created, subscription changed) are published to the event bus for downstream consumers.
+- **Synchronous** — Services communicate via internal HTTP APIs. Auth tokens are validated at each service boundary.
+- **Asynchronous** — The Build Worker consumes jobs from a queue. The Core API enqueues build jobs when a push or PR event arrives.
+- **CDN** — Docs assets are served from Cloudflare edge nodes globally, with S3 as the origin.
 
 ## Environments
 
 | Environment | Purpose | Access |
 |-------------|---------|--------|
 | Local | Development | All engineers |
-| Staging | Pre-production verification | All engineers |
-| Production | Live traffic | Deploy tool only |
+| Preview | PR review | All engineers |
+| Production | Live customer traffic | Deploy tool only |

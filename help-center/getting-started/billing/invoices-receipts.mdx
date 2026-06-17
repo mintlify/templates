@@ -1,31 +1,35 @@
 ---
 title: "Invoices and receipts"
 sidebarTitle: "Invoices & receipts"
-description: "Download invoices, update tax details, and reconcile charges."
+description: "Download invoices, update billing information, and reconcile charges."
 ---
 
-Finance teams need clean paper trails: invoices for accruals, receipts for reimbursements, and tax IDs that match what is on file with vendors. Keep addresses and VAT numbers current before month-end close.
+Invoices and payment history are available to Admins in **Settings → Billing → Invoices**.
 
-## Where to find invoices
+## Download invoices
 
-Navigate to **Settings → Billing → Invoices** for PDF copies and line items. Download CSV or structured exports if your ERP ingests them automatically.
+Each invoice is available as a PDF with a line-item breakdown. Click **Download** next to any invoice in the invoice list.
 
-### Line items
+Invoices include:
+- Billing period
+- Plan name and quantity
+- Prorated charges or credits for plan changes mid-cycle
+- Tax if applicable based on your billing address
 
-Verify seat counts and add-ons against internal headcount reports. Discrepancies often trace to deactivated users still occupying paid seats until the next true-up.
+### Updating your billing address or tax ID
 
-## Tax and VAT
-
-Update tax IDs before renewal to avoid delays. This demo does not constitute tax advice—run final numbers past your accounting partner, especially for cross-border entities.
-
-### Reverse charge and treaties
-
-Document which party remits VAT or sales tax for each entity. Store evidence with the invoice PDF for audit readiness.
+Update your billing details in **Settings → Billing → Billing information** before your next renewal. Mintlify can reissue invoices if your tax ID was missing at the time of the charge — contact [support](mailto:support@mintlify.com) with the invoice number and the correct details.
 
 ## Receipts
 
-Card charges include a receipt link suitable for expense tools that accept emailed PDFs. Forward receipts immediately after charge—matching six months later is painful.
+Stripe sends an email receipt to your billing address after each successful charge. Receipts are suitable for expense reporting.
 
-### Corporate cards
+If the receipt didn't arrive, check your billing email's spam folder, or download the invoice PDF from the dashboard — both contain the charge amount and date.
 
-If the cardholder rotates, update billing profiles so receipts reach the person who must attest to expenses.
+## Failed payments
+
+If a charge fails, Mintlify retries automatically and notifies the billing contact by email. Update your payment method in **Settings → Billing → Payment method** before the retry window closes to avoid service interruption.
+
+<Info>
+  Mintlify uses Stripe for payment processing. If your finance team needs Stripe's supplier information for vendor onboarding, contact [support](mailto:support@mintlify.com).
+</Info>

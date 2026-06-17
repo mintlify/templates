@@ -1,51 +1,51 @@
 ---
 title: "Deployment"
-description: "How code goes from a merged PR to production, and how to roll back when something goes wrong."
+description: "How code goes from a merged PR to production at Mintlify, and how to roll back when something goes wrong."
 ---
 
-We use a trunk-based deployment model. Merging to `main` triggers a staging deploy automatically; production deploys are triggered manually after verification.
+Mintlify uses a trunk-based deployment model. Merging to `main` triggers a preview deploy automatically. Production deploys go through Vercel and GitHub Actions.
 
 ## Flow overview
 
 ```
-feature branch → PR review → merge to main → auto-deploy to staging → manual promote to production
+feature branch → PR → review → merge to main → auto-deploy to preview → promote to production
 ```
 
-## Deploying to staging
+## Deploying to preview
 
-Every merge to `main` triggers a staging deployment automatically via CI. You don't need to do anything. Check the `#deploys` Slack channel for status notifications.
+Every merge to `main` triggers a Vercel preview deployment automatically via GitHub Actions. Watch the `#deploys` Slack channel for status. Preview deploys take approximately 2–5 minutes.
 
-Staging deployments take approximately 5–10 minutes. If a deploy fails, CI will post the error in `#deploys` with a link to the failed run.
+If a deploy fails, CI posts the error in `#deploys` with a link to the failed GitHub Actions run.
+
+## Pull request previews
+
+Every PR gets its own preview URL automatically — Mintlify builds it and posts the link as a status check on the PR. This is the primary way to review docs and UI changes before merging.
 
 ## Promoting to production
 
-Once a change is verified in staging:
+Once a change is verified in preview:
 
-1. Go to the deploy tool (link in `#deploys` channel description).
-2. Select the staging build you want to promote.
-3. Click **Promote to production**.
-4. Monitor the `#deploys` channel for confirmation or errors.
+1. Go to the Vercel dashboard (link in `#deploys` channel description).
+2. Select the build you want to promote.
+3. Click **Promote to Production**.
+4. Monitor `#deploys` for confirmation.
 
-Production deploys require at least one engineer who didn't author the change to click promote. This is a soft guard — use judgment in an emergency.
+Production deploys require at least one other engineer to have reviewed the PR. Use judgment in an emergency.
 
 ## Feature flags
 
-Most new features are deployed behind a feature flag to decouple deploy from release. Flags are managed in [Flag Tool Name]. Ask your tech lead about the flag naming convention and cleanup process.
+New features that need a controlled rollout are deployed behind a feature flag. Ask in `#eng` about the current flagging approach and naming convention.
 
 ## Rollbacks
 
 If a production deploy causes an incident:
 
-1. Use the deploy tool to roll back to the previous production build immediately.
+1. Use the Vercel dashboard to roll back to the previous production deployment immediately.
 2. Don't wait to diagnose — roll back first, investigate after.
-3. File an [incident](/engineering/incident-response) and start a postmortem if users were affected.
+3. File an [incident](/engineering/incident-response) and start a postmortem if customers were affected.
 
-Rolling back takes about 2 minutes. It's safe and reversible — do it early.
-
-## Database migrations
-
-Migrations run automatically as part of the deploy pipeline. Backward-incompatible migrations require a multi-phase deploy — ask in `#eng` before merging if your migration drops a column or changes a type.
+Rolling back takes about 1–2 minutes. It's safe and reversible — do it early.
 
 ## Deploy freeze windows
 
-We freeze production deploys during major events or the last business day before a holiday. The `#deploys` channel will pin a message when a freeze is active.
+We freeze production deploys during major launches or holiday periods. The `#deploys` channel will pin a message when a freeze is active.

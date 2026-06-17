@@ -1,40 +1,48 @@
 ---
 title: "Account access"
-description: "Which accounts you'll need, how to claim them, and what to do when something is missing."
+description: "Which tools you'll use at Mintlify, how to get access, and what to do when something is missing."
 ---
 
-Most accounts are provisioned automatically when HR creates your employee record. This page lists what you should have and how to get access if something is missing.
+Most accounts are provisioned automatically when HR creates your employee record. This page lists what you should have and how to request anything that's missing.
 
 ## Auto-provisioned accounts
 
-These are created before your start date and activated when you log in with your company email:
+These accounts are created before your start date. Activate them by logging in with your `@mintlify.com` Google account:
 
 | Tool | Used for |
 |------|----------|
-| Company email | Primary communication |
-| Slack | Team messaging |
-| Project tracker | Task and sprint management |
-| HR portal | Benefits, time off, payroll |
-| SSO-easy | Single sign-on for all other apps |
-| PasswordBuddy | Password manager |
+| Google Workspace | Email, calendar, Docs, Drive |
+| Slack | Team messaging and async collaboration |
+| Linear | Issue tracking and project management |
+| Notion | Internal docs, meeting notes, and the company wiki |
+| GitHub | Source code — accept the org invite in your email |
+| 1Password | Password manager — install on your laptop and browser |
 
-## Request-based access
+## Role-specific accounts
 
-Some systems require a separate request, either because they're role-specific or have licensed seat limits:
+Some tools require a separate request, either because they're role-specific or have limited licenses:
 
-| Tool | How to request |
-|------|---------------|
-| Infrastructure | File an [IT access request](/it-security/access-requests) |
-| Git repository | Ask your tech lead to invite you |
-| Design platform | Ask the design lead |
-| Analytics tools | Request via IT ticket, manager approval required |
-| Customer data systems | Manager + security approval required |
+| Tool | Used for | How to request |
+|------|----------|---------------|
+| Figma | Design and prototyping | Ask the design team in `#design` |
+| Vercel | Deployment and preview environments | File an IT access request |
+| AWS | Cloud infrastructure | File an IT access request, manager approval required |
+| PostHog | Product analytics | File an IT access request |
+| Stripe dashboard | Billing and subscription data | Manager + finance approval required |
+| Linear Admin | Team and project admin settings | Ask your manager |
+
+## Mintlify product access
+
+You'll also get access to Mintlify itself as a team member:
+
+- A Mintlify account at [mintlify.com](https://mintlify.com) linked to your work email
+- Access to internal Mintlify projects used for company docs and the team wiki
+- Mintlify CLI: `npm i -g mintlify` — run `mintlify dev` to preview docs locally
 
 ## Something missing?
 
-File an [access request ticket](/it-security/access-requests) and include:
+Post in `#general` on Slack with:
 - The tool you need
 - Why you need it
-- Your manager's name for approval
 
-Routine requests are fulfilled within one business day.
+Your manager will confirm the request. Routine access is fulfilled within one business day.

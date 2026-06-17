@@ -1,31 +1,40 @@
 ---
-title: "Delete your account"
+title: "Delete your account or project"
 sidebarTitle: "Delete account"
-description: "Understand deletion impact and required confirmations."
+description: "Close your Mintlify account or delete a project."
 ---
 
-Deletion is destructive. Treat it like a production change: announce, export, and verify integrations will not recreate data you meant to purge.
+You can delete individual projects or close your entire Mintlify organization. Both actions are permanent after the confirmation step.
 
-## Workspace deletion
+## Delete a project
 
-Deleting a workspace is irreversible after the cooling-off period. Notify members first.
+Deleting a project removes it from Mintlify but does not delete your Git repository or the content in it.
 
-### Dependencies
+1. Open the project in your dashboard.
+2. Go to **Settings → Danger zone**.
+3. Click **Delete project** and type the project name to confirm.
 
-Disconnect billing identities, SSO apps, and webhooks before deletion—orphaned automation can still fire against deleted IDs in some systems.
+After deletion:
+- The `*.mintlify.app` URL stops serving your site.
+- Any custom domain configuration is removed.
+- Analytics history for the project is deleted.
+- Your Git repository and all content remain intact.
 
-## Personal account
+<Warning>
+  Custom domain DNS records are not automatically removed from your DNS provider. Remove the CNAME or ALIAS record manually to avoid a dangling DNS entry.
+</Warning>
 
-Personal deletion removes your profile from associated workspaces per policy.
+## Close your organization
 
-### Identity recovery
+Closing your organization deletes all projects under it and cancels your subscription.
 
-If you might return, understand whether email addresses can be reused later or remain locked to prevent impersonation.
+1. Go to **Settings → Danger zone**.
+2. Click **Close organization** and confirm.
 
-## Backups
+Contact [support@mintlify.com](mailto:support@mintlify.com) if you need help closing your account or if you have billing questions related to account closure.
 
-Export before deletion if you need records for compliance.
+## Before deleting
 
-### Certificates
-
-Download or transfer domain verification records if your brand moves to another provider.
+- Export any analytics data you want to keep (it won't be recoverable after deletion).
+- Remove the Mintlify GitHub App from your GitHub organization if you don't plan to use Mintlify again — it's in **GitHub → Settings → Integrations → Installed GitHub Apps**.
+- Cancel any active subscriptions to avoid being charged after deletion.

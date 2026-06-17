@@ -1,9 +1,9 @@
 ---
 title: "Data models"
-description: "Core entities, their key fields, relationships, and where they live."
+description: "Core entities in the Mintlify platform, their key fields, relationships, and where they live."
 ---
 
-This page documents the primary domain entities. For schema definitions, see the migration files in the Core API repo.
+This page documents the primary domain entities. For schema definitions, see the migration files in the `mintlify/core` repo.
 
 ## Core entities
 
@@ -14,9 +14,9 @@ Represents an authenticated person. One user can belong to multiple organization
 | Field | Type | Description |
 |-------|------|-------------|
 | `id` | UUID | Primary key |
-| `email` | string | Unique, used for login |
+| `email` | string | Unique, used for login and GitHub OAuth |
 | `created_at` | timestamp | Account creation time |
-| `last_login_at` | timestamp | Last successful auth |
+| `last_login_at` | timestamp | Last successful authentication |
 
 ### Organization
 
@@ -26,19 +26,34 @@ A company or team account. The primary billing and access control boundary.
 |-------|------|-------------|
 | `id` | UUID | Primary key |
 | `name` | string | Display name |
-| `plan` | enum | `free`, `pro`, `enterprise` |
+| `plan` | enum | `starter`, `growth`, `enterprise` |
 | `owner_id` | FK → User | Billing owner |
 
-### Membership
+### Project
 
-Junction table linking users to organizations with a role.
+A Mintlify documentation project connected to a Git repository.
 
 | Field | Type | Description |
 |-------|------|-------------|
-| `user_id` | FK → User | |
-| `org_id` | FK → Organization | |
-| `role` | enum | `owner`, `admin`, `member` |
-| `joined_at` | timestamp | |
+| `id` | UUID | Primary key |
+| `org_id` | FK → Organization | Owning organization |
+| `repo_url` | string | Connected GitHub or GitLab repository |
+| `subdomain` | string | `*.mintlify.app` subdomain |
+| `custom_domain` | string | Optional custom domain |
+| `created_at` | timestamp | |
+
+### Deployment
+
+A single build of a Project, triggered by a Git push or PR event.
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `id` | UUID | Primary key |
+| `project_id` | FK → Project | |
+| `commit_sha` | string | Git commit that triggered the build |
+| `status` | enum | `queued`, `building`, `success`, `failed` |
+| `is_production` | boolean | Whether this is the live production deployment |
+| `built_at` | timestamp | |
 
 ## Relationships
 
@@ -46,26 +61,27 @@ Junction table linking users to organizations with a role.
 graph LR
     User --- Membership
     Organization --- Membership
-    User --- Organization
+    Organization --- Project
+    Project --- Deployment
 ```
 
-A user can be a member of many organizations. An organization can have many members. The `Membership` table holds the role for each pair.
+A User can be a member of many Organizations. An Organization can have many Projects. Each Project has many Deployments, with one marked as production.
 
 ## Data storage
 
 | Data type | Storage | Notes |
 |-----------|---------|-------|
-| Relational data | Postgres | Primary store, via Core API |
+| Relational data | Postgres | Primary store, owned by Core API |
 | Sessions | Redis | TTL-based, auto-expire |
-| File uploads | S3-compatible object store | Referenced by URL in Postgres |
-| Search index | [Search service] | Synced from Postgres via worker |
+| Built docs assets | S3 | Referenced by URL, served via Cloudflare CDN |
+| Search index | Mintlify search service | Synced from docs content via Build Worker |
 
 ## Sensitive fields
 
-The following fields are encrypted at rest and must never appear in logs:
+The following must never appear in logs or be returned in API responses:
 
-- `User.password_hash`
-- Payment method tokens (stored in your payment processor, referenced by ID only)
-- Any field containing PII in audit logs
+- OAuth tokens from GitHub and GitLab integrations
+- Customer API keys
+- Payment method tokens (stored in Stripe, referenced by ID only)
 
-If you're adding a new field that contains PII or credentials, flag it in your PR for security review.
+If you're adding a field that contains credentials or PII, flag it in your PR for review.
