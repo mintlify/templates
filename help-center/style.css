@@ -28,7 +28,6 @@ toc-item[data-active-deepest] > a::before {
 }
 
 #sidebar .nav-anchor {
-  margin-left: 0 !important;
   margin-bottom: 0.75rem !important;
 }
 
