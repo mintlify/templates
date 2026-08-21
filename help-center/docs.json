@@ -25,6 +25,11 @@
           "anchor": "Home",
           "icon": "house",
           "href": "/"
+        },
+        {
+          "anchor": "Docs",
+          "icon": "file-text",
+          "href": "https://www.mintlify.com/docs"
         }
       ]
     },
