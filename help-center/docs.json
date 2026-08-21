@@ -28,7 +28,7 @@
         },
         {
           "anchor": "Docs",
-          "icon": "file-text",
+          "icon": "book-open",
           "href": "https://www.mintlify.com/docs"
         }
       ]
@@ -216,12 +216,6 @@
         ]
       }
         ]
-      },
-      {
-        "product": "Docs",
-        "description": "Mintlify product documentation.",
-        "icon": "book-open",
-        "href": "https://www.mintlify.com/docs"
       },
       {
         "product": "Guides",
