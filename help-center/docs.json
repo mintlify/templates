@@ -19,6 +19,15 @@
     "options": ["copy", "view", "assistant", "mcp", "add-mcp"]
   },
   "navigation": {
+    "global": {
+      "anchors": [
+        {
+          "anchor": "Home",
+          "icon": "house",
+          "href": "/"
+        }
+      ]
+    },
     "directory": "card",
     "products": [
       {
@@ -32,7 +41,6 @@
         "expanded": true,
         "root": "getting-started/index",
         "pages": [
-          "index",
           "getting-started/quickstart",
           "getting-started/create-account",
           "getting-started/sign-in-security",
