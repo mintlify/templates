@@ -18,22 +18,12 @@ toc-item[data-active-deepest] > a::before {
 }
 
 /* topbar/sidebar logo: render smaller than its natural width.
-   Exclude .nav-anchor so global Home (also href="/") keeps a 1rem icon. */
-#navbar a[href="/"]:not(.nav-anchor) img,
-#navbar a[href="/"]:not(.nav-anchor) svg,
-#sidebar a[href="/"]:not(.nav-anchor) img,
-#sidebar a[href="/"]:not(.nav-anchor) svg {
+   Sidebar Home is a nav page linking to /, so do not size its icon SVG. */
+#navbar a[href="/"] img,
+#navbar a[href="/"] svg,
+#sidebar a[href="/"] img {
   max-width: 14rem;
   height: auto;
-}
-
-#sidebar .nav-anchor {
-  margin-bottom: 0.75rem !important;
-}
-
-#sidebar .nav-anchor svg {
-  width: 1rem !important;
-  height: 1rem !important;
 }
 
 /* topbar pill buttons: search, Ask AI, secondary CTA (Get support) */
