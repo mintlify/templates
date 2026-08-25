@@ -25,7 +25,9 @@
         "product": "Help Center",
         "description": "Setup guides, product how-tos, automation tips, and policies.",
         "icon": "life-buoy",
-        "groups": [
+        "pages": [
+          "index",
+          "docs",
       {
         "group": "Getting started & account",
         "icon": "rocket",
@@ -202,12 +204,6 @@
         ]
       }
         ]
-      },
-      {
-        "product": "Docs",
-        "description": "Mintlify product documentation.",
-        "icon": "book-open",
-        "href": "https://www.mintlify.com/docs"
       },
       {
         "product": "Guides",

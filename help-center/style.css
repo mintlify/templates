@@ -17,11 +17,11 @@ toc-item[data-active-deepest] > a::before {
   pointer-events: none;
 }
 
-/* topbar logo: render smaller than its natural width */
+/* topbar/sidebar logo: render smaller than its natural width.
+   Sidebar Home is a nav page linking to /, so do not size its icon SVG. */
 #navbar a[href="/"] img,
 #navbar a[href="/"] svg,
-#sidebar a[href="/"] img,
-#sidebar a[href="/"] svg {
+#sidebar a[href="/"] img {
   max-width: 14rem;
   height: auto;
 }
