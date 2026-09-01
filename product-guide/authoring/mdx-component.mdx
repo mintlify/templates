@@ -1,0 +1,69 @@
+---
+title: MDX component
+description: Wrap markdown sections in JSX with the <MDX> component while headings, code fences, and anchors keep working.
+---
+
+The `<MDX>` component renders its children as regular markdown. Content between the tags compiles exactly like markdown at the root of a page. Headings, code fences, tables, and callouts all work.
+
+Use `<MDX>` when you need to place a markdown section inside JSX. The most common case is conditional content, such as a ternary expression. Without `<MDX>`, markdown inside a JSX expression is treated as raw JSX and you would have to rewrite it element by element.
+
+## Basic usage
+
+Wrap any markdown section in `<MDX>` tags:
+
+````mdx
+<MDX>
+
+  ## Getting started
+
+  Install the CLI, then run `init` to scaffold a project.
+
+  ```bash
+  product init my-project
+  ```
+</MDX>
+````
+
+The content renders the same as if it were written directly on the page.
+
+## Conditional markdown
+
+`<MDX>` works inside `{...}` expressions, including ternaries. The markdown in each branch compiles at build time:
+
+```mdx
+export const platform = "cloud"
+
+{platform === "cloud" ? <MDX>
+## Cloud setup
+
+Create a workspace from the dashboard, then invite your team.
+</MDX> : <MDX>
+## Self-hosted setup
+
+Download the installer and run it on your own infrastructure.
+</MDX>}
+```
+
+Only the branch that matches renders on the page. You can also nest `<MDX>` inside another `<MDX>` block, and snippets work inside `<MDX>` content.
+
+## Heading anchors
+
+Headings inside `<MDX>` get anchor IDs, so readers can link to them directly. To set a custom anchor, append `{#id}` to the heading:
+
+```mdx
+{showAdvanced ? <MDX>
+    ## Advanced options {#advanced}
+
+    Tune these settings only after completing the basic setup.
+</MDX> : null}
+```
+
+Inside an `<MDX>` block, `## Title {#id}` headings work at any indentation. This matters because authors often indent the body of an expression-level `<MDX>` by four or more spaces, which would normally turn the line into an indented code block. Code fences inside the block are still treated as code and never become headings.
+
+## Table of contents
+
+Headings inside `<MDX>` blocks merge into the page's table of contents in document order, alongside the page's own headings. Their anchor IDs are reserved so later headings on the page never reuse them.
+
+<Note>
+  Headings from every `<MDX>` branch of a conditional appear in the table of contents, including branches that do not render.
+</Note>

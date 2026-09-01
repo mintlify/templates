@@ -64,6 +64,14 @@
         ]
       },
       {
+        "group": "Authoring",
+        "icon": "pen-line",
+        "expanded": true,
+        "pages": [
+          "authoring/mdx-component"
+        ]
+      },
+      {
         "group": "Integrations",
         "icon": "plug",
         "expanded": true,
