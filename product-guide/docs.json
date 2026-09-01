@@ -48,6 +48,7 @@
           "platform/quickstart",
           "platform/key-concepts",
           "platform/configuration/settings",
+          "platform/configuration/ai-model",
           "platform/configuration/user-management",
           "platform/administration/roles-permissions"
         ]
