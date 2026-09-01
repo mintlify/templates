@@ -73,6 +73,14 @@
           "integrations/connectors/crm",
           "integrations/webhooks/configure"
         ]
+      },
+      {
+        "group": "Components",
+        "icon": "component",
+        "expanded": true,
+        "pages": [
+          "components/github"
+        ]
       }
     ]
   },
