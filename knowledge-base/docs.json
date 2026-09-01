@@ -120,6 +120,15 @@
         ]
       },
       {
+        "tab": "Docs",
+        "groups": [
+          {
+            "group": "Overview",
+            "pages": ["docs/demo"]
+          }
+        ]
+      },
+      {
         "tab": "Engineering",
         "groups": [
           {
