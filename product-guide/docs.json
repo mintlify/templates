@@ -71,7 +71,8 @@
           "integrations/quickstart",
           "integrations/authentication",
           "integrations/connectors/crm",
-          "integrations/webhooks/configure"
+          "integrations/webhooks/configure",
+          "integrations/automations/slack-trigger"
         ]
       }
     ]

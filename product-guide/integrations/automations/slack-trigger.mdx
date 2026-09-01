@@ -1,0 +1,49 @@
+---
+title: Trigger automations from Slack
+description: Start an automation whenever a new message is posted in selected Slack channels.
+---
+
+Automations can run in response to Slack activity. When you configure a Slack trigger, any new top-level message in the channels you select starts the automation. Thread replies do not start runs.
+
+Use a Slack trigger when conversations should drive work automatically. For example, turn questions posted in a support channel into documentation updates, or act on feedback shared in a product channel without copying messages by hand.
+
+## Before you begin
+
+- Connect Slack to your workspace so the Mintlify bot is installed.
+- Add the Mintlify bot to each channel you want the automation to listen to. Mention the bot in the channel to invite it.
+
+## Configure the trigger
+
+<Steps>
+  <Step title="Open the automation settings">
+    Go to **Automations**, then create a new automation or edit an existing one.
+  </Step>
+  <Step title="Select the Slack trigger">
+    Choose the integration trigger type, then select **Slack** from the integration picker. Slack appears at the top of the list.
+  </Step>
+  <Step title="Select channels">
+    Use the channel picker to choose one or more channels. Search by name to filter the list, then check each channel the automation should listen to.
+
+    Any new top-level message in the selected channels starts the automation.
+  </Step>
+  <Step title="Verify bot access">
+    Mintlify checks that the bot is a member of each selected channel. You cannot save the trigger until every check passes.
+
+    - If the bot is missing from a channel, add the bot to that channel, then deselect and reselect the channel to recheck.
+    - If a check fails for another reason, deselect and reselect the channel to retry.
+  </Step>
+  <Step title="Save the automation">
+    Save your changes. The automation now runs whenever a new message is posted in any of the selected channels.
+  </Step>
+</Steps>
+
+## View runs triggered by Slack
+
+Each run started by a Slack message links back to its source:
+
+- The runs list shows **Triggered by message in #channel** with a link to the message in Slack.
+- The run detail view shows a **Trigger** row that links to the same message.
+
+<Note>
+  Failed runs that were triggered by a Slack message cannot be re-run from the dashboard. Post a new message in the channel to start a fresh run.
+</Note>
