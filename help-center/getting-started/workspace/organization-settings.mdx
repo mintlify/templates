@@ -1,31 +1,37 @@
 ---
 title: "Organization settings"
 sidebarTitle: "Org settings"
-description: "Name, branding touches, defaults, and workspace-level policies."
+description: "Configure your organization name, default settings, and security policies."
 ---
 
-Organization settings define how your workspace presents itself and which guardrails apply by default. Changes here often require admin rights and may notify all members—communicate before big switches.
+Organization settings control how your Mintlify account is identified and what default behaviors apply to all projects. Only Admins can access organization settings.
 
-## Profile
+Navigate to **Settings** from your dashboard to manage these options.
 
-Update display name and public-facing details shown in invites and notification footers. Align spelling with your legal entity where invoices and DPA references matter.
+## Organization profile
 
-### Logos and assets
+- **Name** — Shown in the dashboard, email notifications, and invitation emails. Use your company or product name.
+- **Slug** — The URL-safe identifier used in your Mintlify project URLs. Changing the slug updates all project URLs — notify your team before making this change.
 
-Use brand-approved logos and color contrast checks for accessibility. Store source files in your brand portal so future admins are not hunting attachments in chat.
+## Security
 
-## Defaults
+<Tabs>
+  <Tab title="SSO">
+    Connect a SAML 2.0 or OIDC identity provider so team members sign in through your company's existing auth system. Available on Growth and Enterprise plans.
 
-Set default project visibility and automation limits for new projects created by members.
+    Once SSO is configured, you can optionally enforce it — members who haven't connected their SSO account will be locked out until they do.
+  </Tab>
+  <Tab title="Allowed email domains">
+    Restrict who can be invited to your organization by email domain. When set, only email addresses from the approved domains can accept invitations.
 
-### Templates
+    Useful for organizations with multiple email domains (acquired companies, contractors) where you want to control who can join.
+  </Tab>
+</Tabs>
 
-Pair defaults with project templates so teams inherit sane labels, sections, and automation caps without starting from zero every time.
+## Default project settings
 
-## Policies
+New projects inherit organization-level defaults for visibility and member access. Configure defaults in **Settings → Projects** so teams don't need to configure every new project from scratch.
 
-Admins can require MFA, restrict invite domains, and define data residency expectations where features exist for your region.
-
-### Exceptions
-
-Document how to request exceptions (contractors, acquisitions) so security can approve without inventing a new process each time.
+<Info>
+  Organization settings changes can affect all members immediately. Test significant changes (like enforcing SSO) with a small group before rolling out to the whole team.
+</Info>

@@ -1,38 +1,70 @@
 ---
 title: Key concepts
-description: The building blocks of the platform—workspaces, projects, roles, and API access.
+description: Projects, pages, navigation, and components — the building blocks of a Mintlify docs site.
 ---
 
-Understanding the core model makes every other guide easier to follow. This page explains the four foundational concepts you'll encounter throughout the platform.
-
-## Workspaces
-
-A workspace is the top-level container for your organization. It holds all projects, members, settings, and billing information. Every user belongs to at least one workspace, and each workspace operates independently with its own configuration and data.
-
-Workspaces are identified by a unique slug used in URLs and API calls.
+Understanding these four concepts makes every other guide easier to follow.
 
 ## Projects
 
-Projects are the primary unit of work within a workspace. Each project has its own members, settings, and data. You can create as many projects as you need, and the same user can belong to multiple projects with different roles in each.
+A project is a docs site. Each project is backed by a Git repository and gets its own URL (a subdomain on `mintlify.app` until you configure a custom domain). Settings, collaborators, and deployments are all scoped to the project.
 
-<Info>
-  Project-level role overrides take precedence over workspace-level roles. A user who is a Viewer at the workspace level can be granted Admin access on a specific project.
-</Info>
+Projects deploy automatically every time you push to your default branch. Pull requests get preview deployments at unique URLs so you can review changes before they go live.
 
-## Members and roles
+## Pages
 
-Every workspace member is assigned a role that controls what they can see and do:
+Every page on your site corresponds to one MDX file in your repository. The file path determines the URL: `platform/quickstart.mdx` becomes `/platform/quickstart`.
 
-| Role | Description |
-|------|-------------|
-| **Admin** | Full access to workspace settings, billing, and all projects. Can invite and remove members. |
-| **Member** | Can create and manage projects they belong to. Cannot access billing or workspace-level settings. |
-| **Viewer** | Read-only access to projects they are added to. Cannot create or modify content. |
+Pages start with a frontmatter block:
 
-Custom roles with granular permissions are available on higher-tier plans. See [roles and permissions](/platform/administration/roles-permissions) for details.
+```mdx
+---
+title: "My page title"
+description: "Shown in search results and link previews."
+---
 
-## API credentials
+Page content goes here.
+```
 
-API keys allow external tools and services to interact with your workspace programmatically. Each key is scoped to a specific workspace and can be restricted to read-only or read-write access.
+Beyond standard Markdown, MDX lets you embed [components](/platform/key-concepts#components) directly in your content.
 
-Treat API keys as secrets—rotate them immediately if they are exposed. See the API reference for authentication details and endpoint documentation.
+## Navigation
+
+Your sidebar structure is defined in `docs.json` under the `navigation` key. The three main building blocks are:
+
+| Element | What it does |
+|---------|-------------|
+| **Groups** | Collapsible sections in the sidebar that contain pages or nested groups. |
+| **Tabs** | A horizontal bar at the top of the sidebar for switching between major sections. |
+| **Anchors** | Persistent sidebar links to external URLs or specific pages, always visible regardless of which page is open. |
+
+You can also use **Products** to separate entirely different documentation sets (for example, a public API reference and an internal admin guide) behind a product switcher.
+
+## Components
+
+Mintlify ships a library of MDX components you can use on any page without any imports:
+
+<CardGroup cols={2}>
+  <Card title="Cards" icon="square">
+    Highlight links, features, or resources in a visual grid.
+  </Card>
+  <Card title="Steps" icon="list-ordered">
+    Numbered, visually separated step sequences for procedures.
+  </Card>
+  <Card title="Tabs" icon="layout-panel-top">
+    Switch between multiple views of related content on a single page.
+  </Card>
+  <Card title="Callouts" icon="triangle-alert">
+    Note, Tip, Warning, and Danger blocks for important information.
+  </Card>
+  <Card title="Code" icon="code">
+    Syntax-highlighted blocks with copy buttons and multi-language tab groups.
+  </Card>
+  <Card title="API Playground" icon="play">
+    Interactive request builder generated automatically from your OpenAPI spec.
+  </Card>
+</CardGroup>
+
+## Themes
+
+Mintlify's themes control your site's overall look. Set `"theme"` in `docs.json` to one of the built-in options (`mint`, `willow`, `almond`, `sequoia`, and more). Every theme supports light and dark mode and can be customized with your brand colors, fonts, and custom CSS.

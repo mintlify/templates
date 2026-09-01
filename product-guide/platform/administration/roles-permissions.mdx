@@ -1,55 +1,38 @@
 ---
 title: Roles and permissions
-description: Assign and customize access control across your workspace and projects.
+description: Control who can edit content, manage settings, and administer your Mintlify project.
 ---
 
-The platform uses a role-based access control (RBAC) model. Roles are assigned at the workspace level and can be overridden at the project level for granular control.
+Mintlify projects use two built-in roles. All access is scoped to a single project — roles from one project don't carry over to others.
 
 ## Built-in roles
 
-Three built-in roles cover most team structures:
-
-<CardGroup cols={3}>
+<CardGroup cols={2}>
   <Card title="Admin" icon="shield">
-    Full access to workspace settings, billing, all projects, and member management. Assign sparingly.
+    Full access to project settings, billing, deployments, and member management. Can use the web editor and the dashboard.
   </Card>
-  <Card title="Member" icon="user">
-    Can create projects, manage content, and invite collaborators within their projects. Cannot access billing or workspace settings.
-  </Card>
-  <Card title="Viewer" icon="eye">
-    Read-only access to projects they are explicitly added to. Cannot create, edit, or delete content.
+  <Card title="Editor" icon="pen-line">
+    Can create, edit, and publish pages using the web editor. Cannot access project settings, billing, or deployment configuration.
   </Card>
 </CardGroup>
 
-## Custom roles
+## What each role can do
 
-Custom roles let you define precise permission sets for teams with non-standard access needs. Each custom role is built by selecting from a list of granular permissions.
+| Action | Admin | Editor |
+|--------|-------|--------|
+| Edit and publish pages | ✓ | ✓ |
+| Manage navigation and docs.json | ✓ | — |
+| Invite or remove members | ✓ | — |
+| Configure custom domain | ✓ | — |
+| Manage billing and plan | ✓ | — |
+| View deployment history | ✓ | — |
 
-To create a custom role:
+## Git-based access
 
-1. Go to **Settings → Roles → New role**.
-2. Give the role a name and optional description.
-3. Toggle individual permissions on or off.
-4. Save and assign to members.
+Roles in the Mintlify dashboard are separate from GitHub (or GitLab) repository permissions. Anyone with write access to your repository can push changes that trigger a deployment, regardless of their Mintlify role.
 
-<Info>
-  Custom roles are available on Business and Enterprise plans. Workspace Admins can create and manage up to 20 custom roles.
-</Info>
+For organizations that want to restrict who can deploy, use GitHub branch protection rules to require pull request reviews before changes merge to your default branch.
 
-Common custom role patterns:
+## Organization-level access
 
-- **Data analyst** — Read access to analytics dashboards and reports, no access to settings or user management.
-- **Integration manager** — Full access to integrations and connectors, read-only access to projects.
-- **Billing contact** — Access to billing settings only, no access to workspace data.
-
-## Per-project overrides
-
-A member's workspace-level role can be overridden for specific projects. Project-level roles take full precedence within that project.
-
-To assign a per-project role:
-
-1. Open the project and go to **Settings → Members**.
-2. Find the member and select a role from the dropdown.
-3. Save changes.
-
-Removing a per-project override reverts the member to their workspace-level role for that project.
+If your Mintlify organization has multiple projects, admins can be granted access at the organization level to manage settings and members across all projects from a single place. Project-level roles still control what each person can do within a specific project.

@@ -1,31 +1,36 @@
 ---
 title: "Subprocessors"
 sidebarTitle: "Subprocessors"
-description: "Illustrative list of subprocessors for this demo."
+description: "Third-party services Mintlify uses to process customer data."
 ---
 
-Subprocessors extend your security perimeter—customers review them for data residency, certifications, and incident history. Keep this list current; stale entries erode trust during procurement.
+Mintlify uses the following third-party subprocessors to deliver the platform. All subprocessors are contractually bound to protect data in accordance with Mintlify's DPA.
 
 ## Infrastructure
 
-Hosting and networking vendors that operate regions you select.
+| Subprocessor | Purpose | Data location |
+|-------------|---------|--------------|
+| Amazon Web Services (AWS) | Cloud infrastructure for hosting and compute | US, EU |
+| Cloudflare | CDN, DDoS protection, and DNS | Global |
 
-### Certifications
+## Product and operations
 
-Link SOC 2, ISO, or FedRAMP reports where applicable so enterprise teams can self-serve.
+| Subprocessor | Purpose | Data processed |
+|-------------|---------|----------------|
+| Vercel | Edge compute for select features | Anonymous request data |
+| GitHub | Source code hosting and CI/CD integration | Repository content |
+| Stripe | Payment processing | Billing and payment data |
+| Resend | Transactional email delivery | Name and email address |
 
-## Communications
+## Analytics and support
 
-Transactional email and in-product messaging providers.
+| Subprocessor | Purpose | Data processed |
+|-------------|---------|----------------|
+| PostHog | Internal product analytics | Anonymized usage data |
+| Intercom | Customer support chat | Name, email, support conversations |
 
-### Data minimization
+## Changes to this list
 
-Note which fields each vendor receives—full profile vs email-only.
+Mintlify updates this list when adding or removing subprocessors. Customers with a signed DPA are notified at least 30 days before a new subprocessor is added, providing an opportunity to object.
 
-## Updates
-
-We notify customers of substantive subprocessor changes as described in enterprise agreements.
-
-### Objection windows
-
-Define how customers object or terminate if they cannot accept a new subprocessor—timeline and migration assistance matter.
+To subscribe to subprocessor change notifications, email [privacy@mintlify.com](mailto:privacy@mintlify.com).

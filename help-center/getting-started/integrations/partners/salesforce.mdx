@@ -1,31 +1,42 @@
 ---
-title: "Salesforce connector"
-sidebarTitle: "Salesforce"
-description: "Install, authenticate, and map Salesforce objects to the product."
+title: "Vercel deployment"
+sidebarTitle: "Vercel"
+description: "Deploy your Mintlify docs on Vercel for custom routing and edge performance."
 ---
 
-The Salesforce connector reduces copy-paste between CRM and your workspace. Plan object mapping before you sync thousands of rows—rework is cheaper in a spreadsheet than in production data.
+You can deploy a Mintlify docs site as a Next.js project on Vercel. This gives you full control over routing, redirects, and CDN configuration.
 
-## Prerequisites
+## When to use Vercel
 
-Admin access in Salesforce and an administrator to approve the connector.
+Use Vercel hosting when you:
+- Need to serve docs from a path on your own domain (for example, `yourdomain.com/docs`).
+- Want to use Vercel's edge network for CDN and performance.
+- Need custom middleware for authentication or routing.
 
-### Sandboxes
+For most teams, Mintlify's built-in hosting with a custom subdomain (`docs.yourdomain.com`) is simpler and requires no additional infrastructure.
 
-Pilot against a full or partial sandbox before production. Validate picklist values, required fields, and validation rules that might block writes.
+## Setup overview
 
-## Field mapping
+<Steps>
+  <Step title="Export your Mintlify project">
+    Use the Mintlify CLI to export your project as a Next.js static build:
 
-Map accounts, contacts, and opportunities to entities. Resolve duplicates by external ID where possible.
+    ```bash
+    mintlify build
+    ```
+  </Step>
+  <Step title="Deploy to Vercel">
+    Push the build output to a Git repository connected to Vercel, or use the Vercel CLI:
 
-### Ownership
+    ```bash
+    vercel deploy
+    ```
+  </Step>
+  <Step title="Configure your domain">
+    In the Vercel dashboard, add your custom domain under **Project → Settings → Domains**.
+  </Step>
+</Steps>
 
-Decide who owns records when Salesforce and the product disagree. Document the rule in your runbook so support can answer “why did this flip?”
-
-## Sync modes
-
-Choose one-way or two-way sync depending on which system owns each field.
-
-### Monitoring
-
-Alert on sync lag and error rates. Backfills can look healthy while a handful of poison records retry forever.
+<Note>
+  When deploying to Vercel, you manage your own hosting infrastructure. Mintlify's built-in analytics and AI search features may behave differently in this configuration — check the [Mintlify docs](https://mintlify.com/docs) for any limitations.
+</Note>

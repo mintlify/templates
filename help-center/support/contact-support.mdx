@@ -1,36 +1,46 @@
 ---
-title: "Contact support"
+title: "Contact Mintlify support"
 sidebarTitle: "Contact support"
-description: "Channels, severity levels, and what to include in a support request."
+description: "How to reach Mintlify support and what to include in your request."
 ---
 
-Good support tickets get answers faster. Lead with impact, narrow the blast radius with IDs, and attach evidence your team already has—logs, HAR files, or screen recordings for UI issues.
+Mintlify offers several support channels depending on your plan.
 
-## Channels
+## Support channels
 
-- In-app chat on Team and Enterprise
-- Email for billing and security questions
+<CardGroup cols={2}>
+  <Card title="In-app chat" icon="message-circle">
+    Available on Growth and Enterprise plans. Click the chat icon in the Mintlify dashboard to start a conversation with the support team.
+  </Card>
+  <Card title="Email" icon="mail">
+    Email [support@mintlify.com](mailto:support@mintlify.com) for billing questions, security concerns, and issues not covered by in-app chat.
+  </Card>
+  <Card title="Community" icon="users">
+    Join the [Mintlify community](https://mintlify.com/community) to ask questions, share feedback, and get help from other Mintlify users.
+  </Card>
+  <Card title="GitHub" icon="github">
+    File bug reports and feature requests on the [Mintlify GitHub repository](https://github.com/mintlify/mintlify).
+  </Card>
+</CardGroup>
 
-### Routing
+## What to include in a support request
 
-Use the channel your contract lists for Sev1 incidents. Misrouted tickets lose time to handoffs.
+The faster you can describe the problem, the faster support can help. Include:
 
-## Severity
+- **What you expected to happen** and **what actually happened**.
+- **The project URL** and a link to the specific page or deployment if relevant.
+- **Steps to reproduce** — the more specific, the better.
+- **The build log URL** if your issue is a deployment failure (copy from **[Project] → Deployments → [Failed deploy] → Build log**).
+- **Error messages** — paste the exact text rather than paraphrasing.
 
-Mark production outages as highest severity with clear customer impact.
+### Sensitive information
 
-### Be specific
+Remove API keys, passwords, and personal data before sharing logs or screenshots. If you need to share sensitive details, say so and support will provide a secure channel.
 
-“Slow” is vague; “API p95 latency 8s since 14:05 UTC on `/v1/items`” is actionable. Include approximate user count affected.
+## Response times
 
-## Good requests
-
-Include timestamps, URLs, request IDs, and steps to reproduce.
-
-### Redaction
-
-Remove secrets from pasted logs—rotate anything that leaks accidentally.
-
-### Follow-ups
-
-If you discover new data after filing, reply on the same thread so context stays unified.
+| Plan | Channel | Typical response |
+|------|---------|-----------------|
+| Starter | Community, email | 2–5 business days |
+| Growth | In-app chat, email | 1 business day |
+| Enterprise | In-app chat, email, dedicated Slack | SLA per contract |

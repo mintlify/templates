@@ -1,31 +1,37 @@
 ---
-title: "Export your data"
+title: "Export your content"
 sidebarTitle: "Export data"
-description: "Request exports, formats, and retention notes for your data."
+description: "How to export your Mintlify docs content and configuration."
 ---
 
-Exports let you back up, migrate, or satisfy access requests. Plan format and scope before you click—large workspaces can queue for a while and may need multiple partial exports.
+Because Mintlify is Git-backed, your docs content is always available in your repository — you already own it. There's no proprietary export step needed for your pages.
 
-## Self-serve export
+## What you own (in your repository)
 
-Admins can export project bundles in standard formats from **Settings → Data**.
+- All MDX page files.
+- Your `docs.json` configuration.
+- Images and other assets in your repository.
 
-### Format choices
+This content is in your Git repository and accessible regardless of your Mintlify account status.
 
-Pick structured formats your downstream tools ingest—JSON for pipelines, PDF for human review.
+## What Mintlify stores (accessible from the dashboard)
 
-## Timing
+- **Analytics data** — Page views, search queries, and feedback. Export analytics data before closing your account.
+- **Deployment history** — A log of all deployments, including timestamps and commit messages.
+- **Member and access logs** — Audit logs of membership changes (Enterprise plans).
 
-Large exports queue asynchronously; you receive email when ready.
+### Export analytics data
 
-### Partial failures
+Currently, analytics data can be viewed in the dashboard but doesn't have a one-click export. Connect a third-party analytics provider (PostHog, GA4, etc.) to retain your analytics data outside Mintlify. See [Connect an analytics provider](/getting-started/integrations/connect-crm) for setup.
 
-If an export completes with warnings, read the manifest for skipped objects—permissions or corrupt attachments are common causes.
+## Migrating away from Mintlify
 
-## Scope
+If you're migrating to a different docs platform:
 
-Exports include content you have permission to read—respect confidentiality when sharing files.
+1. Your MDX content can be used with any MDX-compatible platform.
+2. Your `docs.json` navigation structure may need to be adapted to the target platform's configuration format.
+3. Mintlify-specific components (`<Card>`, `<Steps>`, etc.) will need to be replaced with the target platform's equivalents or converted to standard Markdown.
 
-### Legal holds
-
-Consult counsel before exporting if litigation holds apply—some systems block export or require approval.
+<Tip>
+  Keep your docs in plain Markdown and standard MDX components where possible — it makes future migrations much simpler.
+</Tip>

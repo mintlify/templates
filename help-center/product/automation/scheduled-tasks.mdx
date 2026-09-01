@@ -1,35 +1,62 @@
 ---
-title: "Scheduled tasks"
+title: "Scheduled tasks and checks"
 sidebarTitle: "Scheduled tasks"
-description: "Cron-style schedules, timezone handling, and backoff."
+description: "Automate link validation, content audits, and other recurring checks for your docs."
 ---
 
-Scheduled tasks run without a human click: nightly syncs, weekly digests, or maintenance windows. Get timezones right once, then monitor failures—silent misses are harder to spot than user-triggered errors.
+Mintlify deployments are event-driven (triggered by Git pushes), but you can use GitHub Actions or GitLab CI to run scheduled checks on your docs independently of deploys.
 
-## Schedules
+## Scheduled link validation
 
-Use cron expressions or friendly presets. All times respect the project timezone unless overridden explicitly for global teams.
+Broken links erode trust and hurt SEO. Set up a weekly or daily link check to catch broken links before readers do:
 
-### Cadence choices
+```yaml
+name: Link check
+on:
+  schedule:
+    - cron: '0 9 * * 1'  # Every Monday at 9am UTC
 
-Prefer off-peak windows for heavy jobs. If you need “every hour,” confirm your platform’s minimum interval and whether missed runs catch up or skip.
+jobs:
+  link-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check links
+        uses: lycheeverse/lychee-action@v1
+        with:
+          args: --verbose --no-progress './**/*.mdx'
+```
 
-### Holidays
+Fix broken links in a PR — the preview deployment lets you verify the fix before merging.
 
-Some teams pause schedules on holidays via a calendar flag or a wrapper rule—otherwise your “Monday report” might fire on a quiet day with no fresh data.
+## Scheduled content audits
 
-## Daylight saving
+Use a scheduled job to check for pages that haven't been updated in a long time:
 
-Ambiguous local times may skip or repeat—prefer UTC for critical jobs. If you must stay local, document the DST transition dates for your region and test around them.
+```bash
+# Find MDX files not modified in the last 90 days
+git log --all --format="%ai %H %s" -- "**/*.mdx" | \
+  awk -v cutoff="$(date -d '90 days ago' +%Y-%m-%d)" '$1 < cutoff {print $0}'
+```
 
-### Jitter
+Route the output to a Slack channel or create GitHub issues to track stale content.
 
-Add small random delay when many schedules align at midnight to avoid thundering herds against shared databases.
+## Scheduled deployments
 
-## Monitoring
+If you reference external data (an OpenAPI spec, a changelog, etc.) that updates independently of your docs repository, you can trigger a manual redeploy on a schedule:
 
-Failed runs surface in the automation console with logs for debugging. Wire alerts to the same channel as user-facing incidents when the job protects revenue or compliance.
+```yaml
+name: Scheduled redeploy
+on:
+  schedule:
+    - cron: '0 6 * * *'  # Daily at 6am UTC
 
-### Runbooks
-
-Link a short runbook from each alert: what failed, what to check first, and who owns the downstream integration.
+jobs:
+  redeploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Mintlify redeploy
+        run: |
+          curl -X POST https://api.mintlify.com/v1/projects/${{ secrets.MINTLIFY_PROJECT_ID }}/deploy \
+            -H "Authorization: Bearer ${{ secrets.MINTLIFY_API_KEY }}"
+```

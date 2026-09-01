@@ -1,38 +1,33 @@
 ---
 title: "Roles and permissions"
 sidebarTitle: "Roles & permissions"
-description: "Understand what admins, members, and custom roles can see and change."
+description: "What admins and editors can do in Mintlify."
 ---
 
-Permissions translate org structure into enforceable rules. When in doubt, mirror how your company already thinks about data classification—customer data vs internal-only vs public marketing.
+Mintlify uses two roles at the organization level and the same two roles at the project level. Project-level roles take precedence within that project.
 
-## Default roles
+## Organization roles
 
-| Role | Typical use |
-|------|-------------|
-| Admin | Billing, security, workspace-wide settings |
-| Member | Day-to-day work inside assigned projects |
+| Role | What they can do |
+|------|-----------------|
+| **Admin** | Full access to all projects, organization settings, billing, and member management. |
+| **Editor** | Can create, edit, and publish pages in any project they're a member of. Cannot access billing or organization settings. |
 
-### Admin count
+## Project roles
 
-Keep the admin group small and named. Too many admins increases accidental misconfiguration; too few blocks urgent fixes.
+Each project has its own member list. A person can be an Admin in one project and an Editor in another.
 
-## Custom roles
+| Role | What they can do |
+|------|-----------------|
+| **Admin** | Full access to project settings, custom domain configuration, and member management for that project. |
+| **Editor** | Can write and publish pages using the web editor. Cannot change project settings. |
 
-On supported plans, create roles that map to your internal job functions and restrict exports or automation actions.
+## The web editor vs Git
 
-### Design tips
+Editors who use the web editor work within Mintlify — no Git knowledge required. Anyone with write access to the underlying Git repository can also make changes via Git and the CLI, regardless of their Mintlify role.
 
-Name roles after outcomes (“Support – view only”) not job titles alone (“Engineer”), because titles drift faster than access needs.
-
-### Testing
-
-Before rolling out a new role, impersonate or test with a sandbox user—verify denied actions fail closed with a clear error.
+If you want to restrict who can deploy changes, use branch protection rules in GitHub or GitLab to require pull request reviews before merges to your default branch.
 
 ## Auditing
 
-Admins can review a lightweight access log of role changes and exports (retention varies by plan).
-
-### Reviews
-
-Schedule quarterly access reviews for high-sensitivity projects. Export logs before reviews if you need to join them to HR systems.
+Admins can view a log of membership changes in **Settings → Audit log** (available on Enterprise plans). Review access quarterly when team members change roles or leave the organization.

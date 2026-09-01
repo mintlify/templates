@@ -1,33 +1,43 @@
 ---
-title: "Custom connector template"
-sidebarTitle: "Custom template"
-description: "Fork the connector template to build a private integration faster."
+title: "Custom domain setup"
+sidebarTitle: "Custom domain"
+description: "Point a custom domain to your Mintlify docs site."
 ---
 
-The template encodes opinions: structured logging, retry policies, and test harnesses you would otherwise rebuild for every integration. Fork it, rename packages to match your org, and delete sample data before your first production credential touches it.
+A custom domain makes your docs feel like a native part of your product — for example, `docs.yourcompany.com` instead of `yourcompany.mintlify.app`.
 
-## What you get
+Custom domains are available on Growth and Enterprise plans.
 
-- Authentication scaffolding
-- Webhook handlers
-- Example tests
+## Steps
 
-### Conventions
+<Steps>
+  <Step title="Add your domain in Mintlify">
+    Open your project in the Mintlify dashboard and go to **Settings → Custom domain**. Enter the domain you want to use (for example, `docs.yourcompany.com`) and click **Save**.
 
-Follow the included directory layout so future contributors know where to add mappers, clients, and fixtures.
+    Mintlify will show you the DNS record you need to add.
+  </Step>
+  <Step title="Add a CNAME record in your DNS provider">
+    In your DNS provider's settings, create a CNAME record:
 
-## Customize
+    | Type | Name | Value |
+    |------|------|-------|
+    | CNAME | `docs` | `hosting.mintlify.com` |
 
-Replace sample mappings with your schema and add monitoring for sync failures.
+    If you want to use a root domain (for example, `yourcompany.com`), use an ALIAS or ANAME record instead — standard CNAME records don't support root domains.
+  </Step>
+  <Step title="Wait for DNS to propagate">
+    DNS changes can take a few minutes to a few hours to propagate. Mintlify checks your DNS automatically and provisions an SSL certificate once it can verify the domain.
+  </Step>
+</Steps>
 
-### Observability
+## SSL
 
-Emit metrics for lag, error categories, and record counts—dashboards beat grep when something breaks at 2 a.m.
+Mintlify provisions a free TLS certificate (via Let's Encrypt) for your custom domain automatically. You don't need to manage certificates manually.
 
-## Support
+## Troubleshooting
 
-Partner engineering can review architecture for Enterprise customers in real deployments; this demo text is illustrative.
+**The domain shows as "pending" after several hours.**
+Run `dig docs.yourcompany.com CNAME` to verify the CNAME is pointing to `hosting.mintlify.com`. If not, double-check the DNS record and try again. Some DNS providers cache records aggressively — flush the cache if available.
 
-### Security review
-
-Schedule architecture review before handling regulated data—catch network paths and key storage issues early.
+**I'm getting an SSL error.**
+SSL provisioning happens after DNS propagates. Wait a few hours after the DNS check passes. If it still fails after 24 hours, contact [support](mailto:support@mintlify.com).

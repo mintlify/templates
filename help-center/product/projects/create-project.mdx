@@ -1,35 +1,39 @@
 ---
 title: "Create a project"
 sidebarTitle: "Create a project"
-description: "Name, visibility, and defaults when starting a new project."
+description: "Set up a new Mintlify docs site from an existing repository or from scratch."
 ---
 
-Projects are the boundary for permissions, notifications, and automation. Spending two minutes on naming and visibility up front prevents accidental exposure later—especially when customers or partners are invited.
+Each Mintlify project corresponds to one docs site, backed by a Git repository. You can create a project from an existing repository or let Mintlify create a new one.
 
-## Create flow
+## From an existing repository
 
-Click **New project**, choose a name, and pick visibility: workspace-only or invite-only. Invite-only is appropriate when content must not be discoverable by everyone in the org directory.
+<Steps>
+  <Step title="Open the Mintlify dashboard">
+    Go to [dashboard.mintlify.com](https://dashboard.mintlify.com) and click **New project**.
+  </Step>
+  <Step title="Connect your repository">
+    Select your Git provider (GitHub or GitLab) and choose the repository. If you don't see the repository, check that the Mintlify GitHub App is installed on the correct organization.
+  </Step>
+  <Step title="Configure the project">
+    Set the **Docs root** if your documentation lives in a subdirectory (for example, `docs/`). Leave it empty if your docs are at the repository root.
 
-### Naming
+    Give the project a name — this is how it appears in your dashboard.
+  </Step>
+  <Step title="Deploy">
+    Click **Create project**. Mintlify clones the repository and starts the first build. Your site will be live at a `*.mintlify.app` URL within a minute or two.
+  </Step>
+</Steps>
 
-Use a name people will recognize in notifications and URLs. Avoid confidential codenames in titles if screenshots might leak; put codenames in an internal field instead.
+## From a template
 
-### Ownership
+If you don't have an existing docs repository, Mintlify can create one for you from a starter template:
 
-Assign an owner who can approve membership changes. Orphan projects without owners tend to accumulate stale access lists.
+1. Click **New project → Start from template**.
+2. Choose a template (blank, API reference, help center, etc.).
+3. Choose or create a GitHub repository for the template to be pushed to.
+4. Complete the setup — Mintlify creates the repo, installs the GitHub App, and deploys the starter site.
 
-## Templates
+## Project naming
 
-Start from blank or apply a template with prebuilt sections for your team’s process. Templates accelerate rollout but still need a quick review—remove sample text that could confuse readers.
-
-### Forking templates
-
-When you customize a template heavily, save a new template version so other teams inherit your improvements instead of editing one-off copies.
-
-## Defaults
-
-Set default labels and owners so new items do not land unassigned. Defaults reduce “triage debt” on Monday mornings when many items are created at once.
-
-### Iteration
-
-Revisit defaults after major process changes (new severity model, new regions). Old defaults silently mis-route work if nobody updates them after a reorg.
+Use a descriptive name that helps you identify the project in the dashboard — especially if you have multiple docs sites. Good names reference the product or audience: `API Reference`, `Developer Docs`, `Internal Runbooks`.

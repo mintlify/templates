@@ -1,31 +1,35 @@
 ---
-title: "Webhooks"
+title: "Deployment webhooks"
 sidebarTitle: "Webhooks"
-description: "Subscribe to events, verify signatures, and retry safely."
+description: "Trigger and receive events around Mintlify deployments."
 ---
 
-Webhooks push events to your infrastructure so you can react without polling. Reliability hinges on verification, idempotency, and fast HTTP responses—treat the endpoint like a mini product.
+Mintlify integrates with webhooks in two directions: it receives webhooks from GitHub and GitLab to trigger deployments, and you can configure outgoing webhooks to notify external systems when deployments complete.
 
-## Subscriptions
+## Incoming: GitHub and GitLab webhooks
 
-Create a webhook endpoint and select event types. The platform sends a signing secret for HMAC verification.
+Mintlify automatically configures a webhook on your repository when you connect it. Every push to your default branch (or a configured branch) triggers a new deployment. Pull request events trigger preview deployments.
 
-### Filtering
+You don't need to configure these manually — they're set up when you install the GitHub App or connect GitLab.
 
-Subscribe only to events you handle. Unused events still cost verification CPU and clutter logs.
+### Custom branch triggers
 
-## Verification
+By default, Mintlify deploys from your default branch. To change the branch or add additional triggers, go to **Project Settings → Git → Deployment triggers**.
 
-Always validate signatures before processing payloads. Reject stale timestamps when present.
+## Outgoing: deployment status notifications
 
-### Clock skew
+You can use GitHub Actions or GitLab CI to send notifications to external systems after a Mintlify deployment completes.
 
-Allow a small clock skew window between signer and verifier, but bound it to limit replay windows.
+A common pattern is to call a webhook endpoint after a successful push:
 
-## Retries
+```yaml
+- name: Notify on deploy
+  run: |
+    curl -X POST https://your-endpoint.example.com/hooks/docs \
+      -H "Content-Type: application/json" \
+      -d '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}"}'
+```
 
-Failed deliveries retry with exponential backoff. Ensure your endpoint is idempotent.
+### Verifying payloads
 
-### Response codes
-
-Return **2xx** only after you have safely persisted or handed off work. Use **5xx** to signal transient failures worth retrying; **4xx** for permanent misconfiguration.
+If your endpoint receives events from GitHub (not just Mintlify), always validate the `X-Hub-Signature-256` header using your webhook secret before processing the payload.

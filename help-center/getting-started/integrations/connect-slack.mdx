@@ -1,31 +1,41 @@
 ---
-title: "Connect Slack"
+title: "Slack notifications"
 sidebarTitle: "Slack"
-description: "Install the Slack app, pick channels, and manage notifications."
+description: "Get deployment notifications and alerts in your Slack workspace."
 ---
 
-Slack puts updates where people already work. A disciplined channel strategy keeps signal high—one noisy channel trains everyone to mute the integration entirely.
+Connect Mintlify to Slack to receive notifications about deployments, failed builds, and other project activity directly in your channels.
 
-## Install
+## Set up Slack notifications
 
-From **Integrations → Slack**, authorize the workspace you use every day. You need admin approval if your Slack org restricts apps.
+Mintlify can send deployment status updates to Slack via a webhook. The most common setup routes these through GitHub or GitLab Actions.
 
-### Scopes
+### Using GitHub Actions
 
-Review requested OAuth scopes during install. If something looks broader than needed, ask your Slack admin whether a reduced app configuration exists.
+Add a Slack notification step to your CI workflow that fires after Mintlify deploys:
 
-## Channels
+```yaml
+- name: Notify Slack on deploy
+  uses: slackapi/slack-github-action@v1
+  with:
+    payload: |
+      {
+        "text": "Docs deployed: ${{ github.event.head_commit.message }}"
+      }
+  env:
+    SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+```
 
-Map events to public or private channels. Start with a low-noise channel for pilot testing.
+Store your Slack webhook URL as a GitHub Actions secret (`SLACK_WEBHOOK_URL`) — never hardcode it in the workflow file.
 
-### Naming
+### Channel strategy
 
-Use a consistent prefix (`#help-`, `#docs-`) so people can browse related channels. Archive pilot channels after go-live to reduce clutter.
+- Use a dedicated `#docs-deploys` channel for deployment notifications — this keeps the signal separate from other engineering noise.
+- Reserve `@channel` mentions for failed builds or broken links, not routine deploys.
 
 ## Troubleshooting
 
-If messages stop, reauthorize the app and confirm the bot was not removed from the channel.
-
-### Rate limits
-
-Bursty events can hit Slack posting limits—back off or batch summaries if you see `429` responses in integration logs.
+If notifications stop:
+- Confirm the webhook URL is still valid — Slack deactivates webhook URLs when a workspace app is removed.
+- Check whether the bot was removed from the target channel.
+- Re-create the webhook in **Slack → Apps → Incoming Webhooks** if needed.

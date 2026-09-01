@@ -1,48 +1,42 @@
 ---
-title: Authentication methods
-description: API key, OAuth 2.0, and service account options for connecting integrations.
+title: Credentials and security
+sidebarTitle: Credentials
+description: How Mintlify handles integration credentials and what to keep in mind.
 ---
 
-Different integrations use different authentication methods. Choosing the right method—and managing credentials properly—affects both security and reliability.
+Integration credentials in Mintlify live in `docs.json` in your repository. Understanding how they're exposed helps you choose the right level of access when generating keys.
 
-## API keys
+## How credentials are used
 
-API keys are long-lived tokens issued by the external service. They are the simplest authentication method and work well for server-to-server connections where OAuth is not available.
+When a reader loads a page on your docs site, Mintlify renders your `docs.json` configuration and injects integration scripts into the page HTML. This means credentials in the `integrations` section of `docs.json` are **included in the page source** — they're client-side values.
 
-**When to use:** Services that issue personal access tokens or API keys (most developer tools, data APIs).
-
-**How to rotate:**
-
-1. Generate a new key in the external service.
-2. Go to **Integrations → [Integration name] → Credentials**.
-3. Paste the new key and click **Save**.
-4. Verify the connection still works, then revoke the old key in the external service.
+This is the expected behavior for analytics and tracking integrations, which are designed to be used in the browser. The keys you add to `docs.json` should be **public write-only tokens**, not secret API keys with read access to your data.
 
 <Warning>
-  Rotating a key while the old one is still in use causes a brief period of failed syncs. Minimize this by saving the new key first and revoking the old key only after verifying the connection.
+  Never put secret or read-access API keys in `docs.json`. Use only public project tokens or measurement IDs — the same credentials you would embed in a JavaScript snippet on any public website.
 </Warning>
 
-## OAuth 2.0
+## Generating the right kind of key
 
-OAuth 2.0 lets users authorize the platform to act on their behalf without sharing a password. The platform handles the token refresh cycle automatically.
+| Provider | What to use |
+|----------|------------|
+| Google Analytics 4 | Measurement ID (starts with `G-`) — always public |
+| PostHog | Project API key (starts with `phc_`) — public write-only |
+| Mixpanel | Project token — public write-only |
+| Segment | Write key — public write-only, scoped to one source |
+| Hotjar | Site ID (`hjid`) — always public |
 
-**When to use:** SaaS tools that support OAuth (CRMs, productivity tools, communication platforms).
+## Private docs and authentication
 
-**How it works:**
+If your Mintlify site requires reader authentication (login to view), you can restrict access through Mintlify's authentication settings. This is separate from integration credentials — it controls who can see your docs, not how tracking keys are stored.
 
-1. Click **Authorize** on the connector setup page.
-2. You're redirected to the service's authorization screen.
-3. Sign in and approve the requested permissions.
-4. The platform stores the access token and refresh token securely.
+See [Mintlify's authentication documentation](https://www.mintlify.com/docs) for SSO, password protection, and token-based access options.
 
-OAuth tokens expire regularly. The platform refreshes them automatically before expiry. If the refresh fails (for example, because permissions were revoked), the integration shows a **Reconnect** prompt.
+## Rotating credentials
 
-## Service accounts
+If a credential is compromised:
 
-Service accounts are non-personal identities created in the external system specifically for machine-to-machine access. Common with Google Cloud, AWS, and enterprise SaaS platforms.
-
-**When to use:** Situations where access must not be tied to an individual user (avoids disruption if an employee leaves), or where the service does not support OAuth.
-
-**Setup:** Upload the credentials file (usually a JSON key or certificate) in the connector setup dialog. The platform stores it encrypted and uses it to authenticate all requests.
-
-**Rotation:** Generate a new service account key in the external service, upload it to the connector, verify the connection, then deactivate the old key.
+1. Generate a new key in the provider's dashboard.
+2. Update `docs.json` with the new value.
+3. Push the change — Mintlify deploys automatically.
+4. Revoke the old key in the provider's dashboard after confirming the new one works.

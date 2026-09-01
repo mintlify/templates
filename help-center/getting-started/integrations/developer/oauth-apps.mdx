@@ -1,31 +1,39 @@
 ---
-title: "OAuth apps"
-sidebarTitle: "OAuth apps"
-description: "Register an OAuth client, scopes, and redirect URLs for the API."
+title: "Authentication for private docs"
+sidebarTitle: "Auth & OAuth"
+description: "Restrict access to your docs site with password protection, SSO, or JWT tokens."
 ---
 
-OAuth connects user-authorized clients to your APIs without sharing primary passwords. Treat client secrets like production credentials—rotate them and restrict who can create apps.
+By default, Mintlify sites are publicly accessible. If your docs contain sensitive information — internal APIs, private playbooks, or unreleased product documentation — you can restrict access.
 
-## Register an app
+## Password protection
 
-Create an application in **Developer settings** and note the client ID and secret.
+The simplest option: set a password in **Project Settings → Authentication → Password**. Anyone visiting the site must enter the password before seeing any content.
 
-### Environments
+Password protection is available on Growth and Enterprise plans.
 
-Maintain separate apps for staging and production so tokens never cross environments accidentally.
+## SSO (SAML)
 
-## Scopes
+Connect your identity provider so readers must sign in with their company credentials. Available on Enterprise plans.
 
-Request the smallest scope set that satisfies your feature. Review quarterly as APIs expand.
+1. Go to **Project Settings → Authentication → SSO**.
+2. Provide your IdP's metadata URL or XML.
+3. Map the required attributes (email, name).
+4. Enable SSO enforcement.
 
-### User consent
+Readers who aren't authenticated are redirected to your IdP's login page.
 
-Write user-facing copy that explains why each scope is needed—reviewers and security questionnaires ask.
+## JWT tokens
 
-## Redirect URLs
+For tighter integration with your own authentication system, Mintlify supports JWT-based authentication. Your backend generates a signed JWT that grants access to specific docs sections.
 
-Use HTTPS endpoints and avoid wildcards in production. Register separate entries for staging and production.
+This approach lets you:
+- Show different content to different user tiers.
+- Gate specific sections of your docs behind feature flags or subscription levels.
+- Integrate with your own login system without requiring a separate IdP connection.
 
-### PKCE
+See the [Mintlify authentication documentation](https://mintlify.com/docs) for JWT format requirements and example implementations.
 
-Prefer PKCE for public clients to reduce interception risk on mobile and SPA flows.
+<Info>
+  All authentication options require the Growth or Enterprise plan. Starter sites are always publicly accessible.
+</Info>

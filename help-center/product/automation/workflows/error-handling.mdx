@@ -1,39 +1,54 @@
 ---
-title: "Error handling"
-sidebarTitle: "Error handling"
-description: "Retries, compensating steps, and alerting when workflows fail."
+title: "Handling build failures"
+sidebarTitle: "Build failures"
+description: "What to do when a Mintlify deployment fails."
 ---
 
-Workflows fail in the real world: APIs time out, databases lock, humans go offline. Good error handling turns chaos into retries, compensations, and clear operator signals instead of silent data drift.
+Build failures prevent your changes from going live. They're usually caused by MDX syntax errors, invalid `docs.json` configuration, or broken component references.
 
-## Failures
+## Find the error
 
-Classify transient versus permanent failures. Transient steps should retry with jitter; permanent failures should stop fast and surface a crisp error code.
+1. Go to **[Project] → Deployments** in your Mintlify dashboard.
+2. Click the failed deployment to open its details.
+3. Open the **Build log** tab. The error message near the bottom of the log usually identifies the file and line number causing the failure.
 
-### Observability
+## Common failure causes
 
-Attach correlation IDs across steps so support can trace a single user action through every hop. Log HTTP status bodies at reduced verbosity to avoid leaking secrets.
+<Tabs>
+  <Tab title="MDX syntax errors">
+    MDX is stricter than Markdown. Common mistakes:
+    - Unclosed JSX tags (for example, `<Note>` without `</Note>`)
+    - HTML entities that need escaping (use `&amp;` instead of `&`, `&lt;` instead of `<`)
+    - Invalid frontmatter YAML (missing quotes around strings with special characters)
 
-### Poison messages
+    Fix: Find the file and line mentioned in the build log and correct the syntax.
+  </Tab>
+  <Tab title="docs.json errors">
+    Invalid `docs.json` configuration fails the build. Common mistakes:
+    - A page listed in navigation that doesn't exist as an `.mdx` file
+    - Invalid JSON syntax (trailing commas, missing quotes)
+    - A required field missing (`name`, `theme`, `colors.primary`, or `navigation`)
 
-If the same payload fails repeatedly, stop retrying and quarantine it—otherwise you starve healthy traffic.
+    Fix: Validate `docs.json` with a JSON linter and check that all referenced pages exist.
+  </Tab>
+  <Tab title="Missing files">
+    If your `docs.json` references a file that doesn't exist (for example, after renaming or deleting a page), the build fails.
 
-## Compensation
+    Fix: Update `docs.json` to match the actual file paths in your repository.
+  </Tab>
+</Tabs>
 
-Undo partial effects when a downstream step fails—especially for payments or external posts. Compensation may mean voiding an invoice, deleting a draft record, or sending a corrective webhook.
+## Test locally before pushing
 
-### Ordering
+Use the Mintlify CLI to catch errors before they reach your repository:
 
-Design compensations in reverse dependency order: undo the last successful side effect first.
+```bash
+npm i -g mintlify
+mintlify dev
+```
 
-### Partial success
+The local dev server shows the same errors the build system would catch. Fix issues locally and push only when the local preview looks correct.
 
-When only one of two external systems succeeded, document the manual reconciliation path in the alert body.
+## Revert if needed
 
-## Alerts
-
-Route failures to on-call channels with runbook links. Include workflow name, step name, and last payload hash—not full PII—in the first line of the alert.
-
-### Fatigue
-
-Throttle duplicate alerts for the same root cause. Pair alerts with dashboards so responders can see whether failures are trending or isolated.
+If a deploy broke your live site, the quickest recovery is to revert the commit in Git. Mintlify deploys the reverted version automatically on the next push.

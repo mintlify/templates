@@ -1,38 +1,37 @@
 ---
 title: "Access requests"
-description: "How to request access to tools, systems, and data — and what to expect."
+description: "How to request access to Mintlify tools, systems, and data — and what to expect."
 ---
 
-All access to company systems follows the principle of least privilege: you get access to what you need to do your job, not more.
+All access to Mintlify's systems follows the principle of least privilege: you get access to what you need to do your job, not more.
 
 ## How to request access
 
-1. **Submit a ticket** in the IT portal (or Slack: `#it-requests`).
-2. Include: the system or resource, the level of access needed, and your business justification.
-3. Your manager will receive an approval notification. Most requests require manager approval; some require director or security team sign-off.
-4. Approved requests are fulfilled within **one business day** for standard tools, **three business days** for production or customer data systems.
+1. Post in `#general` on Slack with: the tool or system you need, the level of access, and your business justification.
+2. Your manager will confirm the request in the thread.
+3. Most standard tools are fulfilled within **one business day**. Production or customer data systems require additional review and may take up to three business days.
 
 ## Access levels
 
 | Level | Examples | Approver |
 |-------|----------|----------|
-| Standard | Slack channels, Notion, Figma | Manager |
-| Elevated | AWS non-prod, staging environments | Manager + IT |
-| Privileged | Production systems, customer data | Manager + Security |
-| Admin | Identity provider, billing systems | Director + Security |
+| Standard | Slack channels, Notion, Figma, Linear | Manager |
+| Elevated | Vercel, staging environments, PostHog | Manager |
+| Privileged | AWS production, customer data | Manager + founders |
+| Admin | Identity provider, Stripe billing | Founders only |
 
 ## Shared credentials and service accounts
 
-Do not share personal credentials. If a workflow requires a service account or shared credential, request one through IT. Service accounts are audited quarterly.
+Do not share personal credentials. If a workflow requires a service account or shared secret, request one through `#general`. Shared credentials are audited quarterly.
 
 ## Access reviews
 
-IT runs quarterly access reviews. You'll receive an email listing your current access. Review it and flag anything that's no longer needed. Unused access will be revoked automatically after 30 days of no activity.
+We review access periodically. You may receive a Slack message listing your current access — review it and flag anything you no longer need.
 
 ## Offboarding
 
-When an employee leaves, all access is revoked on their last day. Managers are responsible for notifying IT at least two days in advance so handoffs can be arranged.
+When a team member leaves, all access is revoked on their last day. Managers should notify People at least two days in advance so handoffs can be arranged.
 
-## Emergencies
+## Urgent access issues
 
-For urgent access issues blocking critical work, contact the IT help desk directly on Slack (`#it-help`) or by phone. Include your manager in the message.
+For urgent access issues blocking critical work, post in `#general` and include your manager. Someone will respond quickly.

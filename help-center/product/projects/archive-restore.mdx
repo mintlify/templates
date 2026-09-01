@@ -1,31 +1,47 @@
 ---
-title: "Archive and restore projects"
+title: "Archive and restore a project"
 sidebarTitle: "Archive & restore"
-description: "Archive completed work and restore when needed."
+description: "Pause a Mintlify project without deleting it, and restore it when needed."
 ---
 
-Archiving is the gentle off-ramp for completed initiatives: out of default lists, but recoverable when a customer reopens a contract or an audit asks for historical context. Plan exports before archive if compliance requires cold storage.
+Archiving a Mintlify project stops new deployments and makes the project inactive, but doesn't delete your repository or any content. You can restore an archived project at any time.
 
-## Archive
+## Archive a project
 
-Archiving hides a project from default lists while preserving history. Automation pauses so you do not enqueue jobs against dormant data.
+1. Open the project in your Mintlify dashboard.
+2. Go to **Settings → Danger zone**.
+3. Click **Archive project** and confirm.
 
-### Communication
+After archiving:
+- The project no longer appears in your main project list (it moves to **Archived projects**).
+- No new deployments will trigger from Git pushes.
+- The live site URL continues to serve the last deployed version.
 
-Tell stakeholders when you archive so they do not think content was deleted. Link to the new canonical project if work continued elsewhere.
+### When to archive
 
-### Partial archives
+Archive a project when:
+- A product or docs site is retired but you want to preserve access to the last live version.
+- You're restructuring projects and want to consolidate docs into a new project.
+- The project is on hold and you don't want accidental deploys from stale branches.
 
-If only one stream is done, consider labels or subfolders instead of whole-project archive when other tracks remain active.
+## Restore a project
 
-## Restore
+1. Go to your dashboard and click **Archived projects**.
+2. Find the project and click **Restore**.
 
-Workspace admins can restore within the retention window. Older archives may require support if your policy moved data to long-term storage.
+Restoring reactivates the project — deployments will trigger again on the next Git push.
 
-### Validation after restore
+### After restoring
 
-Spot-check permissions and integrations after restore—tokens may have rotated while the project was idle.
+- Check that the GitHub App still has access to the repository (it may have been updated while the project was archived).
+- Trigger a manual deploy if the repository has changed since archiving: go to **Project → Deployments → Redeploy**.
 
-## Compliance
+## Delete a project
 
-Export before archive if your policy requires long-term cold storage outside the product. Keep checksums or manifest files so legal can prove what was frozen at a point in time.
+Deleting a project is permanent and cannot be undone. It removes the project from Mintlify but does not delete your Git repository.
+
+To delete: **Settings → Danger zone → Delete project**. You must type the project name to confirm.
+
+<Warning>
+  Deleting a project removes all Mintlify-side configuration, analytics history, and custom domain settings. Export any analytics data you want to keep before deleting.
+</Warning>

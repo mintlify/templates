@@ -1,31 +1,48 @@
 ---
 title: "Performance issues"
 sidebarTitle: "Performance"
-description: "Diagnose slowness, large pages, and network constraints."
+description: "Diagnose slow builds, slow page loads, and other performance problems in Mintlify."
 ---
 
-Performance issues feel like “the app is slow” but usually break down into network, rendering, or data volume. Gather one slow trace with timestamps before escalating—patterns matter more than one-off complaints.
+Performance problems in Mintlify fall into two categories: slow build times and slow page loads. The fixes are different for each.
 
-## Browser
+## Slow builds
 
-Disable heavy extensions and test with hardware acceleration toggled.
+If your deployments are taking longer than expected, common causes include:
 
-### Profiles
+**Large images** — Unoptimized images dramatically slow builds. Compress images before adding them to your repository, or host them externally (Cloudinary, S3) and reference them by URL.
 
-Try a fresh browser profile with only default extensions. Ad blockers and password managers sometimes inject scripts that delay paint.
+**Many pages** — Sites with thousands of pages take longer to build. This is usually not a problem until you reach 2,000+ pages.
 
-## Content
+**External data fetching** — If your docs fetch data from external APIs at build time, slow API responses extend build times. Cache responses or use static data where possible.
 
-Huge embedded media slows load—lazy load or host externally when possible.
+### Check your build time trend
 
-### Tables and charts
+Go to **[Project] → Deployments** and look at the build duration column. If build times have increased gradually, it's likely due to content growth. A sudden jump suggests a recently added page or image is the culprit.
 
-Large datasets should paginate or virtualize. If the editor feels fine but read mode lags, the DOM size is a likely culprit.
+## Slow page loads
 
-## Network
+If your docs pages load slowly for readers, common causes include:
 
-Corporate proxies sometimes buffer WebSockets—ask IT for allowlist guidance.
+**Large images on the page** — Audit your pages for large embedded images. Use smaller images or reference external images so they load from a CDN rather than your repository.
 
-### VPN
+**Custom JavaScript** — Scripts added via Google Tag Manager or custom `<script>` tags can significantly slow page loads if they're not performance-optimized.
 
-Split tunnel vs full tunnel changes latency paths. Compare latency with VPN off (if policy allows) to isolate the network layer.
+**CDN propagation** — After a new deployment, CDN caches need time to propagate globally. Pages may load slightly slower for 5–10 minutes after a deploy.
+
+## Checking your build performance
+
+Use the [Mintlify CLI](https://mintlify.com/docs) to validate your docs locally:
+
+```bash
+mintlify dev
+```
+
+The local dev server shows warnings for pages with issues (large images, invalid components) that could affect build or load performance.
+
+## Reporting a performance issue
+
+If you've ruled out the common causes and pages are still loading slowly, [contact support](/support/contact-support) and include:
+- Your project URL.
+- A specific page URL that loads slowly.
+- A screenshot of the network panel in browser dev tools showing load times.

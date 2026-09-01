@@ -1,31 +1,59 @@
 ---
-title: "Idempotency"
-sidebarTitle: "Idempotency"
-description: "Use idempotency keys to make automation safe under retries."
+title: "Redirects and URL stability"
+sidebarTitle: "Redirects"
+description: "Set up redirects to preserve links when you restructure your docs."
 ---
 
-Networks drop packets, clients retry, and queues redeliver. Without idempotency, the same user intent can create duplicate charges, tickets, or posts. Idempotency keys make “exactly-once behavior” practical on “at-least-once” infrastructure.
+When you rename, move, or delete pages, existing links break. Redirects let you preserve those links and maintain SEO value when your docs structure changes.
 
-## Why it matters
+## Setting up redirects
 
-Retries can duplicate side effects without idempotent design. Payment and ticketing integrations are the usual victims—duplicate idempotency keys should return the original result, not create a second record.
+Add a `redirects` array to your `docs.json`:
 
-### Scope
+```json
+"redirects": [
+  {
+    "source": "/old-path/page",
+    "destination": "/new-path/page"
+  },
+  {
+    "source": "/getting-started/old-name",
+    "destination": "/quickstart"
+  }
+]
+```
 
-Decide whether keys are global, per-tenant, or per-user. Collisions across tenants are rare but catastrophic if namespaces overlap.
+Redirects are 301 (permanent) by default. Mintlify applies them at the CDN level, so they're fast.
 
-## Keys
+## When to use redirects
 
-Supply a stable idempotency key derived from natural identifiers—order ID, request UUID, or hash of canonical fields. Avoid keys that change when unrelated whitespace changes.
+Use redirects whenever you:
+- Rename a page.
+- Move a page to a different section.
+- Delete a page and want to point visitors to a related page.
+- Restructure your navigation hierarchy.
 
-### Rotation
+## Wildcard redirects
 
-If you must rotate key material, dual-write during transition and document the overlap window.
+Use wildcards to redirect entire sections at once:
 
-## Storage
+```json
+{
+  "source": "/old-section/:path*",
+  "destination": "/new-section/:path*"
+}
+```
 
-Record processed keys long enough to cover your retry window plus clock skew. Expire old keys to bound storage, but not before your longest plausible retry storm.
+This redirects `/old-section/page-a` to `/new-section/page-a`, `/old-section/page-b` to `/new-section/page-b`, and so on.
 
-### Conflicts
+## Keeping URLs stable
 
-When a new payload arrives with an existing key but different body, reject loudly—something is inconsistent and needs human review.
+The best way to avoid broken links is to keep URLs stable from the start:
+
+- Choose page slugs that reflect the content's purpose, not its position in the navigation.
+- Use short, descriptive slugs that won't need to change when content evolves.
+- Avoid including version numbers in slugs unless you're explicitly versioning your docs.
+
+<Tip>
+  Before a major restructure, run a link check on your docs and on external sites that link to you. Prioritize redirects for high-traffic pages and frequently linked anchors.
+</Tip>
